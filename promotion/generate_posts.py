@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Campaign Generator for CuentasRápidas Instagram
+Campaign Generator for Cuentas al Día Instagram
 Generates 6 professional 1080x1080 PNG images for social media promotion
 """
 
@@ -148,7 +148,7 @@ def post_01_hero() -> Image.Image:
     draw.text((x, 640), text_sub, fill=COLORS['light_blue'], font=font_small)
 
     # App name at bottom
-    app_name = "CuentasRápidas"
+    app_name = "Cuentas al Día"
     bbox = draw.textbbox((0, 0), app_name, font=font_tiny)
     text_width = bbox[2] - bbox[0]
     x = (IMG_SIZE[0] - text_width) // 2
@@ -473,7 +473,7 @@ def post_06_cta() -> Image.Image:
     draw.text((text_x, button_y + 20), button_text, fill=COLORS['dark_blue'], font=font_large)
 
     # URL
-    url = "cuentasrapidas.app"
+    url = "cuentasaldia.cl"
     bbox = draw.textbbox((0, 0), url, font=font_medium)
     text_width = bbox[2] - bbox[0]
     x = (IMG_SIZE[0] - text_width) // 2
@@ -490,7 +490,7 @@ def post_06_cta() -> Image.Image:
 
 def main():
     """Generate all 6 Instagram posts."""
-    print("[CuentasRápidas] Iniciando generación de posts...")
+    print("[Cuentas al Día] Iniciando generación de posts...")
 
     # Create output directory if it doesn't exist
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -515,7 +515,7 @@ def main():
             print(f"\n  ✗ Error: {e}")
             raise
 
-    print("\n[CuentasRápidas] Generación completada!")
+    print("\n[Cuentas al Día] Generación completada!")
     print(f"\nArchivos generados en: {OUTPUT_DIR}")
 
     # List generated files

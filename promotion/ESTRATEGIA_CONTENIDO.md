@@ -1,4 +1,4 @@
-# Campaña Instagram: CuentasRápidas
+# Campaña Instagram: Cuentas al Día
 ## Estrategia de Contenido Completa
 
 **Fecha de Creación**: 19 de Marzo, 2026
@@ -10,7 +10,7 @@
 
 ## Resumen Ejecutivo
 
-Esta campaña presenta CuentasRápidas a través de **6 posts estratégicos** que destacan:
+Esta campaña presenta Cuentas al Día a través de **6 posts estratégicos** que destacan:
 1. **Propuesta de valor única** (sin registro, sin servidor, gratis)
 2. **Beneficios funcionales** (Kanban, compartir, prioridades)
 3. **Urgencia de acción** (CTA final)
@@ -32,7 +32,7 @@ Cada post está diseñado para máximo engagement en Instagram y debe publicarse
 ```
 ¿Gastaron más de lo planeado este mes? 💸
 
-En CuentasRápidas organizas TODO en segundos:
+En Cuentas al Día organizas TODO en segundos:
 - Sin registro (no pidas sus datos)
 - Sin servidor (tus datos son tuyos)
 - 100% gratis
@@ -40,7 +40,7 @@ En CuentasRápidas organizas TODO en segundos:
 Comparte gastos con tu pareja o familia usando
 un tablero Kanban visual que funciona offline.
 
-Pruébalo gratis: cuentasrapidas.app
+Pruébalo gratis: cuentasaldia.cl
 
 #GestionGastos #Pareja #SinRegistro #AppGratis #FinanzasPersonales #Kanban #CuentasCompartidas #OrganizaciónFinanciera
 ```
@@ -60,7 +60,7 @@ Pruébalo gratis: cuentasrapidas.app
 - #OrganizaciónFinanciera
 
 *Brand/Ultra-nicho (<5K)*:
-- #CuentasRapidas
+- #Cuentas al Día
 - #TableroKanban
 
 **Keywords SEO (Alt Text / Bio)**:
@@ -68,7 +68,7 @@ Pruébalo gratis: cuentasrapidas.app
 - "Organizar gastos en pareja sin registro"
 - "App gratis para gestión financiera familiar"
 
-**CTA Esperado**: Visita cuentasrapidas.app desde biografía
+**CTA Esperado**: Visita cuentasaldia.cl desde biografía
 
 **A/B Testing**:
 - Versión A: Hook = problema ("¿Gastaron más...")
@@ -93,7 +93,7 @@ La fricción matafrictions mataba nuestra app 🚫
 ¿Saben cuánta gente abandona una app en el login?
 → 70% en la primera pantalla
 
-En CuentasRápidas: escribes tu nombre y LISTO.
+En Cuentas al Día: escribes tu nombre y LISTO.
 
 No pedimos:
 ❌ Email
@@ -106,9 +106,9 @@ Solo tu nombre. En 5 segundos estás adentro.
 ¿El truco? No tenemos servidor. Todo se guarda
 en tu dispositivo. Tú controlas tus datos.
 
-Pruébalo: cuentasrapidas.app
+Pruébalo: cuentasaldia.cl
 
-#SinFriccion #PrivacidadPrimero #NoServerless #AppWeb #ProteccionDatos #UXSimple #CuentasRapidas
+#SinFriccion #PrivacidadPrimero #NoServerless #AppWeb #ProteccionDatos #UXSimple #Cuentas al Día
 ```
 
 **Hashtags SEO**:
@@ -124,7 +124,7 @@ Pruébalo: cuentasrapidas.app
 - #AppWeb
 
 *Brand*:
-- #CuentasRapidas
+- #Cuentas al Día
 - #SinRegistro
 
 **Keywords SEO**:
@@ -159,7 +159,7 @@ Cualquiera que organiza gastos en familia sabe:
 
 La solución: Un tablero Kanban visual.
 
-En CuentasRápidas ves TODO de una mirada:
+En Cuentas al Día ves TODO de una mirada:
 
 → POR PAGAR (lo que falta)
 → CARRITO (listos para pagar)
@@ -173,7 +173,7 @@ Y cada gasto tiene su prioridad:
 Así todos saben dónde está cada peso.
 Sin confusiones.
 
-Usa tu propio tablero: cuentasrapidas.app
+Usa tu propio tablero: cuentasaldia.cl
 
 #Kanban #OrganizacionVisual #GastoCompartido #ProductivityTips #FamiliaYFinanzas #MetodoKanban
 ```
@@ -191,7 +191,7 @@ Usa tu propio tablero: cuentasrapidas.app
 - #FamiliaYFinanzas
 
 *Brand*:
-- #CuentasRapidas
+- #Cuentas al Día
 - #TableroPersonal
 
 **Keywords SEO**:
@@ -225,7 +225,7 @@ El mayor problema con las apps de gastos compartidos:
 → Deben sincronizarse
 → Alguien siempre está atrasado
 
-En CuentasRápidas: comparte por QR o URL.
+En Cuentas al Día: comparte por QR o URL.
 
 Tu pareja escanea → Ve el mismo tablero.
 Ambos actualizan en tiempo real.
@@ -241,7 +241,7 @@ Resultados:
 ✓ No hay confusiones
 ✓ Funciona incluso sin internet (después sincroniza)
 
-Comparte tu tablero ahora: cuentasrapidas.app
+Comparte tu tablero ahora: cuentasaldia.cl
 
 #CompartirEsFacil #TecnologiaParaParejas #SinSync #QRcode #AppParejas #GastoCompartido #FamiliaDigital
 ```
@@ -259,7 +259,7 @@ Comparte tu tablero ahora: cuentasrapidas.app
 - #QRcode
 
 *Brand*:
-- #CuentasRapidas
+- #Cuentas al Día
 - #CompartirPorQR
 
 **Keywords SEO**:
@@ -292,7 +292,7 @@ hay que cortar gastos.
 
 Pero ¿cuáles?
 
-En CuentasRápidas categoriza todo en 3 niveles:
+En Cuentas al Día categoriza todo en 3 niveles:
 
 🔴 VITAL
 Arriendo, luz, agua, internet, comida.
@@ -313,7 +313,7 @@ Y lo hablan entre ustedes sin drama.
 Porque la prioridad es visual.
 No hay discusiones.
 
-Categoriza TUS gastos: cuentasrapidas.app
+Categoriza TUS gastos: cuentasaldia.cl
 
 #PlanificacionFinanciera #PresupuestoFamiliar #FinanzasInteligentes #GastosVsDeseos #CortarGastos #RealidadEconomica
 ```
@@ -331,7 +331,7 @@ Categoriza TUS gastos: cuentasrapidas.app
 - #RealidadEconomica
 
 *Brand*:
-- #CuentasRapidas
+- #Cuentas al Día
 - #TresPrioridades
 
 **Keywords SEO**:
@@ -364,7 +364,7 @@ Hace 10 años: "No hay apps para esto"
 Hoy: "Es muy complicado"
 La verdad: Tenías miedo de que fuera complicado
 
-CuentasRápidas termina con esas excusas:
+Cuentas al Día termina con esas excusas:
 
 ✓ Sin registro (5 segundos)
 ✓ Sin servidor (datos tuyos)
@@ -386,9 +386,9 @@ Lo único que necesitas:
 Si no lo pruebas esta semana, es porque no quieres.
 (Pero sabemos que sí.)
 
-Pruébalo AHORA: cuentasrapidas.app
+Pruébalo AHORA: cuentasaldia.cl
 
-#NoMasExcusas #TomaDatos #FinanzasCompartidas #PasoSeguro #CuentasRapidas #Pareja #FuncionaOfline #DescargaGratis
+#NoMasExcusas #TomaDatos #FinanzasCompartidas #PasoSeguro #Cuentas al Día #Pareja #FuncionaOfline #DescargaGratis
 ```
 
 **Hashtags SEO**:
@@ -404,7 +404,7 @@ Pruébalo AHORA: cuentasrapidas.app
 - #FuncionaOfline
 
 *Brand*:
-- #CuentasRapidas
+- #Cuentas al Día
 - #PruebaloAhora
 
 **Keywords SEO**:
@@ -412,7 +412,7 @@ Pruébalo AHORA: cuentasrapidas.app
 - "Tabla de control de presupuesto familiar"
 - "App offline sin registro para gastos"
 
-**CTA Esperado**: Clics directos a cuentasrapidas.app (conversión máxima)
+**CTA Esperado**: Clics directos a cuentasaldia.cl (conversión máxima)
 
 **A/B Testing**:
 - Tone: Motivacional vs. Humor
@@ -449,12 +449,12 @@ Monitorear por post:
 
 **URLs con tracking**:
 ```
-Post 1: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=hero
-Post 2: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=registro
-Post 3: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=kanban
-Post 4: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=compartir
-Post 5: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=prioridades
-Post 6: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=cta
+Post 1: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=hero
+Post 2: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=registro
+Post 3: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=kanban
+Post 4: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=compartir
+Post 5: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=prioridades
+Post 6: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=cta
 ```
 
 ---
@@ -481,7 +481,7 @@ Cada post puede convertirse a Reel de 15-30 segundos:
 
 ## Análisis Competitivo
 
-**Diferenciadores de CuentasRápidas en el copy**:
+**Diferenciadores de Cuentas al Día en el copy**:
 - "Sin registro" (vs. Splitwise, Tricount)
 - "Sin servidor" (vs. todas las competidoras)
 - "Funciona offline" (propuesta única)
@@ -498,7 +498,7 @@ Cada post puede convertirse a Reel de 15-30 segundos:
 - **Objetivo por post**: Cada uno debe resolver una objeción diferente
 - **Enganche**: Primeros 3 caracteres son críticos en captions
 - **Visual**: Consistencia de marca (colores, espacios en blanco)
-- **Llamada a acción**: Siempre cuentasrapidas.app + 1 razón por qué hoy
+- **Llamada a acción**: Siempre cuentasaldia.cl + 1 razón por qué hoy
 - **Frecuencia post-campaña**: 2-3 posts/semana (no todos educativos, variar contenido generado por usuario, tips, stories)
 
 ---

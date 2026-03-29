@@ -1,4 +1,4 @@
-# Campaña Instagram: CuentasRápidas
+# Campaña Instagram: Cuentas al Día
 ## Pack Completo de Contenido + Copy + Estrategia
 
 **Fecha**: 19 de Marzo, 2026
@@ -63,8 +63,8 @@ post_06_cta.png               40 KB  - CTA Final (gradiente azul profundo)
 En **ESTRATEGIA_CONTENIDO.md** encontrarás URLs con parámetros UTM:
 
 ```
-Post 1: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=hero
-Post 2: cuentasrapidas.app?utm_source=ig&utm_medium=feed&utm_campaign=registro
+Post 1: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=hero
+Post 2: cuentasaldia.cl?utm_source=ig&utm_medium=feed&utm_campaign=registro
 ...
 ```
 
@@ -98,12 +98,12 @@ Si aplica budget de publicidad (recomendado: $225 USD para 3 semanas):
 **Semana 2**:
 - Post 6 (CTA): $100 USD
   - Objetivo: Conversión (link clicks)
-  - Audience: Custom Audience (vieron Videos/Posts de CuentasRápidas)
+  - Audience: Custom Audience (vieron Videos/Posts de Cuentas al Día)
 
 **Semana 3+**:
 - Retargeting: $50 USD
   - Objetivo: Conversión
-  - Audience: Lookalike de visitantes a cuentasrapidas.app
+  - Audience: Lookalike de visitantes a cuentasaldia.cl
 
 ---
 
@@ -262,7 +262,7 @@ Cada post puede convertirse a Reel 15-30seg:
 2. ¿Respondiste comentarios en 30 min? → Responder ahora
 3. ¿Los hashtags son relevantes? → Revisar "ESTRATEGIA_CONTENIDO.md"
 4. ¿El copy tiene hook fuerte? → Cambiar a Variante B o C
-5. ¿Falta CTA claro? → Añadir "Pruébalo: cuentasrapidas.app"
+5. ¿Falta CTA claro? → Añadir "Pruébalo: cuentasaldia.cl"
 
 ---
 

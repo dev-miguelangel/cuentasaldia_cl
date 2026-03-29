@@ -3,7 +3,7 @@
                           Resumen Visual
 ================================================================================
 
-OBJETIVO GENERAL: Awareness + Conversión a cuentasrapidas.app
+OBJETIVO GENERAL: Awareness + Conversión a cuentasaldia.cl
 
 ================================================================================
 POST 1: HERO/PRESENTACIÓN
@@ -20,7 +20,7 @@ VISUAL:
 
   Sin registro · Sin servidor · Gratis
 
-  ▼ CuentasRápidas
+  ▼ Cuentas al Día
 
 
 COPY HOOK:
@@ -178,7 +178,7 @@ VISUAL:
   │   Ir a la app       │
   └─────────────────────┘
 
-  cuentasrapidas.app
+  cuentasaldia.cl
 
   Sin registro · Sin servidor · Funciona offline
 
@@ -296,15 +296,15 @@ NICHO RELEVANTE:
   - Control gastos pareja
 
 BRAND:
-  - CuentasRápidas
-  - cuentasrapidas.app
+  - Cuentas al Día
+  - cuentasaldia.cl
 
 ================================================================================
 HASHTAGS ESTRATÉGICOS (Totales por post: 5-10)
 ================================================================================
 
 SIEMPRE USAR:
-  #CuentasRapidas
+  #Cuentas al Día
   #GestionGastos
   #AppGratis
 
@@ -381,7 +381,7 @@ RESUMEN EJECUTIVO
 ================================================================================
 
 CAMPAÑA: 6 posts estratégicos para Instagram, publicados en una semana.
-PROPÓSITO: Presentar CuentasRápidas a través de diferentes ángulos (features,
+PROPÓSITO: Presentar Cuentas al Día a través de diferentes ángulos (features,
            diferenciadores, valor emocional), llegando a máxima conversión.
 PÚBLICO: Parejas y familias 25-45 años, preocupadas por organización financiera.
 DURACIÓN: 6 días (Lunes a Domingo)

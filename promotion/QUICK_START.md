@@ -20,7 +20,7 @@
 ```
 ¿Gastaron más de lo planeado este mes? 💸
 
-En CuentasRápidas organizas TODO en segundos:
+En Cuentas al Día organizas TODO en segundos:
 - Sin registro (no pidas sus datos)
 - Sin servidor (tus datos son tuyos)
 - 100% gratis
@@ -28,7 +28,7 @@ En CuentasRápidas organizas TODO en segundos:
 Comparte gastos con tu pareja o familia usando
 un tablero Kanban visual que funciona offline.
 
-Pruébalo gratis: cuentasrapidas.app
+Pruébalo gratis: cuentasaldia.cl
 
 #GestionGastos #Pareja #SinRegistro #AppGratis #FinanzasPersonales #Kanban #CuentasCompartidas #OrganizacionFinanciera
 ```
@@ -100,14 +100,14 @@ CTR a sitio            >2%              ___
 ```
 ¿Gastaron más de lo planeado este mes? 💸
 
-En CuentasRápidas organizas TODO en segundos:
+En Cuentas al Día organizas TODO en segundos:
 - Sin registro (no pidas sus datos)
 - Sin servidor (tus datos son tuyos)
 - 100% gratis
 
 Comparte gastos con tu pareja o familia usando un tablero Kanban visual que funciona offline.
 
-Pruébalo gratis: cuentasrapidas.app
+Pruébalo gratis: cuentasaldia.cl
 
 #GestionGastos #Pareja #SinRegistro #AppGratis #FinanzasPersonales #Kanban #CuentasCompartidas #OrganizacionFinanciera
 ```
@@ -122,7 +122,7 @@ La fricción mataba nuestra app 🚫
 ¿Saben cuánta gente abandona una app en el login?
 → 70% en la primera pantalla
 
-En CuentasRápidas: escribes tu nombre y LISTO.
+En Cuentas al Día: escribes tu nombre y LISTO.
 
 No pedimos:
 ❌ Email
@@ -134,9 +134,9 @@ Solo tu nombre. En 5 segundos estás adentro.
 
 ¿El truco? No tenemos servidor. Todo se guarda en tu dispositivo. Tú controlas tus datos.
 
-Pruébalo: cuentasrapidas.app
+Pruébalo: cuentasaldia.cl
 
-#SinFriccion #PrivacidadPrimero #NoServerless #AppWeb #ProteccionDatos #UXSimple #CuentasRapidas
+#SinFriccion #PrivacidadPrimero #NoServerless #AppWeb #ProteccionDatos #UXSimple #Cuentas al Día
 ```
 
 ---
@@ -153,7 +153,7 @@ Cualquiera que organiza gastos en familia sabe:
 
 La solución: Un tablero Kanban visual.
 
-En CuentasRápidas ves TODO de una mirada:
+En Cuentas al Día ves TODO de una mirada:
 
 → POR PAGAR (lo que falta)
 → CARRITO (listos para pagar)
@@ -167,7 +167,7 @@ Y cada gasto tiene su prioridad:
 Así todos saben dónde está cada peso.
 Sin confusiones.
 
-Usa tu propio tablero: cuentasrapidas.app
+Usa tu propio tablero: cuentasaldia.cl
 
 #Kanban #OrganizacionVisual #GastoCompartido #ProductivityTips #FamiliaYFinanzas #MetodoKanban
 ```
@@ -184,7 +184,7 @@ El mayor problema con las apps de gastos compartidos:
 → Deben sincronizarse
 → Alguien siempre está atrasado
 
-En CuentasRápidas: comparte por QR o URL.
+En Cuentas al Día: comparte por QR o URL.
 
 Tu pareja escanea → Ve el mismo tablero.
 Ambos actualizan en tiempo real.
@@ -200,7 +200,7 @@ Resultados:
 ✓ No hay confusiones
 ✓ Funciona incluso sin internet (después sincroniza)
 
-Comparte tu tablero ahora: cuentasrapidas.app
+Comparte tu tablero ahora: cuentasaldia.cl
 
 #CompartirEsFacil #TecnologiaParaParejas #SinSync #QRcode #AppParejas #GastoCompartido #FamiliaDigital
 ```
@@ -216,7 +216,7 @@ Cuando llega fin de mes y aprieta el dinero, hay que cortar gastos.
 
 Pero ¿cuáles?
 
-En CuentasRápidas categoriza todo en 3 niveles:
+En Cuentas al Día categoriza todo en 3 niveles:
 
 🔴 VITAL
 Arriendo, luz, agua, internet, comida.
@@ -236,7 +236,7 @@ Y lo hablan entre ustedes sin drama.
 Porque la prioridad es visual.
 No hay discusiones.
 
-Categoriza TUS gastos: cuentasrapidas.app
+Categoriza TUS gastos: cuentasaldia.cl
 
 #PlanificacionFinanciera #PresupuestoFamiliar #FinanzasInteligentes #GastosVsDeseos #CortarGastos #RealidadEconomica
 ```
@@ -252,7 +252,7 @@ Hace 10 años: "No hay apps para esto"
 Hoy: "Es muy complicado"
 La verdad: Tenías miedo de que fuera complicado
 
-CuentasRápidas termina con esas excusas:
+Cuentas al Día termina con esas excusas:
 
 ✓ Sin registro (5 segundos)
 ✓ Sin servidor (datos tuyos)
@@ -274,9 +274,9 @@ Lo único que necesitas:
 Si no lo pruebas esta semana, es porque no quieres.
 (Pero sabemos que sí.)
 
-Pruébalo AHORA: cuentasrapidas.app
+Pruébalo AHORA: cuentasaldia.cl
 
-#NoMasExcusas #TomaDatos #FinanzasCompartidas #PasoSeguro #CuentasRapidas #Pareja #FuncionaOfline #DescargaGratis
+#NoMasExcusas #TomaDatos #FinanzasCompartidas #PasoSeguro #Cuentas al Día #Pareja #FuncionaOfline #DescargaGratis
 ```
 
 ---

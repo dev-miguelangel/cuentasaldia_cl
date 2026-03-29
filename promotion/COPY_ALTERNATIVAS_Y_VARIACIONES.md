@@ -1,5 +1,5 @@
 # Copy Alternativas y Variaciones A/B
-## CuentasRápidas Instagram Campaign
+## Cuentas al Día Instagram Campaign
 
 ---
 
@@ -9,7 +9,7 @@
 ```
 ¿Gastaron más de lo planeado este mes? 💸
 
-En CuentasRápidas organizas TODO en segundos:
+En Cuentas al Día organizas TODO en segundos:
 - Sin registro (no pidas sus datos)
 - Sin servidor (tus datos son tuyos)
 - 100% gratis
@@ -17,7 +17,7 @@ En CuentasRápidas organizas TODO en segundos:
 Comparte gastos con tu pareja o familia usando
 un tablero Kanban visual que funciona offline.
 
-Pruébalo gratis: cuentasrapidas.app
+Pruébalo gratis: cuentasaldia.cl
 
 #GestionGastos #Pareja #SinRegistro #AppGratis #FinanzasPersonales #Kanban #CuentasCompartidas
 ```
@@ -30,7 +30,7 @@ Las mejores empresas del mundo usan Kanban
 para visualizar trabajo. ¿Por qué ustedes no
 para visualizar DINERO?
 
-En CuentasRápidas:
+En Cuentas al Día:
 ✓ Tablero Kanban (como un CEO)
 ✓ Sin registro, sin servidor
 ✓ Funciona offline
@@ -39,7 +39,7 @@ En CuentasRápidas:
 Ve el dinero de tu pareja/familia en TIEMPO REAL.
 Organiza gastos con método profesional.
 
-Pruébalo: cuentasrapidas.app
+Pruébalo: cuentasaldia.cl
 
 #Kanban #MethodoProesional #FinanzasInteligentes #AppGratis #GestionDinero #ParejasInteligentes
 ```
@@ -53,7 +53,7 @@ Cada familia sin plan de gastos termina:
 → Gastando sin saber dónde
 → Endeudándose sin querer
 
-CuentasRápidas te evita todo eso.
+Cuentas al Día te evita todo eso.
 
 Tablero Kanban visual. Sin registro. Sin servidor.
 Todo en tu dispositivo. Funciona offline.
@@ -61,7 +61,7 @@ Todo en tu dispositivo. Funciona offline.
 Antes de que llegue el pánico financiero,
 organiza. Es gratis.
 
-Pruébalo HOY: cuentasrapidas.app
+Pruébalo HOY: cuentasaldia.cl
 
 #PlanFinanciero #OrganizenYa #EvitarDeudas #ParejasInteligentes #FinanzasSaludables #GastosControlados
 ```
@@ -79,7 +79,7 @@ La fricción mataba nuestra app 🚫
 ¿Saben cuánta gente abandona una app en el login?
 → 70% en la primera pantalla
 
-En CuentasRápidas: escribes tu nombre y LISTO.
+En Cuentas al Día: escribes tu nombre y LISTO.
 
 No pedimos:
 ❌ Email
@@ -98,7 +98,7 @@ Aquí van tus datos. Punto. 🔐
 No queremos tus datos.
 En serio.
 
-CuentasRápidas no tiene servidor.
+Cuentas al Día no tiene servidor.
 Eso significa:
 
 ✓ No guardamos NADA en nube
@@ -112,7 +112,7 @@ No: contrasena, no: nube, no: seguimiento.
 
 Solo dinero compartido. Datos tuyos.
 
-Pruébalo con paz mental: cuentasrapidas.app
+Pruébalo con paz mental: cuentasaldia.cl
 
 #Privacidad #DatosEnSeguro #SinServidores #ProteccionDatos #PrivacyFirst
 ```
@@ -126,7 +126,7 @@ Hoy en día toda app:
 "¡Verifica tu teléfono!"
 "¡Dale permiso a tus contactos!"
 
-En CuentasRápidas:
+En Cuentas al Día:
 "¿Tu nombre?"
 "Listo."
 
@@ -138,9 +138,9 @@ Sin guardar datos en servidores raros.
 Toda la privacidad que necesitabas.
 Toda la velocidad que merecías.
 
-Pruébalo libre de culpa: cuentasrapidas.app
+Pruébalo libre de culpa: cuentasaldia.cl
 
-#NoTePreocupes #PrivacyMeme #SinRegistro #SimplesEs #GenZApproved #CuentasRapidas
+#NoTePreocupes #PrivacyMeme #SinRegistro #SimplesEs #GenZApproved #Cuentas al Día
 ```
 
 **Recomendación**: Variante B para público 30+, Variante C para 25-35 años
@@ -166,7 +166,7 @@ La solución: Un tablero Kanban visual.
 ```
 ¿Quieren ver cómo funciona? 👇
 
-En CuentasRápidas el gasto NO se pierde.
+En Cuentas al Día el gasto NO se pierde.
 
 Cada peso está en UN LUGAR:
 
@@ -186,7 +186,7 @@ Y cada gasto sabe su importancia:
 
 Así todos ven TODO en una pantalla.
 
-Visualiza tu dinero: cuentasrapidas.app
+Visualiza tu dinero: cuentasaldia.cl
 
 #TableroVisual #OrganizacionFinanciera #MetodoKanban #GastosClaros
 ```
@@ -202,7 +202,7 @@ Pareja 2: *revienta el teléfono*
 
 Problema: Los gastos están en WhatsApp, notas, cabeza.
 
-Solución: CuentasRápidas + Kanban.
+Solución: Cuentas al Día + Kanban.
 
 TODO en una pantalla:
 - Qué falta pagar
@@ -213,7 +213,7 @@ Cada gasto etiquetado por importancia.
 Ambos ven lo mismo.
 Nadie se sorprende en el estado de cuenta.
 
-Resuelve la pelea del dinero: cuentasrapidas.app
+Resuelve la pelea del dinero: cuentasaldia.cl
 
 #PelesDePareja #FinanzasTransparentes #DondeElDinero #GastosEnPaz
 ```
@@ -247,7 +247,7 @@ Saben eso que pasa con apps de finanzas:
 
 Pesadilla.
 
-En CuentasRápidas: No hay sincronización que romper.
+En Cuentas al Día: No hay sincronización que romper.
 Porque no hay servidor.
 
 Ambos tienen el MISMO tablero. En el dispositivo.
@@ -262,7 +262,7 @@ Ninguno tiene que "recargá la app".
 
 Sincronización = Igualdad.
 
-Comparte sin drama: cuentasrapidas.app
+Comparte sin drama: cuentasaldia.cl
 
 #SinProblemas #SincronizacionPerfecta #APPConfiable #DesdeYa
 ```
@@ -273,7 +273,7 @@ Comparte sin drama: cuentasrapidas.app
 
 (El diálogo clásico de parejas con apps compartidas)
 
-En CuentasRápidas: Ambos ven lo mismo. Siempre.
+En Cuentas al Día: Ambos ven lo mismo. Siempre.
 
 Porque no hay servidor loco sincronizando.
 Solo datos en dispositivos.
@@ -288,7 +288,7 @@ Fin.
 
 Paz financiera sin peleas técnicas.
 
-Comparte al instante: cuentasrapidas.app
+Comparte al instante: cuentasaldia.cl
 
 #DesdeYaNoMasSync #LosMismoNumeros #PazTecnologica
 ```
@@ -317,7 +317,7 @@ Pero ¿cuáles?
 
 Este diálogo no termina nunca.
 
-Hasta que ven el tablero en CuentasRápidas.
+Hasta que ven el tablero en Cuentas al Día.
 
 🔴 VITAL: Arriendo, luz, agua
 "Eso no se toca"
@@ -339,7 +339,7 @@ a "¿streaming u otro gym?"
 
 Mucho mejor.
 
-Categoriza y resuelve: cuentasrapidas.app
+Categoriza y resuelve: cuentasaldia.cl
 
 #PelasFinancieras #ResolvidasConDatos #ObjetivoComun
 ```
@@ -353,7 +353,7 @@ Pregunta rápida:
 
 Si no sabes responder, es porque NO VES tu dinero.
 
-En CuentasRápidas ves EXACTAMENTE:
+En Cuentas al Día ves EXACTAMENTE:
 
 🔴 Vitales: $2,500 (no negocia)
 🔵 Gustos: $800 (negocia aquí)
@@ -368,7 +368,7 @@ No pelea.
 
 Porque los datos hablan por sí solos.
 
-Que tus gastos sean visuales: cuentasrapidas.app
+Que tus gastos sean visuales: cuentasaldia.cl
 
 #DatosHablan #FinanzasConVerdad #DecisionesInformadas
 ```
@@ -398,7 +398,7 @@ Hoy: 1,000 veces
 Esta semana: 7,000 veces
 Este mes: va a doler
 
-CuentasRápidas frena eso en seco.
+Cuentas al Día frena eso en seco.
 
 Tablero compartido. Todos ven. Todos saben.
 
@@ -418,7 +418,7 @@ Fin de peleas.
 
 Antes de que pase otra "sorpresa":
 
-Crea tu tablero AHORA: cuentasrapidas.app
+Crea tu tablero AHORA: cuentasaldia.cl
 
 #YaParaDeMuerte #ControlYa #PazFinanciera #HonestidadPrimero
 ```
@@ -432,7 +432,7 @@ Crea tu tablero AHORA: cuentasrapidas.app
 
 ¿En cuál grupo quieren estar?
 
-CuentasRápidas los pone en el grupo de los 2%.
+Cuentas al Día los pone en el grupo de los 2%.
 
 Tablero Kanban visual.
 Sin registro.
@@ -448,7 +448,7 @@ Ya no es "creo que gastamos mucho".
 Es "sabemos exactamente cuánto gastar".
 
 ¿Quieren control?
-Pruébalo hoy mismo: cuentasrapidas.app
+Pruébalo hoy mismo: cuentasaldia.cl
 
 #Empowered #FinanzasReales #UnodeLosPcos #ControlTotal
 ```
@@ -499,7 +499,7 @@ CTA: "Ver respuestas en el feed"
 
 **Historia 2** (Sticker): "¿Tu pareja sabe cuánto gastaste hoy?"
 - Sí → "Sos honesto 👍"
-- No → "CuentasRápidas lo deja clarito 📊"
+- No → "Cuentas al Día lo deja clarito 📊"
 
 **Historia 3** (Pregunta): "¿Kanban o caos?" (con opción de respuesta)
 CTA: "Averiguá cuál te conviene"
@@ -507,7 +507,7 @@ CTA: "Averiguá cuál te conviene"
 **Historia 4** (Countdown): "Lanzamiento de campaña" → Post 1
 
 **Historia 5** (Quiz): "¿Cuánta gente abandona apps en login?"
-Respuesta: "70%. CuentasRápidas: 0%."
+Respuesta: "70%. Cuentas al Día: 0%."
 
 ---
 

@@ -1,4 +1,4 @@
-# Campaña Instagram CuentasRápidas - Índice Completo
+# Campaña Instagram Cuentas al Día - Índice Completo
 
 **Fecha de generación**: 19 de Marzo, 2026
 **Total de archivos**: 11 (6 PNG + 5 documentos)
@@ -236,14 +236,14 @@ clean_code/promotion/
 
 **Nicho**: Kanban gastos, Tablero compartido, Sin registro, Control pareja
 
-**Brand**: CuentasRápidas, cuentasrapidas.app
+**Brand**: Cuentas al Día, cuentasaldia.cl
 
 ---
 
 ## Hashtags Universales (En Todos los Posts)
 
 ```
-#CuentasRapidas #GestionGastos #AppGratis
+#Cuentas al Día #GestionGastos #AppGratis
 ```
 
 ## Hashtags Específicos (Por Post)
