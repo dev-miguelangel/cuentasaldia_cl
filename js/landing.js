@@ -1,5 +1,7 @@
 // ===== LANDING PAGE JS =====
 
+emailjs.init('u1PGzoaxrjwOf3HLq');
+
 // ===== FEEDBACK =====
 var _fbScores = { utilidad: 0, usabilidad: 0, funcionalidades: 0 };
 

@@ -279,6 +279,7 @@ a {
   gap: 10px;
   width: 100%;
   max-width: 520px;
+  min-height: 260px;
   box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.2);
 }
 
