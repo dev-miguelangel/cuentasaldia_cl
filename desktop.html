@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CuentasRápidas – Escritorio</title>
+  <meta name="description"
+    content="Organiza tus gastos con un tablero Kanban visual. Sin registro, sin apps, directo en tu navegador." />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" href="/icon.svg" />
+  <meta name="theme-color" content="#0052cc" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="CuentasRápidas" />
+  <link rel="stylesheet" href="css/desktop.css" />
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-view">
+    <div class="login-card">
+      <div class="login-logo">💳</div>
+      <h1>CuentasRápidas</h1>
+      <p>Organiza Tus Gastos Con Un Tablero Kanban</p>
+      <input type="text" id="username-input" placeholder="Tu Nombre De Usuario" maxlength="30" autocomplete="off" />
+      <button class="btn-primary" id="login-btn">Ingresar</button>
+
+      <div id="users-section" class="users-section" style="display:none">
+        <div class="login-divider">O Ingresa Como</div>
+        <div class="users-list" id="users-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOARDS SELECTOR -->
+  <div id="boards-view">
+    <header class="header">
+      <span class="header-title">💳 CuentasRápidas</span>
+      <div class="header-right">
+        <span class="user-badge" id="boards-user-badge"></span>
+        <button class="btn-feedback" onclick="openImportModal()">📥 Importar</button>
+        <button class="btn-feedback" onclick="openFeedbackModal()">💬 Feedback</button>
+        <button class="btn-logout" id="boards-logout-btn">Salir</button>
+      </div>
+    </header>
+    <div class="boards-content">
+      <div class="boards-heading">Tus Tableros</div>
+      <div class="boards-grid" id="boards-grid"></div>
+    </div>
+  </div>
+
+  <!-- BOARD -->
+  <div id="board-view">
+    <header class="header">
+      <div class="header-left">
+        <button class="btn-back" id="back-btn">← Tableros</button>
+        <span class="header-board-name" id="header-board-name"></span>
+      </div>
+      <div class="header-right">
+        <span class="user-badge" id="user-badge"></span>
+        <button class="btn-feedback" id="share-board-btn-pc" onclick="openShareModal()">🔗 Compartir</button>
+        <button class="btn-feedback" onclick="openFeedbackModal()">💬 Feedback</button>
+        <button class="btn-logout" id="logout-btn">Salir</button>
+      </div>
+    </header>
+    <div id="board-budget-row"></div>
+    <div class="board-content">
+      <div class="columns-container" id="columns-container"></div>
+    </div>
+  </div>
+
+  <!-- BOARD NAME MODAL -->
+  <div class="modal-overlay" id="board-name-modal-overlay">
+    <div class="modal">
+      <h2>Nuevo Tablero</h2>
+      <div class="form-group">
+        <label for="board-name-input">Nombre Del Tablero</label>
+        <input type="text" id="board-name-input" placeholder="Ej: Gastos Del Mes" maxlength="40" />
+      </div>
+      <div id="import-section" style="display:none"></div>
+      <div class="modal-actions">
+        <button class="btn-add" id="board-name-save-btn">Crear</button>
+        <button class="btn-cancel" id="board-name-cancel-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUDGET MODAL -->
+  <div class="modal-overlay" id="budget-modal-overlay">
+    <div class="modal">
+      <h2>Presupuesto Del Tablero</h2>
+      <p id="budget-modal-context" style="font-size:13px;color:#5e6c84;margin-bottom:20px;margin-top:-10px"></p>
+      <div class="form-group">
+        <label for="budget-input">Presupuesto Total (CLP)</label>
+        <input type="number" id="budget-input" placeholder="Ej: 100000" min="1" step="1" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-add" id="budget-save-btn">Guardar</button>
+        <button class="btn-cancel" id="budget-remove-btn" style="color:#de350b;display:none">Quitar Presupuesto</button>
+        <button class="btn-cancel" id="budget-cancel-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h2 id="modal-title">Agregar Gasto</h2>
+      <div class="form-group">
+        <label for="modal-titulo">Título</label>
+        <input type="text" id="modal-titulo" placeholder="Ej: Supermercado" maxlength="80" />
+      </div>
+      <div class="form-group">
+        <label for="modal-monto">Monto (CLP)</label>
+        <input type="number" id="modal-monto" placeholder="Ej: 15000" min="0" step="1" />
+      </div>
+      <div class="form-group">
+        <label>Prioridad</label>
+        <div class="priority-selector" id="priority-selector">
+          <button class="priority-opt" data-priority="vital">Vital</button>
+          <button class="priority-opt active" data-priority="gusto">Gusto</button>
+          <button class="priority-opt" data-priority="capricho">Capricho</button>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-add" id="modal-add-btn">Agregar</button>
+        <button class="btn-cancel" id="modal-cancel-btn">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARE MODAL -->
+  <div class="modal-overlay" id="share-modal-overlay">
+    <div class="modal modal-wide">
+      <h2>🔗 Compartir Tablero</h2>
+      <div class="share-tabs-pc">
+        <button class="share-tab-btn-pc active" data-tab="qr" onclick="showShareTabPC('qr')">QR / URL</button>
+        <button class="share-tab-btn-pc" data-tab="code" onclick="showShareTabPC('code')">Código</button>
+      </div>
+
+      <div id="share-tab-qr-pc">
+        <p style="font-size:13px;color:#5e6c84;margin-bottom:14px">Escanea el QR con otro dispositivo para importar el
+          tablero.</p>
+        <div class="share-qr-center-pc">
+          <div class="share-qr-box-pc" id="share-qr-box-pc"></div>
+          <div class="share-url-text-pc" id="share-url-display-pc"></div>
+        </div>
+        <div class="modal-actions" style="margin-top:14px">
+          <button class="btn-add" id="share-copy-url-btn-pc"
+            onclick="copyToClipboardPC(_shareURLPC, this, '✓ URL Copiada')">Copiar URL</button>
+          <button class="btn-cancel" onclick="closeShareModal()">Cerrar</button>
+        </div>
+      </div>
+
+      <div id="share-tab-code-pc" style="display:none">
+        <p style="font-size:13px;color:#5e6c84;margin-bottom:12px">Copia este código y compártelo por cualquier
+          mensajería.</p>
+        <textarea class="share-code-area-pc" id="share-code-text-pc" readonly></textarea>
+        <div class="modal-actions">
+          <button class="btn-add" id="share-copy-code-btn-pc"
+            onclick="copyToClipboardPC(document.getElementById('share-code-text-pc').value, this, '✓ Código Copiado')">Copiar
+            Código</button>
+          <button class="btn-cancel" onclick="closeShareModal()">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPORT MODAL -->
+  <div class="modal-overlay" id="import-modal-overlay">
+    <div class="modal">
+      <h2>📥 Importar Tablero</h2>
+      <p style="font-size:13px;color:#5e6c84;margin-bottom:14px">Pega aquí el código de un tablero compartido.</p>
+      <textarea class="share-code-area-pc" id="import-code-text-pc" placeholder="Pega el código aquí..."
+        style="min-height:100px"></textarea>
+      <div class="pc-import-status" id="pc-import-status"></div>
+      <div class="modal-actions">
+        <button class="btn-add" onclick="doImportPC()">Importar Tablero</button>
+        <button class="btn-cancel" onclick="closeImportModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK MODAL -->
+  <div class="modal-overlay" id="feedback-modal-overlay">
+    <div class="modal">
+      <h2>💬 Tu Opinión</h2>
+      <p style="font-size:13px;color:#5e6c84;margin-bottom:20px;margin-top:-10px">Ayúdanos a mejorar CuentasRápidas</p>
+      <div class="fb-row">
+        <span class="fb-row-label">Utilidad</span>
+        <div class="fb-stars" id="fb-utilidad">
+          <span class="fb-star" onclick="fbRate('utilidad',1)">★</span>
+          <span class="fb-star" onclick="fbRate('utilidad',2)">★</span>
+          <span class="fb-star" onclick="fbRate('utilidad',3)">★</span>
+          <span class="fb-star" onclick="fbRate('utilidad',4)">★</span>
+          <span class="fb-star" onclick="fbRate('utilidad',5)">★</span>
+        </div>
+      </div>
+      <div class="fb-row">
+        <span class="fb-row-label">Usabilidad</span>
+        <div class="fb-stars" id="fb-usabilidad">
+          <span class="fb-star" onclick="fbRate('usabilidad',1)">★</span>
+          <span class="fb-star" onclick="fbRate('usabilidad',2)">★</span>
+          <span class="fb-star" onclick="fbRate('usabilidad',3)">★</span>
+          <span class="fb-star" onclick="fbRate('usabilidad',4)">★</span>
+          <span class="fb-star" onclick="fbRate('usabilidad',5)">★</span>
+        </div>
+      </div>
+      <div class="fb-row">
+        <span class="fb-row-label">Funcionalidades</span>
+        <div class="fb-stars" id="fb-funcionalidades">
+          <span class="fb-star" onclick="fbRate('funcionalidades',1)">★</span>
+          <span class="fb-star" onclick="fbRate('funcionalidades',2)">★</span>
+          <span class="fb-star" onclick="fbRate('funcionalidades',3)">★</span>
+          <span class="fb-star" onclick="fbRate('funcionalidades',4)">★</span>
+          <span class="fb-star" onclick="fbRate('funcionalidades',5)">★</span>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:4px">
+        <label for="fb-mensaje">Mensaje</label>
+        <textarea class="fb-textarea" id="fb-mensaje" placeholder="Escribe tu comentario aquí..." maxlength="100"
+          oninput="document.getElementById('fb-char-num').textContent=this.value.length"></textarea>
+      </div>
+      <div class="fb-char-count"><span id="fb-char-num">0</span>/100</div>
+      <div id="fb-status" style="font-size:13px;min-height:18px;margin-top:8px;text-align:center"></div>
+      <div class="modal-actions">
+        <button class="btn-add" id="fb-send-btn" onclick="submitFeedback()">Enviar</button>
+        <button class="btn-cancel" onclick="closeFeedbackModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK NUDGE (desktop) -->
+  <div id="feedback-nudge-pc" style="display:none;position:fixed;bottom:24px;left:24px;z-index:500;
+    background:#172b4d;color:white;border-radius:14px;padding:16px 18px;
+    align-items:center;gap:14px;max-width:320px;animation:fadeInUp 0.3s ease">
+    <span style="font-size:30px;line-height:1;flex-shrink:0">💬</span>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:14px;font-weight:700">Recuerda comentar tu experiencia.</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:3px">
+        Clic en <strong style="color:white">💬 Feedback</strong> en la barra de arriba y deja tu opinión en 30 segundos,
+        gracias!.
+      </div>
+    </div>
+    <button id="feedback-nudge-close-pc" onclick="document.getElementById('feedback-nudge-pc').style.display='none'" style="background:rgba(255,255,255,0.18);border:none;color:white;
+      cursor:pointer;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;
+      white-space:nowrap;flex-shrink:0">OK</button>
+  </div>
+
+  <!-- INSTALL TOAST (desktop) -->
+  <div id="install-toast" style="display:none;position:fixed;bottom:24px;right:24px;z-index:500;
+    background:white;border-radius:14px;padding:16px 18px;
+    box-shadow:0 8px 32px rgba(9,30,66,0.2),0 0 0 1px rgba(9,30,66,0.06);
+    display:none;align-items:center;gap:14px;max-width:300px;animation:fadeInUp 0.3s ease">
+    <span style="font-size:36px;line-height:1;flex-shrink:0">💳</span>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:14px;font-weight:700;color:#172b4d">Instalar CuentasRápidas</div>
+      <div style="font-size:12px;color:#5e6c84;margin-top:3px">Acceso rápido desde tu escritorio</div>
+    </div>
+    <button id="install-desktop-btn" style="background:#0079bf;color:white;border:none;
+      padding:8px 14px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;
+      white-space:nowrap;flex-shrink:0">Instalar</button>
+    <button id="install-desktop-close" style="background:none;border:none;color:#b3bac5;
+      cursor:pointer;font-size:16px;padding:4px;line-height:1;flex-shrink:0">✕</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('u1PGzoaxrjwOf3HLq');</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script src="js/shared/config.js"></script>
+  <script src="js/shared/utils.js"></script>
+  <script src="js/shared/storage.js"></script>
+  <script src="js/shared/share.js"></script>
+  <script src="js/desktop/render.js"></script>
+  <script src="js/desktop/charts.js"></script>
+  <script src="js/desktop/drag.js"></script>
+  <script src="js/desktop/modals.js"></script>
+  <script src="js/desktop/main.js"></script>
+
+</body>
+
+</html>

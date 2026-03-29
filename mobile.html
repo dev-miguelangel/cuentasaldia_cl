@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="CuentasRápidas" />
+  <meta name="theme-color" content="#0052cc" />
+  <meta name="description"
+    content="Organiza tus gastos con un tablero Kanban en tu celular. Sin registro, funciona offline." />
+  <link rel="manifest" href="/manifest-app.json" />
+  <link rel="apple-touch-icon" href="/icon.svg" />
+  <title>CuentasRápidas</title>
+  <link rel="stylesheet" href="css/mobile.css" />
+</head>
+
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-view" class="view active">
+    <div class="login-hero">
+      <div class="login-hero-logo">💳</div>
+      <h1>CuentasRápidas</h1>
+      <p>Organiza Tus Gastos Con Un Tablero Kanban</p>
+    </div>
+    <div class="login-panel">
+      <div class="panel-handle"></div>
+      <input type="text" id="username-input" placeholder="Tu Nombre De Usuario" maxlength="30" autocomplete="off"
+        autocapitalize="words" />
+      <button class="btn-primary" id="login-btn">Ingresar</button>
+      <div id="users-section" style="display:none">
+        <div class="login-divider">O Ingresa Como</div>
+        <div class="users-list" id="users-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOARDS -->
+  <div id="boards-view" class="view">
+    <div class="app-header">
+      <span class="app-header-title">💳 CuentasRápidas</span>
+      <span class="app-header-user" id="boards-user-badge"></span>
+      <button class="app-feedback-btn" onclick="openImportSheet()">📥</button>
+      <button class="app-feedback-btn" onclick="openFeedbackSheet()">💬</button>
+      <button class="app-header-logout" id="boards-logout-btn">Salir</button>
+    </div>
+    <div class="boards-scroll">
+      <div class="boards-heading">Tus Tableros</div>
+      <div class="boards-list" id="boards-list"></div>
+    </div>
+    <div class="boards-footer"></div>
+  </div>
+
+  <!-- BOARD -->
+  <div id="board-view" class="view">
+    <div class="app-header">
+      <button class="app-header-back" id="back-btn">← Tableros</button>
+      <div class="app-header-actions">
+        <button class="app-feedback-btn" id="share-board-btn" onclick="openShareSheet()">🔗</button>
+        <button class="app-feedback-btn" onclick="openFeedbackSheet()">💬</button>
+        <button class="app-header-logout" id="logout-btn">Salir</button>
+      </div>
+    </div>
+    <div class="board-title-bar" id="board-title-bar"></div>
+    <div class="col-summary" id="col-summary"></div>
+    <div id="tab-content"></div>
+    <button id="fab">+</button>
+    <nav class="tab-bar" id="tab-bar">
+      <button class="tab-item" data-tab="por_pagar">
+        <span class="tab-item-icon">📋</span>
+        <span>Por Pagar</span>
+      </button>
+      <button class="tab-item" data-tab="carrito">
+        <span class="tab-item-icon">🛒</span>
+        <span>Carrito</span>
+      </button>
+      <button class="tab-item" data-tab="pagado">
+        <span class="tab-item-icon">✅</span>
+        <span>Pagado</span>
+      </button>
+      <button class="tab-item" data-tab="analytics">
+        <span class="tab-item-icon">📊</span>
+        <span>Análisis</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- SHEET: Add Expense -->
+  <div class="sheet-overlay" id="add-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Agregar Gasto</div>
+        <button class="sheet-close" id="add-sheet-close">✕</button>
+      </div>
+      <div class="sheet-body">
+        <div class="form-group">
+          <label for="add-titulo">Título</label>
+          <input type="text" id="add-titulo" placeholder="Ej: Supermercado" maxlength="80" autocapitalize="sentences" />
+        </div>
+        <div class="form-group">
+          <label for="add-monto">Monto (CLP)</label>
+          <input type="number" id="add-monto" placeholder="Ej: 15000" min="0" step="1" inputmode="numeric" />
+        </div>
+        <div class="form-group">
+          <label>Prioridad</label>
+          <div class="priority-selector" id="priority-selector">
+            <button class="priority-opt" data-priority="vital">Vital</button>
+            <button class="priority-opt active" data-priority="gusto">Gusto</button>
+            <button class="priority-opt" data-priority="capricho">Capricho</button>
+          </div>
+        </div>
+        <button class="sbtn sbtn-primary" id="add-btn">Agregar</button>
+        <button class="sbtn sbtn-secondary" id="add-close-btn">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHEET: Budget -->
+  <div class="sheet-overlay" id="budget-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Presupuesto Del Tablero</div>
+        <button class="sheet-close" id="budget-sheet-close">✕</button>
+      </div>
+      <div class="sheet-body">
+        <p class="sheet-context" id="budget-sheet-context"></p>
+        <div class="form-group">
+          <label for="budget-input">Presupuesto Total (CLP)</label>
+          <input type="number" id="budget-input" placeholder="Ej: 100000" min="1" step="1" inputmode="numeric" />
+        </div>
+        <button class="sbtn sbtn-primary" id="budget-save-btn">Guardar</button>
+        <button class="sbtn sbtn-danger" id="budget-remove-btn" style="display:none">Quitar Presupuesto</button>
+        <button class="sbtn sbtn-secondary" id="budget-cancel-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHEET: Move -->
+  <div class="sheet-overlay" id="move-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Mover A...</div>
+        <button class="sheet-close" id="move-sheet-close">✕</button>
+      </div>
+      <div class="sheet-body" id="move-sheet-body"></div>
+    </div>
+  </div>
+
+  <!-- SHEET: New Board -->
+  <div class="sheet-overlay" id="board-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">Nuevo Tablero</div>
+        <button class="sheet-close" id="board-sheet-close">✕</button>
+      </div>
+      <div class="sheet-body">
+        <div class="form-group">
+          <label for="board-name-input">Nombre Del Tablero</label>
+          <input type="text" id="board-name-input" placeholder="Ej: Gastos Del Mes" maxlength="40"
+            autocapitalize="sentences" />
+        </div>
+        <div id="import-section"></div>
+        <button class="sbtn sbtn-primary" id="board-save-btn">Crear Tablero</button>
+        <button class="sbtn sbtn-secondary" id="board-cancel-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHEET: Share Board -->
+  <div class="sheet-overlay" id="share-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">🔗 Compartir Tablero</div>
+        <button class="sheet-close" onclick="closeSheet('share-sheet-overlay')">✕</button>
+      </div>
+      <div class="sheet-body">
+        <div class="share-tabs">
+          <button class="share-tab-btn active" data-tab="qr" onclick="showShareTab('qr')">QR / URL</button>
+          <button class="share-tab-btn" data-tab="code" onclick="showShareTab('code')">Código</button>
+        </div>
+
+        <!-- QR Tab -->
+        <div id="share-tab-qr">
+          <p class="sheet-context">Escanea el QR con otro dispositivo para importar el tablero.</p>
+          <div class="share-qr-wrapper">
+            <div class="share-qr-box" id="share-qr-box"></div>
+            <div class="share-url-text" id="share-url-display"></div>
+          </div>
+          <button class="sbtn sbtn-primary" id="share-copy-url-btn"
+            onclick="copyToClipboard(_shareURL, this, '✓ URL Copiada')">Copiar URL</button>
+        </div>
+
+        <!-- Code Tab -->
+        <div id="share-tab-code" style="display:none">
+          <p class="sheet-context">Copia este código y compártelo por WhatsApp, iMessage, etc.</p>
+          <textarea class="share-code-area" id="share-code-text" readonly></textarea>
+          <button class="sbtn sbtn-primary" id="share-copy-code-btn"
+            onclick="copyToClipboard(document.getElementById('share-code-text').value, this, '✓ Código Copiado')">Copiar
+            Código</button>
+        </div>
+
+        <button class="sbtn sbtn-secondary" onclick="closeSheet('share-sheet-overlay')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHEET: Import Board -->
+  <div class="sheet-overlay" id="import-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <div class="sheet-title">📥 Importar Tablero</div>
+        <button class="sheet-close" onclick="closeSheet('import-sheet-overlay')">✕</button>
+      </div>
+      <div class="sheet-body">
+        <p class="sheet-context">Pega aquí el código de un tablero compartido.</p>
+        <textarea class="share-code-area" id="import-code-text" placeholder="Pega el código aquí..."
+          style="min-height:120px"></textarea>
+        <div class="import-status" id="import-status"></div>
+        <button class="sbtn sbtn-primary" onclick="doImport()">Importar Tablero</button>
+        <button class="sbtn sbtn-secondary" onclick="closeSheet('import-sheet-overlay')">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHEET: Install Prompt -->
+  <div class="sheet-overlay" id="install-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-body">
+        <div class="install-hero">
+          <div class="install-hero-icon">💳</div>
+          <div class="install-hero-name">CuentasRápidas</div>
+          <div class="install-hero-desc">Agrégala a tu pantalla de inicio para un acceso rápido y una experiencia de app
+            completa.</div>
+        </div>
+
+        <!-- iOS instructions -->
+        <div id="install-ios" style="display:none">
+          <div class="install-step">
+            <span class="install-step-num">1</span>
+            <span>Toca el botón <strong>Compartir</strong> <span class="install-step-icon">⎋</span> en la barra del
+              navegador</span>
+          </div>
+          <div class="install-step">
+            <span class="install-step-num">2</span>
+            <span>Desplázate y toca <strong>"Agregar A Pantalla De Inicio"</strong></span>
+          </div>
+          <div class="install-step">
+            <span class="install-step-num">3</span>
+            <span>Toca <strong>"Agregar"</strong> para confirmar</span>
+          </div>
+          <div style="height:12px"></div>
+          <button class="sbtn sbtn-secondary" id="install-later-btn">Entendido</button>
+        </div>
+
+        <!-- Android native install -->
+        <div id="install-native" style="display:none">
+          <button class="sbtn sbtn-primary" id="install-btn">Instalar App</button>
+          <button class="sbtn sbtn-secondary" id="install-later-btn-native">Ahora No</button>
+        </div>
+
+        <button class="sheet-close" id="install-sheet-close" style="position:absolute;top:16px;right:16px">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK SHEET -->
+  <div class="sheet-overlay" id="feedback-sheet-overlay">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div class="sheet-header">
+        <span class="sheet-title">💬 Tu Opinión</span>
+        <button class="sheet-close" onclick="closeFeedbackSheet()">✕</button>
+      </div>
+      <div class="sheet-body"
+        style="overflow-y:auto;max-height:60dvh;padding-bottom:calc(env(safe-area-inset-bottom,34px) + 20px)">
+        <p class="sheet-context">Ayúdanos a mejorar CuentasRápidas</p>
+        <div class="fb-row">
+          <span class="fb-row-label">Utilidad</span>
+          <div class="fb-stars" id="fb-utilidad">
+            <span class="fb-star" onclick="fbRate('utilidad',1)">★</span>
+            <span class="fb-star" onclick="fbRate('utilidad',2)">★</span>
+            <span class="fb-star" onclick="fbRate('utilidad',3)">★</span>
+            <span class="fb-star" onclick="fbRate('utilidad',4)">★</span>
+            <span class="fb-star" onclick="fbRate('utilidad',5)">★</span>
+          </div>
+        </div>
+        <div class="fb-row">
+          <span class="fb-row-label">Usabilidad</span>
+          <div class="fb-stars" id="fb-usabilidad">
+            <span class="fb-star" onclick="fbRate('usabilidad',1)">★</span>
+            <span class="fb-star" onclick="fbRate('usabilidad',2)">★</span>
+            <span class="fb-star" onclick="fbRate('usabilidad',3)">★</span>
+            <span class="fb-star" onclick="fbRate('usabilidad',4)">★</span>
+            <span class="fb-star" onclick="fbRate('usabilidad',5)">★</span>
+          </div>
+        </div>
+        <div class="fb-row">
+          <span class="fb-row-label">Funcionalidades</span>
+          <div class="fb-stars" id="fb-funcionalidades">
+            <span class="fb-star" onclick="fbRate('funcionalidades',1)">★</span>
+            <span class="fb-star" onclick="fbRate('funcionalidades',2)">★</span>
+            <span class="fb-star" onclick="fbRate('funcionalidades',3)">★</span>
+            <span class="fb-star" onclick="fbRate('funcionalidades',4)">★</span>
+            <span class="fb-star" onclick="fbRate('funcionalidades',5)">★</span>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom:4px">
+          <label for="fb-mensaje">Mensaje</label>
+          <textarea class="fb-textarea" id="fb-mensaje" placeholder="Escribe tu comentario aquí..." maxlength="100"
+            oninput="document.getElementById('fb-char-num').textContent=this.value.length"></textarea>
+        </div>
+        <div class="fb-char-count"><span id="fb-char-num">0</span>/100</div>
+        <div id="fb-status" style="font-size:13px;min-height:18px;margin-bottom:8px;text-align:center"></div>
+        <button class="sbtn sbtn-primary" id="fb-send-btn" onclick="submitFeedback()">Enviar</button>
+        <button class="sbtn sbtn-secondary" onclick="closeFeedbackSheet()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK NUDGE -->
+  <div id="feedback-nudge" style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,34px) + 12px);left:12px;right:12px;z-index:600;
+    background:#172b4d;color:white;border-radius:14px;padding:14px 16px;
+    align-items:center;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,0.35);animation:fbNudgeIn 0.35s ease">
+    <span style="font-size:22px;flex-shrink:0">💬</span>
+    <div style="flex:1;min-width:0;font-size:13px;line-height:1.45">
+      <strong style="display:block;margin-bottom:2px">Recuerda dejar tu experiencia</strong>
+      Toca <strong>💬</strong> en la barra de arriba y deja tu opinión en 30 segundos, gracias!
+    </div>
+    <button onclick="document.getElementById('feedback-nudge').style.display='none'" style="background:rgba(255,255,255,0.15);border:none;color:white;border-radius:8px;
+      padding:6px 10px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0;-webkit-appearance:none">OK</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('u1PGzoaxrjwOf3HLq');</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script src="js/shared/config.js"></script>
+  <script src="js/shared/utils.js"></script>
+  <script src="js/shared/storage.js"></script>
+  <script src="js/shared/share.js"></script>
+  <script src="js/mobile/render.js"></script>
+  <script src="js/mobile/charts.js"></script>
+  <script src="js/mobile/sheets.js"></script>
+  <script src="js/mobile/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,411 @@
+================================================================================
+                 CAMPAÑA INSTAGRAM: CUENTASRÁPIDAS
+                          Resumen Visual
+================================================================================
+
+OBJETIVO GENERAL: Awareness + Conversión a cuentasrapidas.app
+
+================================================================================
+POST 1: HERO/PRESENTACIÓN
+================================================================================
+
+VISUAL:
+  [Gradiente diagonal: Azul Oscuro (#0052cc) → Azul Claro (#00aecc)]
+
+  ● Círculos decorativos (transparentes)
+
+  Tus gastos
+  organizados
+  ▲ en segundos.
+
+  Sin registro · Sin servidor · Gratis
+
+  ▼ CuentasRápidas
+
+
+COPY HOOK:
+  "¿Gastaron más de lo planeado este mes? 💸"
+
+OBJETIVO:
+  Awareness puro - Captar atención, presentar propuesta de valor
+
+TIMING:
+  Lunes 9 AM
+
+CTR ESPERADO:
+  >2%
+
+================================================================================
+POST 2: SIN REGISTRO
+================================================================================
+
+VISUAL:
+  [Fondo blanco + barra azul izquierda]
+
+  ✏️ (Icono grande, dibujado)
+
+  Solo escribe
+  tu nombre.
+
+  Nada de emails. Nada de contraseñas.
+  En 5 segundos ya estás adentro.
+
+  ┌─────────────────────┐
+  │   100% Gratis       │
+  └─────────────────────┘
+
+
+COPY HOOK:
+  "La fricción mataba nuestra app 🚫"
+
+OBJETIVO:
+  Diferenciación - Resolver objeción principal (complicación)
+
+TIMING:
+  Miércoles 6 PM
+
+CTR ESPERADO:
+  >2%
+
+================================================================================
+POST 3: KANBAN VISUAL
+================================================================================
+
+VISUAL:
+  [Fondo azul oscuro (#172b4d)]
+
+  Tu tablero Kanban
+  personal
+
+  ┌──────────┐  ┌──────────┐  ┌──────────┐
+  │  Por     │  │ Carrito  │  │ Pagado   │
+  │  Pagar   │  │          │  │          │
+  │          │  │          │  │          │
+  │ Arriendo │  │ Despensa │  │   Luz    │
+  │ Internet │  │  Dulces  │  │   Gas    │
+  └──────────┘  └──────────┘  └──────────┘
+
+  (Con tarjetas de colores: 🔴 Rojo / 🔵 Azul / 🟣 Morado)
+
+
+COPY HOOK:
+  "El tablero Kanban te cambia la cabeza 🧠"
+
+OBJETIVO:
+  Feature showcase - Mostrar solución de forma visual
+
+TIMING:
+  Viernes 9 AM
+
+ENGAGEMENT ESPERADO:
+  >5% (más educativo = más guardados)
+
+================================================================================
+POST 4: COMPARTIR
+================================================================================
+
+VISUAL:
+  [Gradiente vertical: Verde (#36b37e) → Verde Oscuro (#00875a)]
+
+  Comparte tus gastos
+  con tu pareja
+
+  ████  ← (Icono QR simplificado)
+  ██ ██
+  ████
+
+  Por QR, WhatsApp o URL
+  Sin cuenta. Sin servidor.
+
+  📱    💬    🔗
+
+
+COPY HOOK:
+  "Compartan el tablero en 3 segundos ⚡"
+
+OBJETIVO:
+  Viral + Engagement - Feature de compartir es lo más diferenciador
+
+TIMING:
+  Martes 8 PM
+
+SHAREABLE EXPECTED:
+  >3% (este post es especialmente para compartir en historias)
+
+================================================================================
+POST 5: PRIORIDADES
+================================================================================
+
+VISUAL:
+  [Fondo gris claro]
+
+  ¿Qué cortar
+  cuándo aprieta el mes?
+
+  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+  │VITAL (Rojo)  │  │GUSTO (Azul)  │  │CAPRICHO      │
+  │              │  │              │  │(Morado)      │
+  │Arriendo, luz,│  │Streaming,    │  │Gadgets y     │
+  │agua, comida  │  │gym, salidas  │  │gustitos      │
+  └──────────────┘  └──────────────┘  └──────────────┘
+
+  🔴          🔵          🟣
+
+
+COPY HOOK:
+  "¿Cuándo se torna rojo el presupuesto? 🚨"
+
+OBJETIVO:
+  Identificación emocional - Resonancia con problemas reales
+
+TIMING:
+  Jueves 10 AM
+
+ENGAGEMENT ESPERADO:
+  >4% (comentarios sobre presupuesto personal)
+
+================================================================================
+POST 6: CTA FINAL
+================================================================================
+
+VISUAL:
+  [Gradiente vertical: Azul Oscuro (#0052cc) → Azul (#0079bf)]
+
+  Pruébalo
+  gratis hoy.
+
+  ┌─────────────────────┐
+  │   Ir a la app       │
+  └─────────────────────┘
+
+  cuentasrapidas.app
+
+  Sin registro · Sin servidor · Funciona offline
+
+
+COPY HOOK:
+  "0 excusas para no organizar tus gastos 🎯"
+
+OBJETIVO:
+  Conversión directa - Llamada a acción final
+
+TIMING:
+  Domingo 7 PM
+
+CTR ESPERADO:
+  >3% (este es el post con mayor CTR esperado)
+
+================================================================================
+CALENDARIO VISUAL
+================================================================================
+
+SEMANA 1 (Marzo 23-29):
+
+Lunes 23      ■ Post 1 (Hero)
+  9:00 AM     └─ Awareness máximo
+              └─ 300K+ impresiones esperadas
+
+Martes 24     ■ Post 4 (Compartir)
+  8:00 PM     └─ Engagement social
+              └─ Máximo para compartir en historias
+
+Miércoles 25  ■ Post 2 (Sin Registro)
+  6:00 PM     └─ Diferenciación
+              └─ Trabajo tardío = planificación
+
+Jueves 26     ■ Post 5 (Prioridades)
+  10:00 AM    └─ Identificación
+              └─ Conversación en comentarios
+
+Viernes 27    ■ Post 3 (Kanban)
+  9:00 AM     └─ Feature showcase
+              └─ Fin de semana = más tiempo para leer
+
+Domingo 29    ■ Post 6 (CTA)
+  7:00 PM     └─ Conversión final
+              └─ Planificación de semana
+
+================================================================================
+MÉTRICAS TARGET POR POST
+================================================================================
+
+                Impres.  Guardados  Comentarios  CTR    Conversión
+Post 1 (Hero)   ~2.5K    >250 (10%) >150 (6%)    >2%    >50
+Post 2 (Reg)    ~1.5K    >150 (10%) >70 (5%)     >2%    >30
+Post 3 (Kanb)   ~1.8K    >250 (14%) >100 (5%)    >2%    >35
+Post 4 (Share)  ~2.0K    >150 (7%)  >150 (7%)    >2%    >40
+Post 5 (Prior)  ~1.7K    >170 (10%) >110 (6%)    >2%    >35
+Post 6 (CTA)    ~2.2K    >150 (7%)  >80 (4%)     >3%    >70
+
+TOTAL ESPERADO: ~11.7K impresiones en semana 1 (organic)
+
+================================================================================
+PALETA DE COLORES CAMPAIGN
+================================================================================
+
+PRIMARIO:        #0079bf (Azul)
+OSCURO:          #0052cc (Azul Oscuro)
+CLARO:           #00aecc (Cian)
+ACENTO VERDE:    #36b37e (Éxito)
+ACENTO ROJO:     #de350b (Alerta)
+ACENTO MORADO:   #6554c0 (Capricho)
+TEXTO:           #172b4d (Azul muy oscuro)
+FONDO:           #ffffff (Blanco)
+
+DEGRADADOS USADOS:
+  Post 1: #0052cc → #00aecc (diagonal)
+  Post 4: #36b37e → #00875a (vertical, verde)
+  Post 6: #0052cc → #0079bf (vertical, azul)
+
+================================================================================
+COPY THEMES POR POST
+================================================================================
+
+Post 1:  PROBLEMA + SOLUCIÓN (Awareness)
+         Hook: ¿Problema? / Beneficios: Sin registro, sin servidor, gratis
+
+Post 2:  FRICCIÓN ELIMINADA (Diferenciación)
+         Hook: Fricción / Solución: 5 segundos sin data
+
+Post 3:  VISUALIZACIÓN + CONTROL (Feature)
+         Hook: Claridad / Solución: Kanban, prioridades
+
+Post 4:  COMPARTIR = FÁCIL (Viral)
+         Hook: Sincronización / Solución: QR, sin servidor
+
+Post 5:  DECISIONES CLARAS (Emocional)
+         Hook: Presupuesto / Solución: Categorización visual
+
+Post 6:  SIN EXCUSAS (Urgencia + CTA)
+         Hook: Excusas / Solución: Pruébalo AHORA
+
+================================================================================
+KEYWORDS SEO PRINCIPALES
+================================================================================
+
+ALTO VOLUMEN:
+  - Gestión gastos
+  - Control presupuesto
+  - Finanzas personales
+  - App gratis
+
+NICHO RELEVANTE:
+  - Kanban gastos
+  - Tablero compartido
+  - Sin registro
+  - Control gastos pareja
+
+BRAND:
+  - CuentasRápidas
+  - cuentasrapidas.app
+
+================================================================================
+HASHTAGS ESTRATÉGICOS (Totales por post: 5-10)
+================================================================================
+
+SIEMPRE USAR:
+  #CuentasRapidas
+  #GestionGastos
+  #AppGratis
+
+POR POST:
+  Post 1: + #Pareja #FinanzasPersonales #Kanban
+  Post 2: + #SinRegistro #PrivacidadPrimero #ProteccionDatos
+  Post 3: + #MetodoKanban #OrganizacionVisual #TableroPersonal
+  Post 4: + #CompartirEsFacil #TecnologiaParaParejas #QRcode
+  Post 5: + #PlanificacionFinanciera #PresupuestoFamiliar #CortarGastos
+  Post 6: + #NoMasExcusas #DescargaGratis #FuncionaOfline
+
+================================================================================
+A/B TESTING SUGERIDO (Semana 2+)
+================================================================================
+
+Post 1:  Variante A (Hook problema) vs. Variante C (Urgencia)
+         → Medir: Engagement rate
+
+Post 2:  Variante A (Datos) vs. Variante B (Privacy)
+         → Medir: CTR a sitio
+
+Post 3:  Variante A (Educativo) vs. Variante C (Problema/Solución)
+         → Medir: Guardados
+
+Post 4:  Variante A (Tech) vs. Variante C (Humor)
+         → Medir: Compartidos
+
+Post 5:  Variante A (Categorización) vs. Variante B (Conversación)
+         → Medir: Comentarios
+
+Post 6:  Variante A (Sin Excusas) vs. Variante B (FOMO)
+         → Medir: CTR + Conversiones
+
+================================================================================
+NEXT STEPS (POST-CAMPAÑA)
+================================================================================
+
+SEMANA 2:
+  □ Monitorear métricas en Instagram Insights
+  □ Responder comentarios dentro de 30 min
+  □ Si performance < target, cambiar copy a variante B/C
+  □ Considerar boost de Post 4 (Compartir) - $75 USD
+
+SEMANA 3:
+  □ Boost Post 6 (CTA) - $100 USD
+  □ Retargeting a quienes vieron Reels/Posts
+
+SEMANA 4+:
+  □ Content continuity: 2-3 posts/semana
+  □ Stories diarias (polls, quizzes, behind-scenes)
+  □ Testimonios de usuarios (UGC)
+  □ Educar sobre uso (tips de presupuesto)
+
+================================================================================
+ARCHIVOS GENERADOS
+================================================================================
+
+post_01_hero.png              (84 KB)
+post_02_sin_registro.png      (44 KB)
+post_03_kanban.png            (36 KB)
+post_04_compartir.png         (44 KB)
+post_05_prioridades.png       (52 KB)
+post_06_cta.png               (40 KB)
+
+TOTAL: 290 KB (optimizados para Instagram)
+
++ ESTRATEGIA_CONTENIDO.md (Guía completa con copy + hashtags + métricas)
++ COPY_ALTERNATIVAS_Y_VARIACIONES.md (3 variantes por post + A/B plan)
++ README.md (Instrucciones de uso + troubleshooting)
++ generate_posts.py (Script reutilizable)
+
+================================================================================
+RESUMEN EJECUTIVO
+================================================================================
+
+CAMPAÑA: 6 posts estratégicos para Instagram, publicados en una semana.
+PROPÓSITO: Presentar CuentasRápidas a través de diferentes ángulos (features,
+           diferenciadores, valor emocional), llegando a máxima conversión.
+PÚBLICO: Parejas y familias 25-45 años, preocupadas por organización financiera.
+DURACIÓN: 6 días (Lunes a Domingo)
+BUDGET RECOMENDADO: $225 USD para 3 semanas (opcional, organic también funciona)
+CONVERSIÓN ESPERADA: >175 clicks a sitio web (>1.5% CTR promedio)
+REACH ESPERADO: 10,000-15,000 personas (organic)
+
+DIFERENCIADORES CLAVE:
+  → Sin registro
+  → Sin servidor
+  → Funciona offline
+  → Gratis
+  → Tablero Kanban visual
+  → Compartible por QR/URL
+
+TARGET ENGAGEMENT: >3.5% (likes + comentarios + guardados / impresiones)
+
+================================================================================
+
+Fecha generación: 19 de Marzo, 2026
+Plataforma: Instagram
+Formato: 6 posts 1080x1080px
+Diseño + Copy: Optimizado para máxima conversión y engagement
+
+¡Éxito en la campaña!
+
+================================================================================
