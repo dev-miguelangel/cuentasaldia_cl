@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
   <title>Cuentas al Día – Organiza Tus Gastos Con Un Tablero Kanban</title>
   <meta name="description"
     content="Organiza y comparte tus gastos con un tablero Kanban visual. Sin registro, sin servidor. Comparte por QR o código con tu pareja o familia. Gratis y funciona offline en Chile." />
@@ -612,58 +612,6 @@
       </div>
     </section>
 
-    <!-- ===== FEEDBACK ===== -->
-    <section class="section" id="feedback" aria-labelledby="feedback-heading">
-      <div class="container">
-        <header class="section-header center">
-          <p class="section-label">Feedback</p>
-          <h2 class="section-title" id="feedback-heading">¿Qué te pareció?</h2>
-          <p class="section-sub center">Tu opinión nos ayuda a mejorar. Solo toma 30 segundos.</p>
-        </header>
-
-        <div class="feedback-card">
-          <div class="fb-row">
-            <span class="fb-row-label">Utilidad</span>
-            <div class="fb-stars" id="fb-utilidad">
-              <span class="fb-star" onclick="fbRate('utilidad',1)">★</span>
-              <span class="fb-star" onclick="fbRate('utilidad',2)">★</span>
-              <span class="fb-star" onclick="fbRate('utilidad',3)">★</span>
-              <span class="fb-star" onclick="fbRate('utilidad',4)">★</span>
-              <span class="fb-star" onclick="fbRate('utilidad',5)">★</span>
-            </div>
-          </div>
-          <div class="fb-row">
-            <span class="fb-row-label">Usabilidad</span>
-            <div class="fb-stars" id="fb-usabilidad">
-              <span class="fb-star" onclick="fbRate('usabilidad',1)">★</span>
-              <span class="fb-star" onclick="fbRate('usabilidad',2)">★</span>
-              <span class="fb-star" onclick="fbRate('usabilidad',3)">★</span>
-              <span class="fb-star" onclick="fbRate('usabilidad',4)">★</span>
-              <span class="fb-star" onclick="fbRate('usabilidad',5)">★</span>
-            </div>
-          </div>
-          <div class="fb-row">
-            <span class="fb-row-label">Funcionalidades</span>
-            <div class="fb-stars" id="fb-funcionalidades">
-              <span class="fb-star" onclick="fbRate('funcionalidades',1)">★</span>
-              <span class="fb-star" onclick="fbRate('funcionalidades',2)">★</span>
-              <span class="fb-star" onclick="fbRate('funcionalidades',3)">★</span>
-              <span class="fb-star" onclick="fbRate('funcionalidades',4)">★</span>
-              <span class="fb-star" onclick="fbRate('funcionalidades',5)">★</span>
-            </div>
-          </div>
-          <div class="fb-message-group">
-            <label for="fb-mensaje">Mensaje</label>
-            <textarea class="fb-textarea" id="fb-mensaje" placeholder="Escribe tu comentario aquí..." maxlength="100"
-              oninput="document.getElementById('fb-char-num').textContent=this.value.length"></textarea>
-            <div class="fb-char-count"><span id="fb-char-num">0</span>/100</div>
-          </div>
-          <div id="fb-status" style="font-size:14px;min-height:20px;margin-top:14px;text-align:center;font-weight:600"></div>
-          <button class="fb-submit" id="fb-send-btn" onclick="submitFeedback()">Enviar Feedback →</button>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== CTA ===== -->
     <section class="cta-section" aria-labelledby="cta-heading">
       <div class="container">
@@ -676,6 +624,58 @@
           <a href="mobile.html" class="btn-hero-secondary" aria-label="Abrir la versión móvil">
             📱 Abrir En Celular
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEEDBACK ===== -->
+    <section class="section" id="feedback" aria-labelledby="feedback-heading">
+      <div class="container">
+        <header class="section-header center">
+          <p class="section-label">Feedback</p>
+          <h2 class="section-title" id="feedback-heading">¿Qué te pareció?</h2>
+          <p class="section-sub center">Tu opinión nos ayuda a mejorar. Solo toma 30 segundos.</p>
+        </header>
+
+        <div class="feedback-card">
+          <div class="fb-row">
+            <span class="fb-row-label">Utilidad</span>
+            <div class="fb-stars" id="fb-utilidad" role="group" aria-label="Calificar utilidad">
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',1)" aria-label="Utilidad: 1 estrella">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',2)" aria-label="Utilidad: 2 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',3)" aria-label="Utilidad: 3 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',4)" aria-label="Utilidad: 4 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',5)" aria-label="Utilidad: 5 estrellas">★</button>
+            </div>
+          </div>
+          <div class="fb-row">
+            <span class="fb-row-label">Usabilidad</span>
+            <div class="fb-stars" id="fb-usabilidad" role="group" aria-label="Calificar usabilidad">
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',1)" aria-label="Usabilidad: 1 estrella">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',2)" aria-label="Usabilidad: 2 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',3)" aria-label="Usabilidad: 3 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',4)" aria-label="Usabilidad: 4 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',5)" aria-label="Usabilidad: 5 estrellas">★</button>
+            </div>
+          </div>
+          <div class="fb-row">
+            <span class="fb-row-label">Funcionalidades</span>
+            <div class="fb-stars" id="fb-funcionalidades" role="group" aria-label="Calificar funcionalidades">
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',1)" aria-label="Funcionalidades: 1 estrella">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',2)" aria-label="Funcionalidades: 2 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',3)" aria-label="Funcionalidades: 3 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',4)" aria-label="Funcionalidades: 4 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',5)" aria-label="Funcionalidades: 5 estrellas">★</button>
+            </div>
+          </div>
+          <div class="fb-message-group">
+            <label for="fb-mensaje">Mensaje</label>
+            <textarea class="fb-textarea" id="fb-mensaje" placeholder="Escribe tu comentario aquí..." maxlength="100"
+              oninput="document.getElementById('fb-char-num').textContent=this.value.length"></textarea>
+            <div class="fb-char-count"><span id="fb-char-num">0</span>/100</div>
+          </div>
+          <div id="fb-status" style="font-size:14px;min-height:20px;margin-top:14px;text-align:center;font-weight:600"></div>
+          <button type="button" class="fb-submit" id="fb-send-btn" onclick="submitFeedback()">Enviar Feedback →</button>
         </div>
       </div>
     </section>

@@ -1332,6 +1332,10 @@ a {
   transition: color 0.1s, transform 0.1s;
   user-select: none;
   line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
 }
 
 .fb-star:hover { transform: scale(1.15); }
