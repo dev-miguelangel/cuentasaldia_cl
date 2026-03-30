@@ -164,7 +164,8 @@ a {
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  flex-wrap: wrap;
+  gap: 4px 6px;
   background: rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 5px 12px;
@@ -176,6 +177,7 @@ a {
   max-width: 100%;
   white-space: normal;
   text-align: left;
+  line-height: 1.5;
 }
 
 .hero-badge-dot {
@@ -966,7 +968,7 @@ a {
   }
 
   .features-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .priority-cards {
@@ -1107,6 +1109,10 @@ a {
     font-size: 13px;
   }
 
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
   .feature-card {
     padding: 22px 18px;
   }
@@ -1167,7 +1173,12 @@ a {
   }
 
   .footer-links {
-    gap: 12px;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
   }
 }
 

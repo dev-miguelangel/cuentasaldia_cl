@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
+  <title>Cuentas al Día – Organiza Tus Gastos Con Un Tablero Kanban</title>
+  <meta name="description"
+    content="Organiza y comparte tus gastos con un tablero Kanban visual. Sin registro, sin servidor. Comparte por QR o código con tu pareja o familia. Gratis y funciona offline en Chile." />
+  <meta name="keywords"
+    content="gastos personales, control de gastos, tablero kanban, finanzas personales, presupuesto, pesos chilenos, compartir gastos pareja, app gastos familia, control gastos compartido Chile, app gratis control gastos Chile" />
+  <meta name="author" content="Cuentas al Día" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="theme-color" content="#0052cc" />
+  <link rel="canonical" href="https://cuentasaldia.cl/" />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='3' y='4' width='18' height='18' rx='2.5' fill='%230052cc'/%3E%3Cpath d='M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5V11H3Z' fill='%23003d99'/%3E%3Crect x='7.5' y='2' width='2' height='5' rx='1' fill='%230079bf'/%3E%3Crect x='14.5' y='2' width='2' height='5' rx='1' fill='%230079bf'/%3E%3Cpolyline points='8 17 11 20 16.5 13.5' stroke='%2336b37e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cuentasaldia.cl/" />
+  <meta property="og:title" content="Cuentas al Día – Organiza Tus Gastos Con Un Tablero Kanban" />
+  <meta property="og:description"
+    content="Sin registro. Sin servidor. Comparte tus gastos por QR o código con tu pareja o familia. Organiza tus cuentas con un tablero Kanban visual — gratis y funciona offline." />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:image" content="https://cuentasaldia.cl/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cuentas al Día — tablero Kanban visual para organizar gastos" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cuentas al Día – Organiza Tus Gastos Con Un Tablero Kanban" />
+  <meta name="twitter:description"
+    content="Sin registro. Sin servidor. Comparte tableros por QR con tu pareja o familia. Organiza tus gastos con un tablero Kanban visual — gratis." />
+  <meta name="twitter:image" content="https://cuentasaldia.cl/og-image.png" />
+  <meta name="twitter:image:alt" content="Cuentas al Día — tablero Kanban visual para organizar gastos" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Cuentas al Día",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web Browser",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CLP" },
+    "description": "Organiza tus gastos con un tablero Kanban visual. Sin registro, funciona offline, directamente en tu navegador.",
+    "inLanguage": "es",
+    "featureList": [
+      "Tablero Kanban con columnas Por Pagar, Carrito y Pagado",
+      "Control de presupuesto con barra de progreso",
+      "Prioridades: Vital, Gusto y Capricho",
+      "Gráficos de análisis por columna",
+      "Múltiples tableros por usuario",
+      "Funciona offline sin registro",
+      "Versión optimizada para celular",
+      "Compartir tableros con QR o código de texto sin servidor"
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/landing.css" />
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header role="banner">
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="container">
+        <div class="nav-inner">
+          <a href="#" class="nav-brand" aria-label="Cuentas al Día inicio">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" aria-hidden="true" class="nav-brand-icon"><rect x="3" y="4" width="18" height="18" rx="2.5" fill="#dbeafe"/><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5V11H3Z" fill="#0052cc"/><rect x="7.5" y="2" width="2" height="5" rx="1" fill="#0079bf"/><rect x="14.5" y="2" width="2" height="5" rx="1" fill="#0079bf"/><polyline points="8 17 11 20 16.5 13.5" stroke="#36b37e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Cuentas al Día
+          </a>
+          <div class="nav-links" role="list">
+            <a href="#funciones" class="nav-link" role="listitem">Funciones</a>
+            <a href="#como-funciona" class="nav-link" role="listitem">Cómo Funciona</a>
+            <a href="#prioridades" class="nav-link" role="listitem">Prioridades</a>
+            <a href="#compartir" class="nav-link" role="listitem">Compartir</a>
+            <a href="#feedback" class="nav-link" role="listitem">Feedback</a>
+            <a href="#demo" class="nav-cta" role="listitem">Probar Gratis</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="hero-badge" role="note">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              100% Gratis · Sin Registro · Funciona Offline · Comparte Por QR
+            </div>
+            <h1 id="hero-heading">
+              Tus gastos<br>
+              <em>organizados en segundos.</em>
+            </h1>
+            <p class="hero-sub">
+              Arrastra, mueve y prioriza tus cuentas con un tablero Kanban visual.
+              Comparte tu tablero con tu pareja o familia en segundos — por QR, URL o WhatsApp, sin servidor.
+            </p>
+            <div class="hero-actions">
+              <a href="desktop.html" class="btn-hero-primary" aria-label="Abrir demo para escritorio">
+                🖥️ Probar En Escritorio
+              </a>
+              <a href="mobile.html" class="btn-hero-secondary" aria-label="Abrir demo para celular">
+                📱 Probar En Celular
+              </a>
+            </div>
+            <p class="hero-note" aria-live="polite">
+              <span aria-hidden="true">🔒</span>
+              Tus datos quedan en tu dispositivo. Siempre.
+            </p>
+          </div>
+
+          <!-- Kanban visual mock -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="kanban-mock" role="presentation">
+
+              <div class="mock-col">
+                <div class="mock-col-header">
+                  <div class="mock-col-title">Por Pagar</div>
+                  <div class="mock-col-total">$87.500</div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-title">Internet Hogar</div>
+                  <div class="mock-card-footer">
+                    <span class="mock-badge vital">Vital</span>
+                    <span class="mock-amount">$29.990</span>
+                  </div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-title">Netflix</div>
+                  <div class="mock-card-footer">
+                    <span class="mock-badge gusto">Gusto</span>
+                    <span class="mock-amount">$8.490</span>
+                  </div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-title">Revista Digital</div>
+                  <div class="mock-card-footer">
+                    <span class="mock-badge capricho">Capricho</span>
+                    <span class="mock-amount">$4.990</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mock-col">
+                <div class="mock-col-header">
+                  <div class="mock-col-title">Carrito</div>
+                  <div class="mock-col-total">$44.800</div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-title">Supermercado</div>
+                  <div class="mock-card-footer">
+                    <span class="mock-badge vital">Vital</span>
+                    <span class="mock-amount">$32.000</span>
+                  </div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-title">Zapatillas running</div>
+                  <div class="mock-card-footer">
+                    <span class="mock-badge capricho">Capricho</span>
+                    <span class="mock-amount">$12.800</span>
+                  </div>
+                </div>
+                <div class="mock-budget">
+                  <div class="mock-budget-bar-track">
+                    <div class="mock-budget-bar-fill"></div>
+                  </div>
+                  <div class="mock-budget-label">$55.200 disponibles</div>
+                </div>
+              </div>
+
+              <div class="mock-col">
+                <div class="mock-col-header">
+                  <div class="mock-col-title">Pagado</div>
+                  <div class="mock-col-total">$63.200</div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-title">Arriendo</div>
+                  <div class="mock-card-footer">
+                    <span class="mock-badge vital">Vital</span>
+                    <span class="mock-amount">$55.000</span>
+                  </div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-title">Spotify</div>
+                  <div class="mock-card-footer">
+                    <span class="mock-badge gusto">Gusto</span>
+                    <span class="mock-amount">$5.990</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PILLS ===== -->
+    <div class="pills-strip" role="complementary" aria-label="Características destacadas">
+      <div class="container">
+        <div class="pills-inner">
+          <span class="pill"><span class="pill-dot" style="background:#36b37e" aria-hidden="true"></span>Sin registro ni
+            contraseña</span>
+          <span class="pill"><span class="pill-dot" style="background:#0079bf" aria-hidden="true"></span>Múltiples
+            tableros por usuario</span>
+          <span class="pill"><span class="pill-dot" style="background:#ff991f" aria-hidden="true"></span>Control de
+            presupuesto visual</span>
+          <span class="pill"><span class="pill-dot" style="background:#6554c0" aria-hidden="true"></span>Gráficos de
+            análisis</span>
+          <span class="pill"><span class="pill-dot" style="background:#de350b" aria-hidden="true"></span>Funciona en
+            celular y escritorio</span>
+          <span class="pill"><span class="pill-dot" style="background:#00875a" aria-hidden="true"></span>Comparte tableros con QR o código</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== FEATURES ===== -->
+    <section class="section" id="funciones" aria-labelledby="features-heading">
+      <div class="container">
+        <header class="section-header">
+          <p class="section-label">Funciones</p>
+          <h2 class="section-title" id="features-heading">Todo lo que necesitas,<br>nada que no uses.</h2>
+          <p class="section-sub">Diseñado para ser rápido de aprender y rápido de usar. Sin tutoriales, sin onboarding.
+          </p>
+        </header>
+
+        <div class="features-grid" role="list">
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background:#e8f4fd" aria-hidden="true">📋</div>
+            <h3 class="feature-title">Tablero Kanban Visual</h3>
+            <p class="feature-desc">Tres columnas con orden estricto: <strong>Por Pagar → Carrito → Pagado</strong>.
+              Mueve tus gastos entre columnas con un simple arrastrar o toca el botón en celular.</p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background:#e6fff5" aria-hidden="true">💰</div>
+            <h3 class="feature-title">Presupuesto Del Carrito</h3>
+            <p class="feature-desc">Define cuánto tienes disponible y ve cómo la barra verde se vacía conforme agregas
+              gastos. Alerta automática cuando te pasas del presupuesto.</p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background:#f0ebff" aria-hidden="true">🏷️</div>
+            <h3 class="feature-title">Prioridades Claras</h3>
+            <p class="feature-desc">Cada gasto tiene una prioridad: <strong>Vital</strong> (no puede esperar),
+              <strong>Gusto</strong> (parte de tu estilo de vida) o <strong>Capricho</strong> (nice to have). De un
+              vistazo sabes qué recortar primero.
+            </p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background:#fff8e6" aria-hidden="true">📊</div>
+            <h3 class="feature-title">Análisis En Tiempo Real</h3>
+            <p class="feature-desc">Gráficos de distribución por tipo de gasto en cada columna y comparativa de totales.
+              Todo se actualiza al instante al mover o agregar gastos.</p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background:#fff0ee" aria-hidden="true">📁</div>
+            <h3 class="feature-title">Múltiples Tableros</h3>
+            <p class="feature-desc">Crea un tablero por mes, proyecto o categoría. Al crear uno nuevo puedes clonar
+              gastos del tablero anterior para no empezar de cero.</p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background:#f0f8ff" aria-hidden="true">🔒</div>
+            <h3 class="feature-title">Privacidad Total</h3>
+            <p class="feature-desc">Todo se guarda en tu navegador usando <code
+                style="font-size:12px;background:#f4f5f7;padding:1px 5px;border-radius:3px">localStorage</code>. Tus
+              datos nunca salen de tu dispositivo. Ni servidores, ni cuentas, ni tracking.</p>
+          </article>
+
+          <article class="feature-card" role="listitem">
+            <div class="feature-icon" style="background:#f0fff4" aria-hidden="true">🔗</div>
+            <h3 class="feature-title">Comparte Gastos Con Tu Pareja</h3>
+            <p class="feature-desc">Exporta cualquier tablero como QR o código de texto y compártelo por WhatsApp o iMessage. El otro dispositivo importa todos los gastos y el presupuesto al instante — <strong>sin cuenta, sin servidor, sin que tus datos salgan de tu dispositivo</strong>.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section section-alt" id="como-funciona" aria-labelledby="steps-heading">
+      <div class="container">
+        <div class="split">
+          <div>
+            <header class="section-header">
+              <p class="section-label">Cómo Funciona</p>
+              <h2 class="section-title" id="steps-heading">De cero a organizado<br>en tres pasos.</h2>
+            </header>
+            <ol class="steps" aria-label="Pasos para comenzar">
+              <li class="step">
+                <div class="step-num" aria-hidden="true">1</div>
+                <div class="step-content">
+                  <h3 class="step-title">Elige tu nombre de usuario</h3>
+                  <p class="step-desc">No necesitas email ni contraseña. Solo escribe tu nombre y entra. Puedes tener
+                    varios usuarios en el mismo dispositivo.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="step-num" aria-hidden="true">2</div>
+                <div class="step-content">
+                  <h3 class="step-title">Crea un tablero</h3>
+                  <p class="step-desc">Dale nombre a tu tablero (ej: "Marzo 2026") y opcionalmente importa gastos de un
+                    tablero anterior para no empezar de cero.</p>
+                </div>
+              </li>
+              <li class="step">
+                <div class="step-num" aria-hidden="true">3</div>
+                <div class="step-content">
+                  <h3 class="step-title">Agrega y mueve tus gastos</h3>
+                  <p class="step-desc">Registra título, monto y prioridad. Arrastra las tarjetas entre columnas o toca
+                    "Mover" en celular. El total y los gráficos se actualizan solos.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Analytics mock -->
+          <div class="split-visual" aria-hidden="true">
+            <div class="analytics-mock">
+              <div class="analytics-mock-title">Total Por Columna</div>
+
+              <div class="analytics-bar-row">
+                <div class="analytics-bar-label">
+                  <span>Por Pagar</span>
+                  <span>$87.500</span>
+                </div>
+                <div class="analytics-bar-track">
+                  <div class="analytics-bar-fill" style="width:45%;background:#ff991f"></div>
+                </div>
+              </div>
+
+              <div class="analytics-bar-row">
+                <div class="analytics-bar-label">
+                  <span>Carrito</span>
+                  <span>$44.800</span>
+                </div>
+                <div class="analytics-bar-track">
+                  <div class="analytics-bar-fill" style="width:23%;background:#0079bf"></div>
+                </div>
+              </div>
+
+              <div class="analytics-bar-row">
+                <div class="analytics-bar-label">
+                  <span>Pagado</span>
+                  <span>$63.200</span>
+                </div>
+                <div class="analytics-bar-track">
+                  <div class="analytics-bar-fill" style="width:32%;background:#36b37e"></div>
+                </div>
+              </div>
+
+              <div style="height:20px"></div>
+              <div class="analytics-mock-title">Distribución Por Tipo — Carrito</div>
+              <div style="display:flex;gap:10px;margin-top:10px">
+                <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center">
+                  <div
+                    style="width:36px;height:36px;border-radius:50%;background:#de350b;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white">
+                    72%</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,0.6)">Vital</div>
+                </div>
+                <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center">
+                  <div
+                    style="width:36px;height:36px;border-radius:50%;background:#0079bf;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white">
+                    0%</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,0.6)">Gusto</div>
+                </div>
+                <div style="flex:1;background:rgba(255,255,255,0.08);border-radius:8px;padding:10px;text-align:center">
+                  <div
+                    style="width:36px;height:36px;border-radius:50%;background:#6554c0;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white">
+                    28%</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,0.6)">Capricho</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRIORITIES ===== -->
+    <section class="section" id="prioridades" aria-labelledby="priorities-heading">
+      <div class="container">
+        <header class="section-header center">
+          <p class="section-label">Sistema De Prioridades</p>
+          <h2 class="section-title" id="priorities-heading">Saber qué cortar<br>cuando la plata aprieta.</h2>
+          <p class="section-sub center">Cada gasto lleva una etiqueta de prioridad. Un vistazo al tablero y ya sabes
+            dónde ajustar sin pensar.</p>
+        </header>
+        <div class="priority-cards" role="list">
+          <article class="priority-card vital" role="listitem">
+            <div class="priority-card-icon" aria-hidden="true">🔴</div>
+            <h3 class="priority-card-name">Vital</h3>
+            <p class="priority-card-desc">Arriendo, luz, alimentación. Sin esto, el mundo se detiene. No se toca.</p>
+          </article>
+          <article class="priority-card gusto" role="listitem">
+            <div class="priority-card-icon" aria-hidden="true">🔵</div>
+            <h3 class="priority-card-name">Gusto</h3>
+            <p class="priority-card-desc">Streaming, gym, salidas. Lo que mantiene tu ritmo de vida. Se puede negociar.
+            </p>
+          </article>
+          <article class="priority-card capricho" role="listitem">
+            <div class="priority-card-icon" aria-hidden="true">🟣</div>
+            <h3 class="priority-card-name">Capricho</h3>
+            <p class="priority-card-desc">Ese gadget, esa ropa, esa suscripción de nicho. Innecesario, pero te saca una
+              sonrisa.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SHARE SECTION ===== -->
+    <section class="section" id="compartir" aria-labelledby="share-heading">
+      <div class="container">
+        <div class="split">
+
+          <!-- Text column -->
+          <div>
+            <header class="section-header">
+              <p class="section-label">Compartir Sin Servidor</p>
+              <h2 class="section-title" id="share-heading">¿Tú pagas el arriendo<br>y tu pareja el super?</h2>
+              <p class="section-sub">Comparte cualquier tablero con tu pareja, familiar o compañero de departamento en segundos. Sin crear cuenta, sin servidor, sin que tus datos salgan de tu dispositivo.</p>
+            </header>
+
+            <div class="share-methods" role="list">
+              <div class="share-method-item" role="listitem">
+                <div class="share-method-icon" aria-hidden="true">📱</div>
+                <div>
+                  <div class="share-method-title">Escanea el QR</div>
+                  <div class="share-method-desc">Abre el tablero, toca 🔗 y muestra el código QR. El otro dispositivo lo escanea y el tablero — con todos los gastos y el presupuesto — se importa al instante.</div>
+                </div>
+              </div>
+              <div class="share-method-item" role="listitem">
+                <div class="share-method-icon" aria-hidden="true">💬</div>
+                <div>
+                  <div class="share-method-title">Envía el código por WhatsApp</div>
+                  <div class="share-method-desc">Copia el código de texto y pégalo en cualquier mensajería. El receptor abre la app, toca 📥 Importar, pega el código y listo. Funciona sin conexión a internet en el dispositivo destino.</div>
+                </div>
+              </div>
+              <div class="share-method-item" role="listitem">
+                <div class="share-method-icon" aria-hidden="true">🔗</div>
+                <div>
+                  <div class="share-method-title">Comparte la URL directa</div>
+                  <div class="share-method-desc">Copia la URL del tablero y pégala en el navegador del otro dispositivo. Los datos se importan automáticamente al abrirla — sin pasos adicionales.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="share-note" role="note">
+              <strong style="color:var(--green)">✓ Privacidad garantizada</strong> — Los datos viajan codificados directamente entre dispositivos. No pasan por ningún servidor. Tus gastos son solo tuyos.
+            </div>
+          </div>
+
+          <!-- Visual column -->
+          <div class="split-visual" aria-hidden="true">
+            <div class="share-visual-box">
+
+              <!-- Share sheet mock -->
+              <div class="share-visual-label">Tu dispositivo — tablero activo</div>
+              <div class="share-visual-sheet">
+                <div class="share-visual-sheet-title">🔗 Compartir Tablero</div>
+                <div class="share-visual-tabs">
+                  <div class="share-visual-tab active">QR / URL</div>
+                  <div class="share-visual-tab">Código</div>
+                </div>
+                <div class="share-visual-qr">
+                  <!-- SVG QR mock -->
+                  <svg width="80" height="80" viewBox="0 0 9 9" style="image-rendering:crisp-edges" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="9" height="9" fill="white"/>
+                    <!-- finder TL -->
+                    <rect x="0" y="0" width="3" height="3" rx="0.3" fill="#172b4d"/>
+                    <rect x="0.3" y="0.3" width="2.4" height="2.4" rx="0.2" fill="white"/>
+                    <rect x="0.8" y="0.8" width="1.4" height="1.4" rx="0.15" fill="#172b4d"/>
+                    <!-- finder TR -->
+                    <rect x="6" y="0" width="3" height="3" rx="0.3" fill="#172b4d"/>
+                    <rect x="6.3" y="0.3" width="2.4" height="2.4" rx="0.2" fill="white"/>
+                    <rect x="6.8" y="0.8" width="1.4" height="1.4" rx="0.15" fill="#172b4d"/>
+                    <!-- finder BL -->
+                    <rect x="0" y="6" width="3" height="3" rx="0.3" fill="#172b4d"/>
+                    <rect x="0.3" y="6.3" width="2.4" height="2.4" rx="0.2" fill="white"/>
+                    <rect x="0.8" y="6.8" width="1.4" height="1.4" rx="0.15" fill="#172b4d"/>
+                    <!-- data modules -->
+                    <rect x="4" y="0" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="5" y="1" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="4" y="2" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="6" y="2" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="3" y="3" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="5" y="3" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="7" y="3" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="4" y="4" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="6" y="4" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="8" y="4" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="3" y="5" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="5" y="5" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="8" y="5" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="4" y="6" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="6" y="6" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="3" y="7" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="5" y="7" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="7" y="7" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="4" y="8" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                    <rect x="6" y="8" width="1" height="1" rx="0.15" fill="#172b4d"/>
+                  </svg>
+                  <div style="font-size:10px;color:#5e6c84;text-align:center;line-height:1.5">Escanea para importar<br>en otro dispositivo</div>
+                </div>
+                <div class="share-visual-copy">🔗 Copiar URL</div>
+              </div>
+
+              <!-- Channel pills -->
+              <div class="share-visual-divider" role="presentation">
+                <span class="share-visual-channel">📱 QR</span>
+                <span class="share-visual-channel">💬 WhatsApp</span>
+                <span class="share-visual-channel">🔗 URL</span>
+                <span class="share-visual-channel">📨 iMessage</span>
+              </div>
+
+              <!-- Import result mock -->
+              <div class="share-visual-result">
+                <div class="share-visual-label" style="margin-bottom:10px">Otro dispositivo — importado al instante</div>
+                <div class="share-visual-result-header">
+                  <span style="font-size:22px">✅</span>
+                  <div>
+                    <div class="share-visual-result-title">Gastos de Marzo</div>
+                    <div class="share-visual-result-sub">8 gastos · Presupuesto $250.000</div>
+                  </div>
+                </div>
+                <div class="share-visual-card">
+                  <div class="share-visual-card-stripe" style="background:#de350b"></div>
+                  <span class="share-visual-card-name">Arriendo</span>
+                  <span class="share-visual-card-amount">$550K</span>
+                </div>
+                <div class="share-visual-card">
+                  <div class="share-visual-card-stripe" style="background:#de350b"></div>
+                  <span class="share-visual-card-name">Supermercado</span>
+                  <span class="share-visual-card-amount">$85K</span>
+                </div>
+                <div class="share-visual-card">
+                  <div class="share-visual-card-stripe" style="background:#0079bf"></div>
+                  <span class="share-visual-card-name">Netflix · Spotify</span>
+                  <span class="share-visual-card-amount">$14K</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEMO LINKS ===== -->
+    <section class="section section-alt" id="demo" aria-labelledby="demo-heading">
+      <div class="container">
+        <header class="section-header center">
+          <p class="section-label">Empieza Ahora</p>
+          <h2 class="section-title" id="demo-heading">¿Escritorio o celular?<br>Tú eliges.</h2>
+          <p class="section-sub center">Misma funcionalidad, experiencia adaptada. La versión móvil está diseñada para cualquier tamaño de pantalla, desde iPhone Mini hasta pantallas grandes.</p>
+        </header>
+
+        <div class="devices" role="list">
+
+          <article class="device-card" role="listitem">
+            <div class="device-icon" aria-hidden="true">🖥️</div>
+            <span class="device-tag">Escritorio</span>
+            <h3 class="device-title">Versión Escritorio</h3>
+            <p class="device-desc">
+              Tablero completo con cuatro columnas visibles simultáneamente.
+              Arrastra tarjetas entre columnas, visualiza todos los gráficos de un vistazo
+              y gestiona tu presupuesto sin salir del tablero.
+            </p>
+            <a href="desktop.html" class="device-btn primary"
+              aria-label="Abrir la versión de escritorio de Cuentas al Día">
+              Abrir Demo Escritorio →
+            </a>
+          </article>
+
+          <article class="device-card" role="listitem">
+            <div class="device-icon" aria-hidden="true">📱</div>
+            <span class="device-tag mobile">Celular</span>
+            <h3 class="device-title">Versión Móvil</h3>
+            <p class="device-desc">
+              Navegación por tabs en la barra inferior, hojas deslizables para
+              agregar gastos y mover tarjetas con un toque. Diseñada con safe areas
+              para iPhone y optimizada para pantallas pequeñas.
+            </p>
+            <a href="mobile.html" class="device-btn primary" aria-label="Abrir la versión móvil de Cuentas al Día">
+              Abrir Demo Celular →
+            </a>
+          </article>
+
+        </div>
+
+        <p class="text-center mt-24" style="font-size:14px;color:var(--text-faint)">
+          Ambas versiones usan el mismo <code
+            style="background:#f0f1f3;padding:2px 6px;border-radius:4px;font-size:12px">localStorage</code> —
+          tus datos permanecen en tu dispositivo sin ningún servidor de por medio.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="container">
+        <h2 id="cta-heading">Tus gastos organizados.<br>Sin registro. Sin esperas.</h2>
+        <p>Abre la app y en 30 segundos ya tienes tu primer gasto registrado. Sin formularios, sin cuenta, sin fricción.</p>
+        <div class="cta-actions">
+          <a href="desktop.html" class="btn-hero-primary" aria-label="Abrir la versión de escritorio">
+            🖥️ Abrir En Escritorio
+          </a>
+          <a href="mobile.html" class="btn-hero-secondary" aria-label="Abrir la versión móvil">
+            📱 Abrir En Celular
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FEEDBACK ===== -->
+    <section class="section" id="feedback" aria-labelledby="feedback-heading">
+      <div class="container">
+        <header class="section-header center">
+          <p class="section-label">Feedback</p>
+          <h2 class="section-title" id="feedback-heading">¿Qué te pareció?</h2>
+          <p class="section-sub center">Tu opinión nos ayuda a mejorar. Solo toma 30 segundos.</p>
+        </header>
+
+        <div class="feedback-card">
+          <div class="fb-row">
+            <span class="fb-row-label">Utilidad</span>
+            <div class="fb-stars" id="fb-utilidad" role="group" aria-label="Calificar utilidad">
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',1)" aria-label="Utilidad: 1 estrella">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',2)" aria-label="Utilidad: 2 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',3)" aria-label="Utilidad: 3 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',4)" aria-label="Utilidad: 4 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('utilidad',5)" aria-label="Utilidad: 5 estrellas">★</button>
+            </div>
+          </div>
+          <div class="fb-row">
+            <span class="fb-row-label">Usabilidad</span>
+            <div class="fb-stars" id="fb-usabilidad" role="group" aria-label="Calificar usabilidad">
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',1)" aria-label="Usabilidad: 1 estrella">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',2)" aria-label="Usabilidad: 2 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',3)" aria-label="Usabilidad: 3 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',4)" aria-label="Usabilidad: 4 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('usabilidad',5)" aria-label="Usabilidad: 5 estrellas">★</button>
+            </div>
+          </div>
+          <div class="fb-row">
+            <span class="fb-row-label">Funcionalidades</span>
+            <div class="fb-stars" id="fb-funcionalidades" role="group" aria-label="Calificar funcionalidades">
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',1)" aria-label="Funcionalidades: 1 estrella">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',2)" aria-label="Funcionalidades: 2 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',3)" aria-label="Funcionalidades: 3 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',4)" aria-label="Funcionalidades: 4 estrellas">★</button>
+              <button type="button" class="fb-star" onclick="fbRate('funcionalidades',5)" aria-label="Funcionalidades: 5 estrellas">★</button>
+            </div>
+          </div>
+          <div class="fb-message-group">
+            <label for="fb-mensaje">Mensaje</label>
+            <textarea class="fb-textarea" id="fb-mensaje" placeholder="Escribe tu comentario aquí..." maxlength="100"
+              oninput="document.getElementById('fb-char-num').textContent=this.value.length"></textarea>
+            <div class="fb-char-count"><span id="fb-char-num">0</span>/100</div>
+          </div>
+          <div id="fb-status" style="font-size:14px;min-height:20px;margin-top:14px;text-align:center;font-weight:600"></div>
+          <button type="button" class="fb-submit" id="fb-send-btn" onclick="submitFeedback()">Enviar Feedback →</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand" aria-label="Cuentas al Día">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" style="vertical-align:middle;margin-right:6px"><rect x="3" y="4" width="18" height="18" rx="2.5" fill="#dbeafe"/><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5V11H3Z" fill="#0052cc"/><rect x="7.5" y="2" width="2" height="5" rx="1" fill="#0079bf"/><rect x="14.5" y="2" width="2" height="5" rx="1" fill="#0079bf"/><polyline points="8 17 11 20 16.5 13.5" stroke="#36b37e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Cuentas al Día
+        </div>
+        <nav class="footer-links" aria-label="Links del pie de página">
+          <a href="desktop.html" class="footer-link">Demo Escritorio</a>
+          <a href="mobile.html" class="footer-link">Demo Celular</a>
+          <a href="#funciones" class="footer-link">Funciones</a>
+          <a href="#como-funciona" class="footer-link">Cómo Funciona</a>
+          <a href="#compartir" class="footer-link">Compartir</a>
+          <a href="#feedback" class="footer-link">Feedback</a>
+        </nav>
+      </div>
+      <p class="footer-copy">
+        Hecho con 🧠· Sin servidores, sin tracking, sin cuentas. Tus datos son tuyos.
+        <br>dev.miguelangel.jaimen
+      </p>
+    </div>
+  </footer>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script defer src="js/landing.js"></script>
+
+</body>
+
+</html>
