@@ -191,7 +191,7 @@ window.addEventListener('beforeinstallprompt', e => {
   if (!_isStandalone() && !localStorage.getItem(_installKey)) {
     document.getElementById('install-native').style.display = 'block';
     document.getElementById('install-ios').style.display = 'none';
-    // setTimeout(() => openSheet('install-sheet-overlay'), 3500); // deshabilitado temporalmente
+    setTimeout(() => openSheet('install-sheet-overlay'), 3500);
   }
 });
 
