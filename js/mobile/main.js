@@ -77,8 +77,7 @@ function deleteBoardById(boardId) {
 }
 
 document.getElementById('back-btn').addEventListener('click', backToBoards);
-document.getElementById('boards-logout-btn').addEventListener('click', logout);
-document.getElementById('logout-btn').addEventListener('click', logout);
+// logout se llama desde el menu sheet (onclick en HTML)
 
 // ===== USERS =====
 function deleteUser(username) {
@@ -94,11 +93,37 @@ function deleteUser(username) {
   renderUserList();
 }
 
+// ===== AVATAR =====
+var AVATAR_COLORS = ['#0052cc','#00875a','#de350b','#6554c0','#0065ff','#00b8d9','#ff7452','#36b37e'];
+
+function avatarColor(name) {
+  var sum = 0;
+  for (var i = 0; i < name.length; i++) sum += name.charCodeAt(i);
+  return AVATAR_COLORS[sum % AVATAR_COLORS.length];
+}
+
+function setAvatars(name) {
+  var initial = name.charAt(0).toUpperCase();
+  var color   = avatarColor(name);
+  ['boards-avatar', 'board-avatar'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) { el.textContent = initial; el.style.background = color; }
+  });
+  var large = document.getElementById('menu-avatar-large');
+  if (large) { large.textContent = initial; large.style.background = color; }
+  var uname = document.getElementById('menu-username');
+  if (uname) uname.textContent = name;
+}
+
+// ===== MENU SHEET =====
+function openMenuSheet()  { openSheet('menu-sheet-overlay'); }
+function closeMenuSheet() { closeSheet('menu-sheet-overlay'); }
+
 // ===== LOGIN =====
 function login(username) {
   currentUser = username.trim();
   sessionStorage.setItem('currentUser', currentUser);
-  document.getElementById('boards-user-badge').textContent = currentUser;
+  setAvatars(currentUser);
   loadBoards();
   // Import pending shared board (arrived via URL hash before login)
   const pending = sessionStorage.getItem('pendingShare');

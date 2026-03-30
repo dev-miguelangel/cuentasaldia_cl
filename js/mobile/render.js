@@ -175,7 +175,7 @@ function renderActiveTab() {
 }
 
 function renderBoards() {
-  document.getElementById('boards-user-badge').textContent = currentUser;
+  setAvatars(currentUser);
   const list = document.getElementById('boards-list');
   list.innerHTML = boards.map((b, i) => {
     const color = BOARD_COLORS[i % BOARD_COLORS.length];
