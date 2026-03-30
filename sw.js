@@ -1,4 +1,4 @@
-const CACHE = 'cuentasaldia-v1';
+const CACHE = 'cuentasaldia-v2';
 const STATIC = [
   '/mobile.html',
   '/css/mobile.css',
