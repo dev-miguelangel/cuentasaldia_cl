@@ -211,6 +211,7 @@ function renderBoards() {
     });
   });
   document.getElementById('new-board-btn').addEventListener('click', openBoardSheet);
+  onbCheckNewBoard();
 }
 
 function renderUserList() {

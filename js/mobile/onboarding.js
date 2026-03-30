@@ -1,7 +1,21 @@
 // ===== ONBOARDING =====
+var ONB_BOARD   = 'onb_v1_board';
 var ONB_EXPENSE = 'onb_v1_expense';
 var ONB_TABS    = 'onb_v1_tabs';
 var ONB_SHARE   = 'onb_v1_share';
+
+// ── Nuevo Tablero pulse: se llama desde renderBoards()
+function onbCheckNewBoard() {
+  if (localStorage.getItem(ONB_BOARD)) return;
+  var btn = document.getElementById('new-board-btn');
+  if (!btn) return;
+  if (boards.length > 0) {
+    btn.classList.remove('onb-pulse');
+    localStorage.setItem(ONB_BOARD, '1');
+  } else {
+    btn.classList.add('onb-pulse');
+  }
+}
 
 // ── FAB pulse: llama la atención sobre el botón + cuando el tablero está vacío
 function onbCheckFAB() {
