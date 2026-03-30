@@ -1415,3 +1415,57 @@ body {
     transform: translateY(0);
   }
 }
+
+/* ===== ONBOARDING ===== */
+
+@keyframes onbPulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(0,82,204,0.35), 0 0 0 0 rgba(0,82,204,0.55); }
+  50%       { box-shadow: 0 4px 16px rgba(0,82,204,0.35), 0 0 0 14px rgba(0,82,204,0); }
+}
+
+@keyframes onbPulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(54,179,126,0.7); }
+  50%       { box-shadow: 0 0 0 10px rgba(54,179,126,0); }
+}
+
+#fab.onb-pulse {
+  animation: onbPulse 1.5s ease-in-out infinite;
+}
+
+.onb-pulse-green {
+  animation: onbPulseGreen 1.5s ease-in-out infinite;
+  position: relative;
+}
+
+.onb-pulse-green::after {
+  content: '¡Compartir!';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #36b37e;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.onb-tab-hint {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0052cc;
+  background: #e8f0fe;
+  border-top: 1.5px solid #c7d8f8;
+  padding: 7px 0;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.onb-tab-hint.onb-fade-out {
+  opacity: 0;
+}

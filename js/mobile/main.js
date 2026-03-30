@@ -28,6 +28,7 @@ function deleteExpense(id) {
 function addExpense(titulo, monto, estado, prioridad) {
   expenses.push({ id: Date.now().toString(), titulo, monto, estado, prioridad });
   saveExpenses(); renderActiveTab();
+  onbFirstExpenseDone();
 }
 
 function moveExpense(id, targetColId) {
@@ -56,6 +57,8 @@ function enterBoard(board) {
   loadExpenses(); loadBudget();
   setView('board-view');
   renderActiveTab();
+  onbCheckFAB();
+  onbCheckShare();
 }
 
 function backToBoards() {

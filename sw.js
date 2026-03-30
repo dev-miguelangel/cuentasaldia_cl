@@ -6,6 +6,7 @@ const STATIC = [
   '/js/shared/utils.js',
   '/js/shared/storage.js',
   '/js/shared/share.js',
+  '/js/mobile/onboarding.js',
   '/js/mobile/main.js',
   '/js/mobile/render.js',
   '/js/mobile/sheets.js',
