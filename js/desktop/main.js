@@ -31,6 +31,7 @@ function enterBoard(board) {
   document.getElementById('header-board-name').textContent = board.name;
   loadExpenses();
   loadBudget();
+  switchTabPC('board');
   renderBoard();
 }
 
@@ -149,6 +150,32 @@ document.getElementById('username-input').addEventListener('keydown', e => {
 document.getElementById('logout-btn').addEventListener('click', logout);
 document.getElementById('back-btn').addEventListener('click', backToBoards);
 document.getElementById('boards-logout-btn').addEventListener('click', logout);
+
+// ===== TABLET TAB BAR =====
+var activeTabPC = 'board';
+
+function switchTabPC(tab) {
+  activeTabPC = tab;
+  var boardContent = document.getElementById('board-tab-content');
+  var summaryContent = document.getElementById('summary-tab-content');
+  if (tab === 'resumen') {
+    boardContent.style.display = 'none';
+    summaryContent.style.display = '';
+    renderSummaryPC();
+  } else {
+    boardContent.style.display = '';
+    summaryContent.style.display = 'none';
+  }
+  document.querySelectorAll('.tab-pc').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
+}
+
+document.getElementById('tab-bar-pc').addEventListener('click', function(e) {
+  var btn = e.target.closest('.tab-pc');
+  if (!btn) return;
+  switchTabPC(btn.dataset.tab);
+});
 
 // ===== PWA INSTALL =====
 var _deferredPrompt = null;

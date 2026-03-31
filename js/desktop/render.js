@@ -179,6 +179,66 @@ function renderBoard() {
   });
 }
 
+// ===== RESUMEN PC (tablet) =====
+var COL_SUMMARY_META_PC = {
+  por_pagar: { label: 'Por Pagar', bg: '#fff0e6', stroke: '#ff8b00' },
+  carrito:   { label: 'Carrito',   bg: '#e6f4ff', stroke: '#0079bf' },
+  pagado:    { label: 'Pagado',    bg: '#e6fff5', stroke: '#36b37e' },
+};
+
+function renderSummaryPC() {
+  var container = document.getElementById('summary-tab-content');
+  if (!container) return;
+
+  var total = expenses.reduce(function(s, e) { return s + e.monto; }, 0);
+  var spent = expenses.filter(function(e) { return e.estado === 'carrito' || e.estado === 'pagado'; })
+    .reduce(function(s, e) { return s + e.monto; }, 0);
+
+  var colCards = Object.entries(COL_SUMMARY_META_PC).map(function(entry) {
+    var id = entry[0], meta = entry[1];
+    var colExp = expenses.filter(function(e) { return e.estado === id; });
+    var colTotal = colExp.reduce(function(s, e) { return s + e.monto; }, 0);
+    var count = colExp.length;
+    return '<div class="sum-pc-col-card" style="border-left:4px solid ' + meta.stroke + ';background:' + meta.bg + '">' +
+      '<div class="sum-pc-col-name" style="color:' + meta.stroke + '">' + meta.label + '</div>' +
+      '<div class="sum-pc-col-total">' + formatCLP(colTotal) + '</div>' +
+      '<div class="sum-pc-col-count">' + count + ' gasto' + (count !== 1 ? 's' : '') + '</div>' +
+      '</div>';
+  }).join('');
+
+  var priRows = [
+    { key: 'vital',    label: 'Vital',    color: '#de350b' },
+    { key: 'gusto',    label: 'Gusto',    color: '#0079bf' },
+    { key: 'capricho', label: 'Capricho', color: '#6554c0' },
+  ].map(function(p) {
+    var pTotal = expenses.filter(function(e) { return (e.prioridad || 'gusto') === p.key; })
+      .reduce(function(s, e) { return s + e.monto; }, 0);
+    var pct = total > 0 ? Math.round(pTotal / total * 100) : 0;
+    return '<div class="sum-pc-pri-row">' +
+      '<div class="sum-pc-pri-dot" style="background:' + p.color + '"></div>' +
+      '<div class="sum-pc-pri-label">' + p.label + '</div>' +
+      '<div class="sum-pc-pri-track"><div class="sum-pc-pri-fill" style="width:' + pct + '%;background:' + p.color + '"></div></div>' +
+      '<div class="sum-pc-pri-val">' + pct + '%</div>' +
+      '</div>';
+  }).join('');
+
+  container.innerHTML =
+    '<div class="sum-pc-wrap">' +
+      '<div class="sum-pc-card">' +
+        '<div class="sum-pc-card-title">Columnas</div>' +
+        '<div class="sum-pc-cols">' + colCards + '</div>' +
+      '</div>' +
+      '<div class="sum-pc-card">' +
+        '<div class="sum-pc-card-title">Distribución Por Prioridad</div>' +
+        priRows +
+      '</div>' +
+      '<div class="sum-pc-card sum-pc-budget-wrap">' + boardBudgetHTML(spent) + '</div>' +
+    '</div>';
+
+  var budgetBtn = container.querySelector('#budget-edit-btn');
+  if (budgetBtn) budgetBtn.addEventListener('click', openBudgetModal);
+}
+
 function renderBoards() {
   const grid = document.getElementById('boards-grid');
   grid.innerHTML = boards.map((b, i) => {

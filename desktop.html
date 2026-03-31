@@ -65,10 +65,22 @@
         <button class="btn-logout" id="logout-btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Salir</button>
       </div>
     </header>
+    <!-- Tab bar: solo visible en tablet (≤1024px via CSS) -->
+    <div class="tab-bar-pc" id="tab-bar-pc">
+      <button class="tab-pc active" data-tab="board">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Tablero
+      </button>
+      <button class="tab-pc" data-tab="resumen">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Resumen
+      </button>
+    </div>
     <div id="board-budget-row"></div>
-    <div class="board-content">
+    <div class="board-content" id="board-tab-content">
       <div class="columns-container" id="columns-container"></div>
     </div>
+    <div class="board-summary-pc" id="summary-tab-content" style="display:none"></div>
   </div>
 
   <!-- BOARD NAME MODAL -->

@@ -1346,14 +1346,165 @@ body {
   }
 }
 
+/* ===== TAB BAR PC (solo tablet) ===== */
+.tab-bar-pc {
+  display: none;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0 16px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.tab-pc {
+  padding: 0 18px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab-pc.active {
+  color: white;
+  border-bottom-color: white;
+}
+
+.tab-pc:hover:not(.active) {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== SUMMARY VIEW PC (tablet) ===== */
+.board-summary-pc {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px 20px 24px;
+}
+
+.sum-pc-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 680px;
+}
+
+.sum-pc-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.sum-pc-card-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #5e6c84;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 14px;
+}
+
+.sum-pc-cols {
+  display: flex;
+  gap: 10px;
+}
+
+.sum-pc-col-card {
+  flex: 1;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.sum-pc-col-name {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+
+.sum-pc-col-total {
+  font-size: 22px;
+  font-weight: 800;
+  color: #172b4d;
+  letter-spacing: -0.4px;
+}
+
+.sum-pc-col-count {
+  font-size: 11px;
+  color: #97a0af;
+  margin-top: 2px;
+}
+
+.sum-pc-pri-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.sum-pc-pri-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sum-pc-pri-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #344563;
+  width: 72px;
+  flex-shrink: 0;
+}
+
+.sum-pc-pri-track {
+  flex: 1;
+  height: 8px;
+  background: #dfe1e6;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.sum-pc-pri-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.sum-pc-pri-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #5e6c84;
+  width: 32px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.sum-pc-budget-wrap .budget-empty,
+.sum-pc-budget-wrap .budget-bar-wrap {
+  margin-top: 0;
+  background: none;
+}
+
 /* ===== TABLET ≤ 1024px (iPad landscape, small desktop) ===== */
 @media (max-width: 1024px) {
-  .column {
-    width: 240px;
+  .tab-bar-pc {
+    display: flex;
   }
 
   .analytics-column {
-    width: 420px;
+    display: none;
+  }
+
+  .column {
+    width: 240px;
   }
 
   .header-board-name {
@@ -1399,10 +1550,6 @@ body {
 
   .column {
     width: 220px;
-  }
-
-  .analytics-column {
-    width: 360px;
   }
 
   .boards-content {
