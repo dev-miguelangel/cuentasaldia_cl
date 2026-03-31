@@ -1513,6 +1513,51 @@ body {
   }
 }
 
+/* Budget empty override for white summary card */
+.summary-budget-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.summary-budget-card .budget-empty {
+  border-color: #dfe1e6;
+  margin: 10px;
+}
+
+.summary-budget-card .budget-empty-icon {
+  color: #0052cc;
+}
+
+.summary-budget-card .budget-empty-title {
+  color: #172b4d;
+}
+
+.summary-budget-card .budget-empty-sub {
+  color: #5e6c84;
+}
+
+.summary-budget-card .budget-empty:active {
+  background: #f4f5f7;
+}
+
+.summary-budget-card .budget-bar-wrap {
+  padding: 14px 16px;
+}
+
+.summary-budget-card .budget-bar-label-left,
+.summary-budget-card .budget-bar-label-right {
+  color: #5e6c84;
+}
+
+.summary-budget-card .budget-bar-track {
+  background: #e8edf2;
+}
+
+.summary-budget-card .budget-edit-hint {
+  color: #5e6c84;
+}
+
 /* ===== SUMMARY TAB ===== */
 
 .summary-view {

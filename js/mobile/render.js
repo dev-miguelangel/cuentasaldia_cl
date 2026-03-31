@@ -174,11 +174,11 @@ function renderSummary() {
   const boardSpent = expenses
     .filter(e => e.estado === 'carrito' || e.estado === 'pagado')
     .reduce((s, e) => s + e.monto, 0);
-  const budgetHtml = budget ? `
+  const budgetHtml = `
     <div class="summary-budget-card" id="summary-budget-card">
       ${boardBudgetHTML(boardSpent)}
     </div>
-  ` : '';
+  `;
 
   content.innerHTML = `<div class="summary-view">${budgetHtml}${colCards}${priCard}</div>`;
 
