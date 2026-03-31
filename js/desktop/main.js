@@ -184,6 +184,34 @@ document.getElementById('install-desktop-close').addEventListener('click', () =>
   localStorage.setItem(_installKey, '1');
 });
 
+// ===== PWA INSTALL — iOS / iPadOS =====
+function _detectIOS() {
+  return (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function _tryShowIOSInstall() {
+  if (_isStandalone()) return;
+  if (localStorage.getItem(_installKey)) return;
+  if (!_detectIOS()) return;
+  setTimeout(function() {
+    var t = document.getElementById('install-ios-toast');
+    if (t) t.style.display = 'block';
+  }, 4000);
+}
+
+document.getElementById('install-ios-close').addEventListener('click', function() {
+  document.getElementById('install-ios-toast').style.display = 'none';
+  localStorage.setItem(_installKey, '1');
+});
+
+document.getElementById('install-ios-ok').addEventListener('click', function() {
+  document.getElementById('install-ios-toast').style.display = 'none';
+  localStorage.setItem(_installKey, '1');
+});
+
+_tryShowIOSInstall();
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
 }

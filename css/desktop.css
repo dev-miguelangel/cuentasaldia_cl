@@ -129,6 +129,9 @@ body {
   font-size: 13px;
   cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .btn-logout:hover {
@@ -144,6 +147,9 @@ body {
   font-size: 13px;
   cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .btn-feedback:hover {
@@ -1132,6 +1138,9 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .btn-back:hover {
@@ -1334,5 +1343,104 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ===== TABLET ≤ 1024px (iPad landscape, small desktop) ===== */
+@media (max-width: 1024px) {
+  .column {
+    width: 240px;
+  }
+
+  .analytics-column {
+    width: 420px;
+  }
+
+  .header-board-name {
+    max-width: 160px;
+  }
+
+  .boards-grid {
+    max-width: 100%;
+  }
+}
+
+/* ===== TABLET PORTRAIT ≤ 768px (iPad portrait) ===== */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .header-right {
+    gap: 6px;
+  }
+
+  .btn-feedback,
+  .btn-logout {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .btn-back {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .user-badge {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+
+  .header-board-name {
+    max-width: 110px;
+    font-size: 13px;
+  }
+
+  .column {
+    width: 220px;
+  }
+
+  .analytics-column {
+    width: 360px;
+  }
+
+  .boards-content {
+    padding: 20px 14px;
+  }
+
+  .boards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+
+  .board-content {
+    padding: 12px;
+  }
+
+  #board-budget-row {
+    padding: 8px 14px 10px;
+  }
+
+  .modal {
+    max-width: 340px;
+    padding: 22px;
+  }
+
+  .modal-wide {
+    max-width: 94vw;
+  }
+}
+
+/* ===== TABLET SMALL ≤ 600px ===== */
+@media (max-width: 600px) {
+  /* En pantallas muy pequeñas ocultar texto de botones secundarios */
+  .btn-feedback span.btn-text,
+  .btn-logout span.btn-text {
+    display: none;
+  }
+
+  .header-board-name {
+    max-width: 90px;
   }
 }

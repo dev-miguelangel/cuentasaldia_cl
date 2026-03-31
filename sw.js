@@ -1,7 +1,9 @@
-const CACHE = 'cuentasaldia-v2';
+const CACHE = 'cuentasaldia-v3';
 const STATIC = [
   '/mobile.html',
+  '/desktop.html',
   '/css/mobile.css',
+  '/css/desktop.css',
   '/js/shared/config.js',
   '/js/shared/utils.js',
   '/js/shared/storage.js',
@@ -11,7 +13,13 @@ const STATIC = [
   '/js/mobile/render.js',
   '/js/mobile/sheets.js',
   '/js/mobile/charts.js',
+  '/js/desktop/main.js',
+  '/js/desktop/render.js',
+  '/js/desktop/charts.js',
+  '/js/desktop/drag.js',
+  '/js/desktop/modals.js',
   '/manifest-app.json',
+  '/manifest.json',
 ];
 
 self.addEventListener('install', e => {
