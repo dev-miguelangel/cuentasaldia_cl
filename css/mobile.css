@@ -231,17 +231,30 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border: none;
   color: white;
-  padding: 8px 14px;
+  width: 36px;
+  height: 36px;
   border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
   cursor: pointer;
-  white-space: nowrap;
-  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .app-header-back:active {
   background: rgba(255, 255, 255, 0.35);
+}
+
+.app-header-board-title {
+  flex: 1;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 4px;
 }
 
 .app-header-title {
@@ -499,17 +512,7 @@ body {
   margin-left: auto;
 }
 
-.board-title-bar {
-  flex-shrink: 0;
-  padding: 10px 16px 4px;
-  font-size: 19px;
-  font-weight: 800;
-  color: white;
-  letter-spacing: -0.3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+/* .board-title-bar removed — title now lives inside .app-header as .app-header-board-title */
 
 .col-summary {
   flex-shrink: 0;

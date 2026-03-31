@@ -105,10 +105,6 @@ function avatarColor(name) {
 function setAvatars(name) {
   var initial = name.charAt(0).toUpperCase();
   var color   = avatarColor(name);
-  ['boards-avatar', 'board-avatar'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) { el.textContent = initial; el.style.background = color; }
-  });
   var large = document.getElementById('menu-avatar-large');
   if (large) { large.textContent = initial; large.style.background = color; }
   var uname = document.getElementById('menu-username');
