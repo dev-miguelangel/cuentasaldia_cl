@@ -119,64 +119,8 @@ function renderBoard() {
     container.appendChild(colEl);
   });
 
-  // ── analytics column ──
-  const analyticsEl = document.createElement('div');
-  analyticsEl.className = 'analytics-column';
-  analyticsEl.innerHTML = `
-    <div class="analytics-header">
-      <div class="analytics-title">Análisis</div>
-    </div>
-    <div class="analytics-body">
-      <div>
-        <div class="chart-block-title">Distribución Por Tipo</div>
-        <div class="charts-row">
-          <canvas id="chart-col-por_pagar" class="analytics-canvas" height="158"></canvas>
-          <canvas id="chart-col-carrito"   class="analytics-canvas" height="158"></canvas>
-          <canvas id="chart-col-pagado"    class="analytics-canvas" height="158"></canvas>
-        </div>
-      </div>
-      <div class="chart-divider"></div>
-      <div>
-        <div class="chart-block-title">Total Por Columna</div>
-        <canvas id="chart-columnas" class="analytics-canvas" height="129"></canvas>
-      </div>
-      <div class="chart-divider"></div>
-      <div>
-        <div class="chart-block-title">Guía De Prioridades</div>
-        <div class="priority-guide priority-guide-row">
-          <div class="priority-guide-item">
-            <div class="priority-guide-dot" style="background:#de350b"></div>
-            <div>
-              <div class="priority-guide-name">Vital</div>
-              <div class="priority-guide-desc">Sin esto, el mundo se detiene.</div>
-            </div>
-          </div>
-          <div class="priority-guide-item">
-            <div class="priority-guide-dot" style="background:#4fc3f7"></div>
-            <div>
-              <div class="priority-guide-name">Gusto</div>
-              <div class="priority-guide-desc">Lo que mantiene tu ritmo de vida.</div>
-            </div>
-          </div>
-          <div class="priority-guide-item">
-            <div class="priority-guide-dot" style="background:#6554c0"></div>
-            <div>
-              <div class="priority-guide-name">Capricho</div>
-              <div class="priority-guide-desc">Innecesario, pero te saca una sonrisa.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-  container.appendChild(analyticsEl);
-
   renderBoardBudget();
   attachEvents();
-  requestAnimationFrame(() => {
-    drawColumnCharts();
-    drawChartColumnas();
-  });
 }
 
 // ===== RESUMEN PC (tablet) =====
