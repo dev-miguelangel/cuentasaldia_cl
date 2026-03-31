@@ -97,6 +97,102 @@ function analyticsHTML() {
   `;
 }
 
+// ===== SUMMARY TAB =====
+var COL_SUMMARY_META = {
+  por_pagar: { label: 'Por Pagar', bg: '#fff0e6', stroke: '#ff8b00',
+    icon: '<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>' },
+  carrito:   { label: 'Carrito',   bg: '#e6f4ff', stroke: '#0079bf',
+    icon: '<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>' },
+  pagado:    { label: 'Pagado',    bg: '#e6fff5', stroke: '#36b37e',
+    icon: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>' },
+};
+
+var PRI_SUMMARY = [
+  { key: 'vital',    label: 'Vital',    color: '#de350b' },
+  { key: 'gusto',    label: 'Gusto',    color: '#0079bf' },
+  { key: 'capricho', label: 'Capricho', color: '#6554c0' },
+];
+
+function renderSummary() {
+  const content = document.getElementById('tab-content');
+  const summary = document.getElementById('col-summary');
+  const fab     = document.getElementById('fab');
+
+  fab.style.display = 'none';
+
+  const totalGeneral = expenses.reduce((s, e) => s + e.monto, 0);
+  summary.innerHTML = `
+    <div class="col-summary-title">Total General</div>
+    <div class="col-summary-total">${formatCLP(totalGeneral)}</div>
+  `;
+
+  // Column cards
+  const colCards = COLUMNS.map(col => {
+    const m = COL_SUMMARY_META[col.id];
+    const colExp = expenses.filter(e => e.estado === col.id);
+    const total  = colExp.reduce((s, e) => s + e.monto, 0);
+    const count  = colExp.length;
+    return `
+      <div class="summary-col-card" data-tab="${col.id}">
+        <div class="summary-col-icon" style="background:${m.bg}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${m.stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${m.icon}</svg>
+        </div>
+        <div class="summary-col-body">
+          <div class="summary-col-title">${m.label}</div>
+          <div class="summary-col-meta">${count} ${count === 1 ? 'gasto' : 'gastos'}</div>
+        </div>
+        <div class="summary-col-total">${formatCLP(total)}</div>
+        <div class="summary-col-chevron"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      </div>
+    `;
+  }).join('');
+
+  // Priority bars
+  const pri = { vital: 0, gusto: 0, capricho: 0 };
+  expenses.forEach(e => { pri[e.prioridad || 'gusto'] += e.monto; });
+  const priGrand = pri.vital + pri.gusto + pri.capricho;
+
+  const priCard = priGrand > 0 ? `
+    <div class="summary-pri-card">
+      <div class="summary-pri-title">Distribución por prioridad</div>
+      ${PRI_SUMMARY.map(p => {
+        const pct = Math.round(pri[p.key] / priGrand * 100);
+        return `
+          <div class="summary-pri-row">
+            <div class="summary-pri-label">${p.label}</div>
+            <div class="summary-pri-track">
+              <div class="summary-pri-fill" style="width:${pct}%;background:${p.color}"></div>
+            </div>
+            <div class="summary-pri-val">${formatCLP(pri[p.key])}</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  ` : '';
+
+  // Budget
+  const boardSpent = expenses
+    .filter(e => e.estado === 'carrito' || e.estado === 'pagado')
+    .reduce((s, e) => s + e.monto, 0);
+  const budgetHtml = budget ? `
+    <div class="summary-budget-card" id="summary-budget-card">
+      ${boardBudgetHTML(boardSpent)}
+    </div>
+  ` : '';
+
+  content.innerHTML = `<div class="summary-view">${budgetHtml}${colCards}${priCard}</div>`;
+
+  content.querySelectorAll('.summary-col-card').forEach(card => {
+    card.addEventListener('click', () => {
+      activeTab = card.dataset.tab;
+      renderActiveTab();
+    });
+  });
+
+  const budgetCard = document.getElementById('summary-budget-card');
+  if (budgetCard) budgetCard.addEventListener('click', openBudgetSheet);
+}
+
 function updateTabBar() {
   document.querySelectorAll('.tab-item').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.tab === activeTab);
@@ -110,19 +206,13 @@ function renderActiveTab() {
 
   updateTabBar();
 
-  if (activeTab === 'analytics') {
-    fab.style.display = 'none';
-    const total = expenses.reduce((s, e) => s + e.monto, 0);
-    summary.innerHTML = `
-      <div class="col-summary-title">Total General</div>
-      <div class="col-summary-total">${formatCLP(total)}</div>
-    `;
-    content.innerHTML = analyticsHTML();
-    requestAnimationFrame(() => { drawColumnCharts(); drawChartColumnas(); });
+  if (activeTab === 'resumen') {
+    renderSummary();
     return;
   }
 
   fab.style.display = 'flex';
+  onbCheckFAB();
   const col = COLUMNS.find(c => c.id === activeTab);
   const colExpenses = expenses.filter(e => e.estado === activeTab);
   const total = colExpenses.reduce((s, e) => s + e.monto, 0);
