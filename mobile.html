@@ -56,7 +56,13 @@
     <div class="app-header">
       <button class="app-header-back" id="back-btn">← Tableros</button>
       <div class="app-header-actions">
-        <button class="app-feedback-btn" id="share-board-btn" onclick="openShareSheet()">🔗</button>
+        <button class="app-feedback-btn" id="share-board-btn" onclick="openShareSheet()" aria-label="Compartir tablero">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+        </button>
         <button class="app-avatar app-avatar-sm" id="board-avatar" aria-label="Menú de usuario" onclick="openMenuSheet()"></button>
         <button class="app-hamburger" id="board-menu-btn" aria-label="Abrir menú" onclick="openMenuSheet()">☰</button>
       </div>
