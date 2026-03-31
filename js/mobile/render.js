@@ -25,7 +25,7 @@ function cardHTML(e) {
   `;
 }
 
-function boardBudgetHTML(spent) {
+function boardBudgetHTML(spent, lightBg) {
   if (!budget) {
     return `
       <div class="budget-empty">
@@ -41,10 +41,17 @@ function boardBudgetHTML(spent) {
   const over = spent > budget;
   const pct = over ? 0 : Math.max((remaining / budget) * 100, 0);
   let barColor, textColor;
-  if (over) { barColor = '#de350b'; textColor = '#ffccc2'; }
-  else if (pct <= 10) { barColor = '#ff5630'; textColor = '#ffceba'; }
-  else if (pct <= 30) { barColor = '#ff991f'; textColor = '#ffe5a0'; }
-  else { barColor = '#36b37e'; textColor = '#b3f5d4'; }
+  if (lightBg) {
+    if (over) { barColor = '#de350b'; textColor = '#de350b'; }
+    else if (pct <= 10) { barColor = '#ff5630'; textColor = '#d04000'; }
+    else if (pct <= 30) { barColor = '#ff991f'; textColor = '#b36200'; }
+    else { barColor = '#36b37e'; textColor = '#006644'; }
+  } else {
+    if (over) { barColor = '#de350b'; textColor = '#ffccc2'; }
+    else if (pct <= 10) { barColor = '#ff5630'; textColor = '#ffceba'; }
+    else if (pct <= 30) { barColor = '#ff991f'; textColor = '#ffe5a0'; }
+    else { barColor = '#36b37e'; textColor = '#b3f5d4'; }
+  }
   const label = over
     ? `⚠ Excedido Por ${formatCLP(Math.abs(remaining))}`
     : `${formatCLP(remaining)} Disponible`;
@@ -176,7 +183,7 @@ function renderSummary() {
     .reduce((s, e) => s + e.monto, 0);
   const budgetHtml = `
     <div class="summary-budget-card" id="summary-budget-card">
-      ${boardBudgetHTML(boardSpent)}
+      ${boardBudgetHTML(boardSpent, true)}
     </div>
   `;
 
