@@ -52,7 +52,7 @@ document.getElementById('tab-bar').addEventListener('click', e => {
 // ===== BOARDS NAVIGATION =====
 function enterBoard(board) {
   currentBoard = board;
-  activeTab = 'por_pagar';
+  activeTab = 'resumen';
   document.getElementById('board-title-bar').textContent = board.name;
   loadExpenses(); loadBudget();
   setView('board-view');
