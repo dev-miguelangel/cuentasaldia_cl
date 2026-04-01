@@ -2,6 +2,10 @@
 
 function cardHTML(expense) {
   const pri = expense.prioridad || 'gusto';
+  const cat = expense.categoriaId ? categorias.find(c => c.id === expense.categoriaId) : null;
+  const catChip = cat
+    ? `<div class="card-cat-chip" style="background:${hexToRgba(cat.color, 0.12)};color:${cat.color}">${escapeHTML(cat.name)}</div>`
+    : '';
   return `
     <div class="card" draggable="true" data-id="${expense.id}">
       <div class="card-header">
@@ -11,6 +15,7 @@ function cardHTML(expense) {
           <button class="card-delete" data-id="${expense.id}" title="Eliminar">✕</button>
         </div>
       </div>
+      ${catChip}
       <div class="card-footer">
         <span class="priority-badge ${pri}">${PRIORITY_LABELS[pri]}</span>
         <span class="card-amount">${formatCLP(expense.monto)}</span>
@@ -166,12 +171,32 @@ function renderSummaryPC() {
       '</div>';
   }).join('');
 
+  var catCardHTML;
+  if (categorias.length === 0) {
+    catCardHTML = '<div class="sum-pc-card">' +
+      '<div class="sum-pc-card-title">Distribución Por Categoría</div>' +
+      '<div class="sum-cat-no-cats">Este tablero no tiene categorías.<br>' +
+      '<span class="sum-cat-create-link">+ Crear categorías</span></div>' +
+      '</div>';
+  } else {
+    catCardHTML = '<div class="sum-pc-card">' +
+      '<div class="sum-pc-card-title">Distribución Por Categoría</div>' +
+      '<div class="sum-cat-tabs" id="sum-cat-tabs">' +
+      COLUMNS.map(function(col, i) {
+        return '<button class="sum-cat-tab' + (i === 0 ? ' active' : '') + '" data-col="' + col.id + '">' + col.title + '</button>';
+      }).join('') +
+      '</div>' +
+      '<div class="sum-cat-rows" id="sum-cat-rows"></div>' +
+      '</div>';
+  }
+
   container.innerHTML =
     '<div class="sum-pc-wrap">' +
       '<div class="sum-pc-card">' +
         '<div class="sum-pc-card-title">Columnas</div>' +
         '<div class="sum-pc-cols">' + colCards + '</div>' +
       '</div>' +
+      catCardHTML +
       '<div class="sum-pc-card">' +
         '<div class="sum-pc-card-title">Distribución Por Prioridad</div>' +
         priRows +
@@ -181,6 +206,21 @@ function renderSummaryPC() {
 
   var budgetBtn = container.querySelector('#budget-edit-btn');
   if (budgetBtn) budgetBtn.addEventListener('click', openBudgetModal);
+
+  var createLink = container.querySelector('.sum-cat-create-link');
+  if (createLink) createLink.addEventListener('click', openCatPanel);
+
+  var tabsEl = container.querySelector('#sum-cat-tabs');
+  if (tabsEl) {
+    tabsEl.addEventListener('click', function(e) {
+      var btn = e.target.closest('.sum-cat-tab');
+      if (!btn) return;
+      tabsEl.querySelectorAll('.sum-cat-tab').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderCatSummaryRows(btn.dataset.col);
+    });
+    renderCatSummaryRows(COLUMNS[0].id);
+  }
 }
 
 function renderBoards() {

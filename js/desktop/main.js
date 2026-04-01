@@ -6,6 +6,7 @@ var currentBoard = null;
 var boards = [];
 var expenses = [];
 var budget = 0;
+var categorias = [];
 var addingToColumn = null;
 var editingId = null;
 var importableBoardExpenses = [];
@@ -17,8 +18,8 @@ function deleteExpense(id) {
   renderBoard();
 }
 
-function addExpense(titulo, monto, estado, prioridad) {
-  expenses.push({ id: Date.now().toString(), titulo, monto, estado, prioridad });
+function addExpense(titulo, monto, estado, prioridad, categoriaId) {
+  expenses.push({ id: Date.now().toString(), titulo, monto, estado, prioridad, categoriaId: categoriaId || null });
   saveExpenses();
   renderBoard();
 }
@@ -31,6 +32,8 @@ function enterBoard(board) {
   document.getElementById('header-board-name').textContent = board.name;
   loadExpenses();
   loadBudget();
+  loadCategories();
+  populateCategorySelect();
   switchTabPC('board');
   renderBoard();
 }
@@ -39,6 +42,7 @@ function backToBoards() {
   currentBoard = null;
   expenses = [];
   budget = 0;
+  categorias = [];
   document.getElementById('board-view').style.display = 'none';
   document.getElementById('boards-view').style.display = 'flex';
   renderBoards();
@@ -51,6 +55,7 @@ function deleteBoardById(boardId) {
   boards = boards.filter(b => b.id !== boardId);
   localStorage.removeItem('cuentas_' + currentUser + '_' + boardId);
   localStorage.removeItem('presupuesto_' + currentUser + '_' + boardId);
+  localStorage.removeItem('categorias_' + currentUser + '_' + boardId);
   saveBoards();
   renderBoards();
 }
@@ -63,7 +68,8 @@ function deleteUser(username) {
     if (key && (
       key === 'tableros_' + username ||
       key.startsWith('cuentas_' + username + '_') ||
-      key.startsWith('presupuesto_' + username + '_')
+      key.startsWith('presupuesto_' + username + '_') ||
+      key.startsWith('categorias_' + username + '_')
     )) keysToDelete.push(key);
   }
   keysToDelete.forEach(k => localStorage.removeItem(k));

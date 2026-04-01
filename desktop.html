@@ -60,6 +60,7 @@
       </div>
       <div class="header-right">
         <span class="user-badge" id="user-badge"></span>
+        <button class="btn-feedback" id="cat-panel-btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Categorías</button>
         <button class="btn-feedback" id="share-board-btn-pc" onclick="openShareModal()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> Compartir</button>
         <button class="btn-feedback" onclick="openFeedbackModal()"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Feedback</button>
         <button class="btn-logout" id="logout-btn"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Salir</button>
@@ -135,6 +136,12 @@
           <button class="priority-opt active" data-priority="gusto">Gusto</button>
           <button class="priority-opt" data-priority="capricho">Capricho</button>
         </div>
+      </div>
+      <div class="form-group">
+        <label for="modal-categoria">Categoría <span style="font-size:11px;color:#aaa;font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>
+        <select id="modal-categoria">
+          <option value="">— Sin categoría —</option>
+        </select>
       </div>
       <div class="modal-actions">
         <button class="btn-add" id="modal-add-btn">Agregar</button>
@@ -308,6 +315,27 @@
       cursor:pointer;font-size:16px;padding:4px;line-height:1;flex-shrink:0">✕</button>
   </div>
 
+  <!-- CATEGORIES PANEL -->
+  <div class="cat-panel-overlay" id="cat-panel-overlay"></div>
+  <div class="cat-panel" id="cat-panel">
+    <div class="cat-panel-header">
+      <div>
+        <div class="cat-panel-title">Categorías del Tablero</div>
+        <div class="cat-panel-sub" id="cat-panel-sub"></div>
+      </div>
+      <button class="cat-panel-close" id="cat-panel-close" title="Cerrar">✕</button>
+    </div>
+    <div class="cat-list" id="cat-list"></div>
+    <div class="cat-form" id="cat-form">
+      <div class="cat-form-title">Nueva Categoría</div>
+      <input type="text" id="cat-name-input" placeholder="Ej: Supermercado, Créditos…" maxlength="30" />
+      <div class="cat-form-label">Color</div>
+      <div class="cat-color-swatches" id="cat-color-swatches"></div>
+      <button class="btn-add" id="cat-add-btn">+ Agregar</button>
+      <div class="cat-limit-msg" id="cat-limit-msg" style="display:none">Límite de 10 categorías alcanzado.</div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>emailjs.init('u1PGzoaxrjwOf3HLq');</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -319,6 +347,7 @@
   <script src="js/desktop/render.js"></script>
   <script src="js/desktop/charts.js"></script>
   <script src="js/desktop/drag.js"></script>
+  <script src="js/desktop/categories.js"></script>
   <script src="js/desktop/modals.js"></script>
   <script src="js/desktop/main.js"></script>
 

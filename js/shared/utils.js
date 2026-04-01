@@ -24,6 +24,13 @@ function initials(name) {
   return name.trim().split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
 }
 
+function hexToRgba(hex, alpha) {
+  var r = parseInt(hex.slice(1, 3), 16);
+  var g = parseInt(hex.slice(3, 5), 16);
+  var b = parseInt(hex.slice(5, 7), 16);
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+}
+
 function getStoredUsers() {
   const users = [];
   for (let i = 0; i < localStorage.length; i++) {

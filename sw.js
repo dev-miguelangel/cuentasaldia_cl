@@ -1,4 +1,4 @@
-const CACHE = 'cuentasaldia-v3';
+const CACHE = 'cuentasaldia-v4';
 const STATIC = [
   '/mobile.html',
   '/desktop.html',
@@ -17,6 +17,7 @@ const STATIC = [
   '/js/desktop/render.js',
   '/js/desktop/charts.js',
   '/js/desktop/drag.js',
+  '/js/desktop/categories.js',
   '/js/desktop/modals.js',
   '/manifest-app.json',
   '/manifest.json',

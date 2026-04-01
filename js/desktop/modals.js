@@ -81,6 +81,8 @@ function openModal(colId) {
   document.getElementById('modal-monto').classList.remove('error');
   document.querySelectorAll('.priority-opt').forEach(b => b.classList.remove('active'));
   document.querySelector('.priority-opt[data-priority="gusto"]').classList.add('active');
+  populateCategorySelect();
+  document.getElementById('modal-categoria').value = '';
   document.getElementById('modal-overlay').classList.add('active');
   document.getElementById('modal-titulo').focus();
 }
@@ -98,6 +100,8 @@ function openEditModal(id) {
   document.getElementById('modal-monto').classList.remove('error');
   document.querySelectorAll('.priority-opt').forEach(b => b.classList.remove('active'));
   document.querySelector(`.priority-opt[data-priority="${exp.prioridad || 'gusto'}"]`).classList.add('active');
+  populateCategorySelect();
+  document.getElementById('modal-categoria').value = exp.categoriaId || '';
   document.getElementById('modal-overlay').classList.add('active');
   document.getElementById('modal-titulo').focus();
 }
@@ -134,23 +138,27 @@ document.getElementById('modal-add-btn').addEventListener('click', () => {
 
   if (!valid) return;
 
+  const categoriaId = document.getElementById('modal-categoria').value || null;
+
   if (editingId) {
     const exp = expenses.find(e => e.id === editingId);
     if (exp) {
       exp.titulo = titulo;
       exp.monto = monto;
       exp.prioridad = selectedPriority();
+      exp.categoriaId = categoriaId;
     }
     saveExpenses();
     renderBoard();
     closeModal();
   } else {
-    addExpense(titulo, monto, addingToColumn, selectedPriority());
+    addExpense(titulo, monto, addingToColumn, selectedPriority(), categoriaId);
     // reset form and stay open for next expense
     tituloInput.value = '';
     montoInput.value = '';
     document.querySelectorAll('.priority-opt').forEach(b => b.classList.remove('active'));
     document.querySelector('.priority-opt[data-priority="gusto"]').classList.add('active');
+    document.getElementById('modal-categoria').value = '';
     tituloInput.focus();
   }
 });

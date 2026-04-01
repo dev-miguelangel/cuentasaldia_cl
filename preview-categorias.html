@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Preview – Categorías por Tablero</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#e4e9f2; color:#172b4d; min-height:100vh; }
+
+/* ── NAV ESCENAS ── */
+.scenes-nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:#172b4d; display:flex; gap:2px; padding:8px 12px;
+}
+.scene-btn {
+  padding:6px 14px; border-radius:6px; border:none; font-size:12px; font-weight:600;
+  cursor:pointer; background:rgba(255,255,255,0.12); color:#fff; letter-spacing:.3px;
+  transition:background .15s;
+}
+.scene-btn.active { background:#0079bf; }
+.scene-btn:hover:not(.active) { background:rgba(255,255,255,0.2); }
+.scenes-nav .label { color:rgba(255,255,255,0.45); font-size:11px; display:flex; align-items:center; margin-right:8px; white-space:nowrap; }
+
+.scene { display:none; padding-top:46px; }
+.scene.active { display:block; }
+
+/* ── HEADER ── */
+.header {
+  background:linear-gradient(90deg,#0052cc,#0079bf);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 18px; height:52px; box-shadow:0 2px 8px rgba(0,0,0,0.18);
+}
+.header-left { display:flex; align-items:center; gap:10px; }
+.btn-back { background:rgba(255,255,255,0.15); border:none; color:#fff; border-radius:6px; padding:5px 10px; font-size:12px; cursor:pointer; display:flex; align-items:center; gap:4px; }
+.header-board-name { color:#fff; font-weight:700; font-size:15px; }
+.header-right { display:flex; align-items:center; gap:8px; }
+.btn-header { background:rgba(255,255,255,0.15); border:none; color:#fff; border-radius:6px; padding:5px 11px; font-size:12px; cursor:pointer; display:flex; align-items:center; gap:5px; transition:background .15s; }
+.btn-header:hover { background:rgba(255,255,255,0.28); }
+.btn-header.highlighted { background:rgba(255,255,255,0.9); color:#0052cc; font-weight:700; box-shadow:0 0 0 2px #fff; }
+
+/* ── BOARD LAYOUT ── */
+.board-body { display:flex; gap:14px; padding:16px; overflow-x:auto; }
+.column { background:#ebecf0; border-radius:10px; width:260px; flex-shrink:0; display:flex; flex-direction:column; max-height:calc(100vh - 140px); }
+.column-header { padding:12px 14px 8px; }
+.column-title { font-weight:700; font-size:14px; color:#172b4d; }
+.column-total { font-size:12px; color:#5e6c84; margin-top:2px; }
+.cards-list { padding:6px 8px; flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:0; }
+.card { background:#fff; border-radius:8px; padding:10px 12px 10px; margin-bottom:8px; box-shadow:0 1px 3px rgba(9,30,66,.1); }
+.card-header { display:flex; justify-content:space-between; align-items:flex-start; }
+.card-title { font-size:13px; font-weight:600; color:#172b4d; line-height:1.35; }
+.card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:8px; }
+.priority-badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:10px; }
+.vital { background:#ffebe6; color:#de350b; }
+.gusto { background:#e6f2ff; color:#0079bf; }
+.capricho { background:#ede6ff; color:#6554c0; }
+.card-amount { font-size:12px; font-weight:700; color:#172b4d; }
+.cat-chip { font-size:10px; font-weight:600; padding:2px 8px; border-radius:10px; margin-top:6px; display:inline-block; }
+.add-card-btn { margin:4px 8px 10px; background:none; border:none; color:#5e6c84; font-size:13px; cursor:pointer; padding:6px 8px; border-radius:6px; text-align:left; transition:background .15s; }
+.add-card-btn:hover { background:rgba(9,30,66,.06); color:#172b4d; }
+
+/* ── PANEL CATEGORÍAS ── */
+.panel-overlay { position:fixed; inset:0; background:rgba(9,30,66,.45); z-index:200; display:none; }
+.panel-overlay.open { display:block; }
+.cat-panel {
+  position:fixed; top:0; right:0; bottom:0; width:320px; background:#fff;
+  box-shadow:-4px 0 24px rgba(9,30,66,.2); z-index:201; display:flex; flex-direction:column;
+  transform:translateX(100%); transition:transform .22s ease;
+}
+.cat-panel.open { transform:translateX(0); }
+.cat-panel-header { padding:18px 20px 14px; border-bottom:1px solid #ebecf0; display:flex; align-items:center; justify-content:space-between; }
+.cat-panel-header h3 { font-size:15px; font-weight:700; }
+.cat-panel-header .sub { font-size:12px; color:#5e6c84; margin-top:2px; }
+.btn-close-panel { background:none; border:none; font-size:20px; cursor:pointer; color:#5e6c84; line-height:1; padding:2px 6px; border-radius:4px; }
+.btn-close-panel:hover { background:#ebecf0; }
+.cat-list { flex:1; overflow-y:auto; padding:12px 16px; display:flex; flex-direction:column; gap:8px; }
+.cat-item { display:flex; align-items:center; gap:10px; padding:10px 12px; background:#f4f5f7; border-radius:8px; }
+.cat-dot { width:14px; height:14px; border-radius:50%; flex-shrink:0; }
+.cat-item-name { flex:1; font-size:13px; font-weight:600; }
+.cat-item-count { font-size:11px; color:#5e6c84; }
+.cat-item-actions { display:flex; gap:4px; }
+.btn-cat-action { background:none; border:none; font-size:13px; cursor:pointer; padding:3px 6px; border-radius:4px; color:#5e6c84; }
+.btn-cat-action:hover { background:#dfe1e6; color:#172b4d; }
+.cat-form { padding:14px 16px; border-top:1px solid #ebecf0; }
+.cat-form label { font-size:12px; font-weight:600; color:#5e6c84; display:block; margin-bottom:5px; text-transform:uppercase; letter-spacing:.4px; }
+.cat-form-row { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+.cat-form input[type=text] { flex:1; padding:8px 10px; border:2px solid #dfe1e6; border-radius:6px; font-size:13px; color:#172b4d; outline:none; transition:border-color .15s; }
+.cat-form input[type=text]:focus { border-color:#0079bf; }
+.color-swatches { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+.swatch { width:22px; height:22px; border-radius:50%; cursor:pointer; border:2px solid transparent; transition:transform .1s; }
+.swatch:hover { transform:scale(1.2); }
+.swatch.selected { border-color:#172b4d; box-shadow:0 0 0 2px #fff inset; }
+.btn-add-cat { width:100%; padding:9px; background:#0079bf; color:#fff; border:none; border-radius:7px; font-size:13px; font-weight:700; cursor:pointer; transition:background .15s; }
+.btn-add-cat:hover { background:#0052cc; }
+
+/* ── MODAL GASTO ── */
+.modal-overlay { position:fixed; inset:0; background:rgba(9,30,66,.55); z-index:300; display:flex; align-items:center; justify-content:center; }
+.modal { background:#fff; border-radius:12px; padding:28px 28px 24px; width:380px; box-shadow:0 8px 32px rgba(9,30,66,.22); }
+.modal h2 { font-size:17px; font-weight:700; margin-bottom:20px; }
+.form-group { margin-bottom:14px; }
+.form-group label { font-size:12px; font-weight:600; color:#5e6c84; display:block; margin-bottom:5px; text-transform:uppercase; letter-spacing:.3px; }
+.form-group input, .form-group select { width:100%; padding:9px 12px; border:2px solid #dfe1e6; border-radius:7px; font-size:14px; color:#172b4d; outline:none; background:#fff; transition:border-color .15s; }
+.form-group input:focus, .form-group select:focus { border-color:#0079bf; }
+.form-row { display:flex; gap:12px; }
+.form-row .form-group { flex:1; }
+.modal-actions { display:flex; gap:8px; margin-top:20px; }
+.btn-add { flex:1; padding:10px; background:#0079bf; color:#fff; border:none; border-radius:7px; font-weight:700; font-size:14px; cursor:pointer; }
+.btn-cancel { padding:10px 16px; background:#f4f5f7; color:#5e6c84; border:none; border-radius:7px; font-size:14px; cursor:pointer; font-weight:600; }
+.cat-select-option { display:flex; align-items:center; gap:6px; }
+select.with-dot { padding-left:10px; }
+.new-cat-hint { font-size:11px; color:#0079bf; margin-top:4px; cursor:pointer; }
+.new-cat-hint:hover { text-decoration:underline; }
+
+/* ── RESUMEN ── */
+.summary-wrap { padding:20px; max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+.sum-card { background:#fff; border-radius:12px; padding:20px 22px; box-shadow:0 1px 4px rgba(9,30,66,.1); }
+.sum-card-title { font-size:13px; font-weight:700; color:#5e6c84; text-transform:uppercase; letter-spacing:.5px; margin-bottom:16px; }
+
+/* columnas */
+.sum-cols { display:flex; gap:12px; }
+.sum-col-card { flex:1; border-radius:8px; padding:12px 14px; }
+.sum-col-name { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; margin-bottom:4px; }
+.sum-col-total { font-size:18px; font-weight:800; color:#172b4d; }
+.sum-col-count { font-size:11px; color:#5e6c84; margin-top:2px; }
+
+/* prioridad */
+.pri-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.pri-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.pri-label { font-size:12px; font-weight:600; width:68px; }
+.pri-track { flex:1; height:8px; background:#ebecf0; border-radius:4px; overflow:hidden; }
+.pri-fill { height:100%; border-radius:4px; transition:width .4s; }
+.pri-val { font-size:12px; font-weight:700; width:34px; text-align:right; color:#5e6c84; }
+
+/* ★ CATEGORÍAS en resumen ── nueva sección */
+.cat-rows { display:flex; flex-direction:column; gap:10px; }
+.cat-row { display:flex; align-items:center; gap:10px; }
+.cat-row-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.cat-row-name { font-size:13px; font-weight:600; width:130px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.cat-row-track { flex:1; height:10px; background:#ebecf0; border-radius:5px; overflow:hidden; position:relative; }
+.cat-row-fill { height:100%; border-radius:5px; transition:width .5s cubic-bezier(.4,0,.2,1); }
+.cat-row-right { text-align:right; min-width:100px; }
+.cat-row-pct { font-size:13px; font-weight:800; color:#172b4d; }
+.cat-row-monto { font-size:11px; color:#5e6c84; }
+.cat-none-row .cat-row-dot { background:#dfe1e6; }
+.cat-none-row .cat-row-name { color:#5e6c84; font-style:italic; }
+
+/* budget en resumen */
+.budget-bar-wrap { cursor:default; }
+.budget-bar-label-row { display:flex; justify-content:space-between; margin-bottom:6px; font-size:12px; color:#5e6c84; }
+.budget-bar-track { height:10px; background:#ebecf0; border-radius:5px; overflow:hidden; margin-bottom:6px; }
+.budget-bar-fill { height:100%; border-radius:5px; }
+.budget-meta { display:flex; justify-content:space-between; font-size:12px; }
+.budget-remaining { font-weight:700; }
+
+/* ── TOOLTIPS / CALLOUTS ── */
+.callout {
+  background:#fffbe6; border:1.5px solid #ffe58f; border-radius:8px;
+  padding:10px 14px; font-size:12px; color:#7a5700; display:flex; gap:8px; align-items:flex-start;
+  margin-bottom:4px;
+}
+.callout b { color:#5a3e00; }
+
+/* tag en card del tablero */
+.card-cat-tag {
+  display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700;
+  padding:2px 7px; border-radius:10px; margin-top:6px;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV ESCENAS -->
+<nav class="scenes-nav">
+  <span class="label">Preview →</span>
+  <button class="scene-btn active" onclick="show('s1',this)">1 · Tablero + botón Categorías</button>
+  <button class="scene-btn" onclick="show('s2',this)">2 · Panel Gestión Categorías</button>
+  <button class="scene-btn" onclick="show('s3',this)">3 · Modal Nuevo Gasto</button>
+  <button class="scene-btn" onclick="show('s4',this)">4 · Vista Resumen</button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     ESCENA 1 – Board con botón Categorías
+══════════════════════════════════════════ -->
+<div class="scene active" id="s1">
+  <div class="header">
+    <div class="header-left">
+      <button class="btn-back">‹ Tableros</button>
+      <span class="header-board-name">Gastos Marzo</span>
+    </div>
+    <div class="header-right">
+      <!-- botón nuevo -->
+      <button class="btn-header highlighted" onclick="show('s2',document.querySelectorAll('.scene-btn')[1])">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        Categorías
+      </button>
+      <button class="btn-header">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Compartir
+      </button>
+      <button class="btn-header">Salir</button>
+    </div>
+  </div>
+
+  <div style="padding:10px 16px 0;">
+    <div class="callout">
+      <span>💡</span>
+      <span><b>Nuevo:</b> El botón <b>Categorías</b> (resaltado en el header) abre el panel para crear y administrar las categorías del tablero. Las cards muestran el chip de categoría debajo de la prioridad.</span>
+    </div>
+  </div>
+
+  <div class="board-body">
+    <!-- Col: Por Pagar -->
+    <div class="column">
+      <div class="column-header">
+        <div class="column-title">Por Pagar</div>
+        <div class="column-total">$490.000</div>
+      </div>
+      <div class="cards-list">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Dividendo Dpto</div></div>
+          <div class="card-cat-tag" style="background:#fff0e6;color:#bf5600;">🏠 Arriendo</div>
+          <div class="card-footer">
+            <span class="priority-badge vital">Vital</span>
+            <span class="card-amount">$380.000</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Tag Automóvil</div></div>
+          <div class="card-cat-tag" style="background:#e6f4ff;color:#005b99;">🚗 Transporte</div>
+          <div class="card-footer">
+            <span class="priority-badge gusto">Gusto</span>
+            <span class="card-amount">$110.000</span>
+          </div>
+        </div>
+      </div>
+      <button class="add-card-btn">+ Agregar Gasto</button>
+    </div>
+
+    <!-- Col: Carrito -->
+    <div class="column">
+      <div class="column-header">
+        <div class="column-title">Carrito</div>
+        <div class="column-total">$185.000</div>
+      </div>
+      <div class="cards-list">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Jumbo semanal</div></div>
+          <div class="card-cat-tag" style="background:#e6fff5;color:#1a7a4a;">🛒 Supermercado</div>
+          <div class="card-footer">
+            <span class="priority-badge vital">Vital</span>
+            <span class="card-amount">$85.000</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Netflix</div></div>
+          <div class="card-cat-tag" style="background:#ede6ff;color:#5229c4;">📺 Streaming</div>
+          <div class="card-footer">
+            <span class="priority-badge capricho">Capricho</span>
+            <span class="card-amount">$7.990</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Spotify</div></div>
+          <div class="card-cat-tag" style="background:#ede6ff;color:#5229c4;">📺 Streaming</div>
+          <div class="card-footer">
+            <span class="priority-badge capricho">Capricho</span>
+            <span class="card-amount">$4.990</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Farmacia</div></div>
+          <div class="card-footer">
+            <span class="priority-badge gusto">Gusto</span>
+            <span class="card-amount">$18.000</span>
+          </div>
+        </div>
+      </div>
+      <button class="add-card-btn">+ Agregar Gasto</button>
+    </div>
+
+    <!-- Col: Pagado -->
+    <div class="column">
+      <div class="column-header">
+        <div class="column-title">Pagado</div>
+        <div class="column-total">$215.000</div>
+      </div>
+      <div class="cards-list">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Cuota BCI Visa</div></div>
+          <div class="card-cat-tag" style="background:#ffe6e6;color:#9e1c1c;">💳 Créditos</div>
+          <div class="card-footer">
+            <span class="priority-badge vital">Vital</span>
+            <span class="card-amount">$215.000</span>
+          </div>
+        </div>
+      </div>
+      <button class="add-card-btn">+ Agregar Gasto</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ESCENA 2 – Panel Gestión Categorías
+══════════════════════════════════════════ -->
+<div class="scene" id="s2">
+  <div class="header">
+    <div class="header-left">
+      <button class="btn-back">‹ Tableros</button>
+      <span class="header-board-name">Gastos Marzo</span>
+    </div>
+    <div class="header-right">
+      <button class="btn-header highlighted">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        Categorías
+      </button>
+      <button class="btn-header">Compartir</button>
+      <button class="btn-header">Salir</button>
+    </div>
+  </div>
+
+  <!-- Panel abierto simulado (inline para el preview) -->
+  <div style="display:flex;height:calc(100vh - 98px);position:relative;">
+    <!-- tablero atenuado al fondo -->
+    <div style="flex:1;filter:brightness(.7);pointer-events:none;overflow:hidden;padding:14px;display:flex;gap:14px;">
+      <div class="column" style="opacity:.6;width:240px;"></div>
+      <div class="column" style="opacity:.6;width:240px;"></div>
+      <div class="column" style="opacity:.6;width:240px;"></div>
+    </div>
+
+    <!-- Panel -->
+    <div class="cat-panel open" style="position:relative;transform:none;box-shadow:-4px 0 24px rgba(9,30,66,.18);">
+      <div class="cat-panel-header">
+        <div>
+          <h3>Categorías del Tablero</h3>
+          <div class="sub">Gastos Marzo · 4 categorías</div>
+        </div>
+        <button class="btn-close-panel">✕</button>
+      </div>
+
+      <div class="cat-list">
+        <div class="callout" style="margin-bottom:0;">
+          <span>💡</span><span style="font-size:11px;">Las categorías son exclusivas de <b>este tablero</b>. Puedes renombrarlas o eliminarlas si no tienen gastos asociados.</span>
+        </div>
+
+        <div class="cat-item">
+          <div class="cat-dot" style="background:#bf5600;"></div>
+          <div class="cat-item-name">🏠 Arriendo</div>
+          <div class="cat-item-count">1 gasto</div>
+          <div class="cat-item-actions">
+            <button class="btn-cat-action">✎</button>
+            <button class="btn-cat-action" style="color:#dfe1e6;cursor:not-allowed;" title="Tiene gastos asociados">✕</button>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-dot" style="background:#005b99;"></div>
+          <div class="cat-item-name">🚗 Transporte</div>
+          <div class="cat-item-count">1 gasto</div>
+          <div class="cat-item-actions">
+            <button class="btn-cat-action">✎</button>
+            <button class="btn-cat-action" style="color:#dfe1e6;cursor:not-allowed;" title="Tiene gastos asociados">✕</button>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-dot" style="background:#1a7a4a;"></div>
+          <div class="cat-item-name">🛒 Supermercado</div>
+          <div class="cat-item-count">1 gasto</div>
+          <div class="cat-item-actions">
+            <button class="btn-cat-action">✎</button>
+            <button class="btn-cat-action" style="color:#dfe1e6;cursor:not-allowed;" title="Tiene gastos asociados">✕</button>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-dot" style="background:#5229c4;"></div>
+          <div class="cat-item-name">📺 Streaming</div>
+          <div class="cat-item-count">2 gastos</div>
+          <div class="cat-item-actions">
+            <button class="btn-cat-action">✎</button>
+            <button class="btn-cat-action" style="color:#dfe1e6;cursor:not-allowed;" title="Tiene gastos asociados">✕</button>
+          </div>
+        </div>
+        <div class="cat-item">
+          <div class="cat-dot" style="background:#9e1c1c;"></div>
+          <div class="cat-item-name">💳 Créditos</div>
+          <div class="cat-item-count">1 gasto</div>
+          <div class="cat-item-actions">
+            <button class="btn-cat-action">✎</button>
+            <button class="btn-cat-action" style="color:#dfe1e6;cursor:not-allowed;" title="Tiene gastos asociados">✕</button>
+          </div>
+        </div>
+        <div class="cat-item" style="background:#fff3cd;border:1.5px dashed #ffe58f;">
+          <div class="cat-dot" style="background:#ccc;"></div>
+          <div class="cat-item-name" style="color:#7a5700;">Vacaciones (sin uso)</div>
+          <div class="cat-item-count">0 gastos</div>
+          <div class="cat-item-actions">
+            <button class="btn-cat-action">✎</button>
+            <button class="btn-cat-action" style="color:#de350b;">✕</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario nueva categoría -->
+      <div class="cat-form">
+        <label>Nueva Categoría</label>
+        <div class="cat-form-row">
+          <input type="text" placeholder="Ej: Educación, Salud…" value=""/>
+        </div>
+        <label>Color</label>
+        <div class="color-swatches">
+          <div class="swatch selected" style="background:#de350b;"></div>
+          <div class="swatch" style="background:#ff8b00;"></div>
+          <div class="swatch" style="background:#36b37e;"></div>
+          <div class="swatch" style="background:#0079bf;"></div>
+          <div class="swatch" style="background:#6554c0;"></div>
+          <div class="swatch" style="background:#00b8d9;"></div>
+          <div class="swatch" style="background:#ff5630;"></div>
+          <div class="swatch" style="background:#172b4d;"></div>
+        </div>
+        <button class="btn-add-cat">+ Agregar Categoría</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ESCENA 3 – Modal Nuevo Gasto con Categoría
+══════════════════════════════════════════ -->
+<div class="scene" id="s3">
+  <div class="header">
+    <div class="header-left">
+      <button class="btn-back">‹ Tableros</button>
+      <span class="header-board-name">Gastos Marzo</span>
+    </div>
+    <div class="header-right">
+      <button class="btn-header highlighted">Categorías</button>
+      <button class="btn-header">Compartir</button>
+      <button class="btn-header">Salir</button>
+    </div>
+  </div>
+
+  <!-- Modal centrado -->
+  <div style="display:flex;align-items:center;justify-content:center;height:calc(100vh - 98px);background:rgba(9,30,66,.45);">
+    <div class="modal" style="position:relative;">
+      <h2>Nuevo Gasto</h2>
+
+      <div class="form-group">
+        <label>Nombre del gasto</label>
+        <input type="text" value="Netflix" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Monto (CLP)</label>
+          <input type="number" value="7990" />
+        </div>
+        <div class="form-group">
+          <label>Prioridad</label>
+          <select>
+            <option>Vital</option>
+            <option>Gusto</option>
+            <option selected>Capricho</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ★ Campo nuevo: Categoría -->
+      <div class="form-group">
+        <label>Categoría <span style="font-weight:400;color:#aaa;">(opcional)</span></label>
+        <select>
+          <option value="">— Sin categoría —</option>
+          <option>🏠 Arriendo</option>
+          <option>🚗 Transporte</option>
+          <option>🛒 Supermercado</option>
+          <option selected>📺 Streaming</option>
+          <option>💳 Créditos</option>
+        </select>
+        <div class="new-cat-hint">+ Crear nueva categoría para este tablero</div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-add">Agregar Gasto</button>
+        <button class="btn-cancel">Cancelar</button>
+      </div>
+
+      <div class="callout" style="margin-top:16px;">
+        <span>💡</span>
+        <span>El campo <b>Categoría</b> es opcional. El acceso directo <b>"+ Crear nueva categoría"</b> abre el panel lateral sin cerrar este modal.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ESCENA 4 – Vista Resumen con Categorías
+══════════════════════════════════════════ -->
+<div class="scene" id="s4">
+  <div class="header">
+    <div class="header-left">
+      <button class="btn-back">‹ Tableros</button>
+      <span class="header-board-name">Gastos Marzo</span>
+    </div>
+    <div class="header-right">
+      <button class="btn-header highlighted">Categorías</button>
+      <button class="btn-header">Compartir</button>
+      <button class="btn-header">Salir</button>
+    </div>
+  </div>
+
+  <!-- Tab bar -->
+  <div style="display:flex;background:#fff;border-bottom:2px solid #ebecf0;padding:0 16px;">
+    <button style="padding:10px 18px;border:none;background:none;font-size:13px;font-weight:600;color:#5e6c84;cursor:pointer;">Tablero</button>
+    <button style="padding:10px 18px;border:none;background:none;font-size:13px;font-weight:700;color:#0079bf;cursor:pointer;border-bottom:2px solid #0079bf;margin-bottom:-2px;">Resumen</button>
+  </div>
+
+  <div class="summary-wrap">
+
+    <!-- Columnas -->
+    <div class="sum-card">
+      <div class="sum-card-title">Columnas</div>
+      <div class="sum-cols">
+        <div class="sum-col-card" style="background:#fff0e6;border-left:4px solid #ff8b00;">
+          <div class="sum-col-name" style="color:#ff8b00;">Por Pagar</div>
+          <div class="sum-col-total">$490.000</div>
+          <div class="sum-col-count">2 gastos</div>
+        </div>
+        <div class="sum-col-card" style="background:#e6f4ff;border-left:4px solid #0079bf;">
+          <div class="sum-col-name" style="color:#0079bf;">Carrito</div>
+          <div class="sum-col-total">$185.000</div>
+          <div class="sum-col-count">4 gastos</div>
+        </div>
+        <div class="sum-col-card" style="background:#e6fff5;border-left:4px solid #36b37e;">
+          <div class="sum-col-name" style="color:#36b37e;">Pagado</div>
+          <div class="sum-col-total">$215.000</div>
+          <div class="sum-col-count">1 gasto</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ★ CATEGORÍAS – sección nueva -->
+    <div class="sum-card">
+      <div class="sum-card-title">Distribución Por Categoría</div>
+      <div class="callout" style="margin-bottom:14px;">
+        <span>📊</span>
+        <span>Los porcentajes se calculan sobre el total de gastos del tablero (<b>$890.000</b>). La barra muestra el peso de cada categoría en el presupuesto.</span>
+      </div>
+      <div class="cat-rows" id="cat-rows">
+        <!-- generado por JS abajo -->
+      </div>
+    </div>
+
+    <!-- Prioridad -->
+    <div class="sum-card">
+      <div class="sum-card-title">Distribución Por Prioridad</div>
+      <div class="pri-row">
+        <div class="pri-dot" style="background:#de350b;"></div>
+        <div class="pri-label" style="font-size:12px;font-weight:600;">Vital</div>
+        <div class="pri-track"><div class="pri-fill" style="width:78%;background:#de350b;"></div></div>
+        <div class="pri-val">78%</div>
+      </div>
+      <div class="pri-row">
+        <div class="pri-dot" style="background:#0079bf;"></div>
+        <div class="pri-label" style="font-size:12px;font-weight:600;">Gusto</div>
+        <div class="pri-track"><div class="pri-fill" style="width:14%;background:#0079bf;"></div></div>
+        <div class="pri-val">14%</div>
+      </div>
+      <div class="pri-row">
+        <div class="pri-dot" style="background:#6554c0;"></div>
+        <div class="pri-label" style="font-size:12px;font-weight:600;">Capricho</div>
+        <div class="pri-track"><div class="pri-fill" style="width:8%;background:#6554c0;"></div></div>
+        <div class="pri-val">8%</div>
+      </div>
+    </div>
+
+    <!-- Presupuesto -->
+    <div class="sum-card">
+      <div class="sum-card-title">Presupuesto</div>
+      <div class="budget-bar-wrap">
+        <div class="budget-bar-label-row">
+          <span>Presupuesto Total</span>
+          <span>Gastado $400.000 / $1.000.000</span>
+        </div>
+        <div class="budget-bar-track">
+          <div class="budget-bar-fill" style="width:60%;background:#36b37e;"></div>
+        </div>
+        <div class="budget-meta">
+          <span class="budget-remaining" style="color:#36b37e;">$600.000 Disponible</span>
+          <span style="font-size:11px;color:#aaa;">✎ Editar</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.scene-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Generar filas de categorías animadas
+const cats = [
+  { name:'💳 Créditos',     color:'#9e1c1c', monto:215000 },
+  { name:'🏠 Arriendo',     color:'#bf5600', monto:380000 },
+  { name:'🛒 Supermercado', color:'#1a7a4a', monto:85000  },
+  { name:'📺 Streaming',    color:'#5229c4', monto:12980  },
+  { name:'🚗 Transporte',   color:'#005b99', monto:110000 },
+  { name:'— Sin categoría', color:null,      monto:18000  },
+];
+const total = cats.reduce((s,c) => s + c.monto, 0);
+const container = document.getElementById('cat-rows');
+cats.sort((a,b) => b.monto - a.monto).forEach(c => {
+  const pct = Math.round(c.monto / total * 100);
+  const fmt = n => '$' + n.toLocaleString('es-CL');
+  const row = document.createElement('div');
+  row.className = 'cat-row' + (c.color ? '' : ' cat-none-row');
+  row.innerHTML = `
+    <div class="cat-row-dot" style="background:${c.color||'#ccc'};"></div>
+    <div class="cat-row-name" style="${c.color?'':'color:#5e6c84;font-style:italic;'}">${c.name}</div>
+    <div class="cat-row-track">
+      <div class="cat-row-fill" style="width:0%;background:${c.color||'#ccc'};" data-pct="${pct}"></div>
+    </div>
+    <div class="cat-row-right">
+      <div class="cat-row-pct">${pct}%</div>
+      <div class="cat-row-monto">${fmt(c.monto)}</div>
+    </div>`;
+  container.appendChild(row);
+});
+
+// Animar barras cuando escena 4 se hace visible
+function animateBars() {
+  document.querySelectorAll('.cat-row-fill').forEach(el => {
+    el.style.width = el.dataset.pct + '%';
+  });
+}
+document.querySelectorAll('.scene-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.textContent.includes('Resumen')) setTimeout(animateBars, 80);
+  });
+});
+</script>
+</body>
+</html>

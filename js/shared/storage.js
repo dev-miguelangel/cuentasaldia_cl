@@ -35,6 +35,15 @@ function saveExpenses() {
   localStorage.setItem('cuentas_' + currentUser + '_' + currentBoard.id, JSON.stringify(expenses));
 }
 
+function loadCategories() {
+  const raw = localStorage.getItem('categorias_' + currentUser + '_' + currentBoard.id);
+  categorias = raw ? JSON.parse(raw) : [];
+}
+
+function saveCategories() {
+  localStorage.setItem('categorias_' + currentUser + '_' + currentBoard.id, JSON.stringify(categorias));
+}
+
 function loadBudget() {
   budget = parseInt(localStorage.getItem('presupuesto_' + currentUser + '_' + currentBoard.id) || '0', 10);
 }

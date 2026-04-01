@@ -24,9 +24,11 @@ function exportBoardData() {
     v: 1,
     name: currentBoard.name,
     budget: budget,
+    categorias: categorias,
     expenses: expenses.map(e => ({
       id: e.id, titulo: e.titulo, monto: e.monto,
-      estado: e.estado, prioridad: e.prioridad || 'gusto'
+      estado: e.estado, prioridad: e.prioridad || 'gusto',
+      categoriaId: e.categoriaId || null
     }))
   };
 }
@@ -46,12 +48,16 @@ function importBoardFromData(data, targetUser) {
     const bid = 'b' + Date.now();
     storedBoards.push({ id: bid, name });
     localStorage.setItem('tableros_' + user, JSON.stringify(storedBoards));
+    if (data.categorias && data.categorias.length) {
+      localStorage.setItem('categorias_' + user + '_' + bid, JSON.stringify(data.categorias));
+    }
     if (data.expenses && data.expenses.length) {
       const exps = data.expenses.map((e, i) => ({
         id: 'imp' + Date.now() + i,
         titulo: e.titulo, monto: e.monto,
         estado: e.estado || 'por_pagar',
-        prioridad: e.prioridad || 'gusto'
+        prioridad: e.prioridad || 'gusto',
+        categoriaId: e.categoriaId || null
       }));
       localStorage.setItem('cuentas_' + user + '_' + bid, JSON.stringify(exps));
     }
