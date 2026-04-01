@@ -7,6 +7,7 @@ var CAT_COLORS = [
 ];
 var catSelectedColor = CAT_COLORS[0];
 
+// ── Panel open/close ──────────────────────────────────────
 function openCatPanel() {
   renderCatPanel();
   document.getElementById('cat-panel-overlay').classList.add('active');
@@ -19,6 +20,7 @@ function closeCatPanel() {
   document.getElementById('cat-panel').classList.remove('open');
 }
 
+// ── Panel render ──────────────────────────────────────────
 function renderCatPanel() {
   const sub = document.getElementById('cat-panel-sub');
   sub.textContent = (currentBoard ? currentBoard.name : '') +
@@ -31,11 +33,11 @@ function renderCatPanel() {
     list.innerHTML = categorias.map(cat => {
       const count = expenses.filter(e => e.categoriaId === cat.id).length;
       const canDelete = count === 0;
-      return `<div class="cat-item">
+      return `<div class="cat-item" data-catid="${cat.id}">
         <div class="cat-dot" style="background:${cat.color}"></div>
         <div class="cat-item-name">${escapeHTML(cat.name)}</div>
         <div class="cat-item-count">${count} gasto${count !== 1 ? 's' : ''}</div>
-        <button class="btn-cat-edit" data-id="${cat.id}" title="Renombrar">✎</button>
+        <button class="btn-cat-edit" data-id="${cat.id}" title="Editar">✎</button>
         <button class="btn-cat-delete${canDelete ? '' : ' cat-del-disabled'}" data-id="${cat.id}"
           title="${canDelete ? 'Eliminar' : 'Tiene gastos — no se puede eliminar'}"
           ${canDelete ? '' : 'disabled'}>✕</button>
@@ -46,11 +48,13 @@ function renderCatPanel() {
       btn.addEventListener('click', () => deleteCat(btn.dataset.id));
     });
     list.querySelectorAll('.btn-cat-edit').forEach(btn => {
-      btn.addEventListener('click', () => renameCat(btn.dataset.id));
+      btn.addEventListener('click', () => editCat(btn.dataset.id));
     });
   }
 
-  _renderColorSwatches();
+  _renderColorSwatches(document.getElementById('cat-color-swatches'), catSelectedColor, color => {
+    catSelectedColor = color;
+  });
 
   const atLimit = categorias.length >= 10;
   const addBtn = document.getElementById('cat-add-btn');
@@ -62,19 +66,20 @@ function renderCatPanel() {
   catForm.style.pointerEvents = atLimit ? 'none' : '';
 }
 
-function _renderColorSwatches() {
-  const container = document.getElementById('cat-color-swatches');
+function _renderColorSwatches(container, selected, onChange) {
+  if (!container) return;
   container.innerHTML = CAT_COLORS.map(color =>
-    `<div class="cat-swatch${color === catSelectedColor ? ' selected' : ''}" data-color="${color}" style="background:${color}"></div>`
+    `<div class="cat-swatch${color === selected ? ' selected' : ''}" data-color="${color}" style="background:${color}"></div>`
   ).join('');
   container.querySelectorAll('.cat-swatch').forEach(sw => {
     sw.addEventListener('click', () => {
-      catSelectedColor = sw.dataset.color;
-      _renderColorSwatches();
+      onChange(sw.dataset.color);
+      _renderColorSwatches(container, sw.dataset.color, onChange);
     });
   });
 }
 
+// ── Add category ──────────────────────────────────────────
 function addCat() {
   if (categorias.length >= 10) return;
   const input = document.getElementById('cat-name-input');
@@ -89,20 +94,52 @@ function addCat() {
   populateCategorySelect();
 }
 
-function renameCat(id) {
+// ── Inline edit with name + color ─────────────────────────
+function editCat(id) {
   const cat = categorias.find(c => c.id === id);
   if (!cat) return;
-  const newName = prompt('Renombrar categoría:', cat.name);
-  if (newName === null) return;
-  const trimmed = newName.trim();
-  if (!trimmed) return;
-  cat.name = trimmed;
-  saveCategories();
-  renderCatPanel();
-  populateCategorySelect();
-  renderBoard();
+  const item = document.querySelector(`.cat-item[data-catid="${id}"]`);
+  if (!item) return;
+
+  let editColor = cat.color;
+
+  item.innerHTML = `
+    <div class="cat-edit-form">
+      <input type="text" class="cat-edit-input" value="${escapeHTML(cat.name)}" maxlength="30" />
+      <div class="cat-edit-swatches" id="cat-edit-swatches-${id}"></div>
+      <div class="cat-edit-actions">
+        <button class="btn-add cat-edit-save" data-id="${id}">Guardar</button>
+        <button class="btn-cancel cat-edit-cancel">Cancelar</button>
+      </div>
+    </div>`;
+
+  const swatchContainer = item.querySelector(`#cat-edit-swatches-${id}`);
+  _renderColorSwatches(swatchContainer, editColor, color => { editColor = color; });
+
+  const nameInput = item.querySelector('.cat-edit-input');
+  nameInput.focus();
+  nameInput.select();
+
+  item.querySelector('.cat-edit-save').addEventListener('click', () => {
+    const newName = nameInput.value.trim();
+    if (!newName) { nameInput.focus(); return; }
+    cat.name = newName;
+    cat.color = editColor;
+    saveCategories();
+    renderCatPanel();
+    populateCategorySelect();
+    renderBoard();
+  });
+
+  item.querySelector('.cat-edit-cancel').addEventListener('click', () => renderCatPanel());
+
+  nameInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter') item.querySelector('.cat-edit-save').click();
+    if (e.key === 'Escape') renderCatPanel();
+  });
 }
 
+// ── Delete category ───────────────────────────────────────
 function deleteCat(id) {
   if (expenses.some(e => e.categoriaId === id)) return;
   categorias = categorias.filter(c => c.id !== id);
@@ -111,15 +148,56 @@ function deleteCat(id) {
   populateCategorySelect();
 }
 
-function populateCategorySelect() {
-  const sel = document.getElementById('modal-categoria');
-  if (!sel) return;
-  const current = sel.value;
-  sel.innerHTML = '<option value="">— Sin categoría —</option>' +
-    categorias.map(c => `<option value="${c.id}">${escapeHTML(c.name)}</option>`).join('');
-  if (current && categorias.find(c => c.id === current)) sel.value = current;
+// ── Custom dropdown ───────────────────────────────────────
+function selectCatOption(value, color, name) {
+  document.getElementById('modal-categoria').value = value;
+  document.getElementById('modal-cat-label').textContent = name;
+  const dot = document.getElementById('modal-cat-dot');
+  if (color) {
+    dot.style.background = color;
+    dot.style.opacity = '1';
+  } else {
+    dot.style.background = '';
+    dot.style.opacity = '0';
+  }
 }
 
+function populateCategorySelect() {
+  const dropdown = document.getElementById('modal-cat-dropdown');
+  if (!dropdown) return;
+
+  const options = [{ id: '', name: '— Sin categoría —', color: null }].concat(categorias);
+  dropdown.innerHTML = options.map(c => `
+    <div class="cat-select-option" data-value="${c.id}" data-color="${c.color || ''}" data-name="${escapeHTML(c.name)}">
+      <span class="cat-select-opt-dot" style="${c.color ? 'background:' + c.color + ';opacity:1' : 'opacity:0'}"></span>
+      <span>${escapeHTML(c.name)}</span>
+    </div>`).join('');
+
+  dropdown.querySelectorAll('.cat-select-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      selectCatOption(opt.dataset.value, opt.dataset.color || null, opt.dataset.name);
+      dropdown.classList.remove('open');
+      document.getElementById('modal-cat-select').classList.remove('open');
+    });
+  });
+}
+
+// Toggle dropdown
+document.getElementById('modal-cat-trigger').addEventListener('click', e => {
+  e.stopPropagation();
+  const sel = document.getElementById('modal-cat-select');
+  sel.classList.toggle('open');
+});
+
+// Close on outside click
+document.addEventListener('click', e => {
+  const sel = document.getElementById('modal-cat-select');
+  if (sel && !sel.contains(e.target)) {
+    sel.classList.remove('open');
+  }
+});
+
+// ── Summary category rows ─────────────────────────────────
 function renderCatSummaryRows(colId) {
   const rows = document.getElementById('sum-cat-rows');
   if (!rows) return;
@@ -160,7 +238,7 @@ function renderCatSummaryRows(colId) {
   });
 }
 
-// ── Event wiring ──
+// ── Event wiring ──────────────────────────────────────────
 document.getElementById('cat-panel-btn').addEventListener('click', openCatPanel);
 document.getElementById('cat-panel-close').addEventListener('click', closeCatPanel);
 document.getElementById('cat-panel-overlay').addEventListener('click', closeCatPanel);

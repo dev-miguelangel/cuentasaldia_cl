@@ -15,9 +15,9 @@ function cardHTML(expense) {
           <button class="card-delete" data-id="${expense.id}" title="Eliminar">✕</button>
         </div>
       </div>
-      ${catChip}
       <div class="card-footer">
         <span class="priority-badge ${pri}">${PRIORITY_LABELS[pri]}</span>
+        ${catChip}
         <span class="card-amount">${formatCLP(expense.monto)}</span>
       </div>
     </div>

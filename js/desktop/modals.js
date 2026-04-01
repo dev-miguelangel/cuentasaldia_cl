@@ -82,7 +82,7 @@ function openModal(colId) {
   document.querySelectorAll('.priority-opt').forEach(b => b.classList.remove('active'));
   document.querySelector('.priority-opt[data-priority="gusto"]').classList.add('active');
   populateCategorySelect();
-  document.getElementById('modal-categoria').value = '';
+  selectCatOption('', null, '— Sin categoría —');
   document.getElementById('modal-overlay').classList.add('active');
   document.getElementById('modal-titulo').focus();
 }
@@ -101,7 +101,8 @@ function openEditModal(id) {
   document.querySelectorAll('.priority-opt').forEach(b => b.classList.remove('active'));
   document.querySelector(`.priority-opt[data-priority="${exp.prioridad || 'gusto'}"]`).classList.add('active');
   populateCategorySelect();
-  document.getElementById('modal-categoria').value = exp.categoriaId || '';
+  const _cat = exp.categoriaId ? categorias.find(c => c.id === exp.categoriaId) : null;
+  selectCatOption(exp.categoriaId || '', _cat ? _cat.color : null, _cat ? _cat.name : '— Sin categoría —');
   document.getElementById('modal-overlay').classList.add('active');
   document.getElementById('modal-titulo').focus();
 }
