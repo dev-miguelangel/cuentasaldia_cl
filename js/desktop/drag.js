@@ -14,7 +14,20 @@ var _touchOverCardId = null;
 var _touchOverPosition = null;
 
 function clearDropIndicators() {
-  document.querySelectorAll('.card').forEach(c => c.classList.remove('drag-target-before', 'drag-target-after'));
+  const ph = document.querySelector('.card-drop-placeholder');
+  if (ph) ph.remove();
+}
+
+function insertDropPlaceholder(targetCard, position) {
+  clearDropIndicators();
+  const ph = document.createElement('div');
+  ph.className = 'card-drop-placeholder';
+  ph.textContent = '↓';
+  if (position === 'before') {
+    targetCard.parentNode.insertBefore(ph, targetCard);
+  } else {
+    targetCard.parentNode.insertBefore(ph, targetCard.nextSibling);
+  }
 }
 
 function onDragStart(e) {
@@ -42,17 +55,16 @@ function onCardDragOver(e) {
   const rect = this.getBoundingClientRect();
   const position = e.clientY < rect.top + rect.height / 2 ? 'before' : 'after';
 
-  clearDropIndicators();
+  if (dragOverCardId === this.dataset.id && dragOverPosition === position) return;
+
   dragOverCardId = this.dataset.id;
   dragOverPosition = position;
-  this.classList.add('drag-target-' + position);
+  insertDropPlaceholder(this, position);
   this.closest('.column').classList.add('drag-over');
 }
 
 function onCardDragLeave(e) {
-  if (!this.contains(e.relatedTarget)) {
-    this.classList.remove('drag-target-before', 'drag-target-after');
-  }
+  // placeholder stays until a new position is detected or drop ends
 }
 
 function onDragOver(e) {
@@ -157,10 +169,10 @@ function onTouchMove(e) {
   _touchClone.style.visibility = '';
 
   document.querySelectorAll('.column').forEach(c => c.classList.remove('drag-over'));
-  clearDropIndicators();
   _touchTargetColId = null;
-  _touchOverCardId = null;
-  _touchOverPosition = null;
+
+  let newOverCardId = null;
+  let newOverPos = null;
 
   if (el) {
     const col = el.closest('.column');
@@ -171,9 +183,19 @@ function onTouchMove(e) {
     const card = el.closest('.card');
     if (card && card.dataset.id !== _touchDragId) {
       const rect = card.getBoundingClientRect();
-      _touchOverPosition = touch.clientY < rect.top + rect.height / 2 ? 'before' : 'after';
-      _touchOverCardId = card.dataset.id;
-      card.classList.add('drag-target-' + _touchOverPosition);
+      newOverCardId = card.dataset.id;
+      newOverPos = touch.clientY < rect.top + rect.height / 2 ? 'before' : 'after';
+    }
+  }
+
+  if (newOverCardId !== _touchOverCardId || newOverPos !== _touchOverPosition) {
+    _touchOverCardId = newOverCardId;
+    _touchOverPosition = newOverPos;
+    if (newOverCardId) {
+      const targetCard = document.querySelector(`.card[data-id="${newOverCardId}"]`);
+      if (targetCard) insertDropPlaceholder(targetCard, newOverPos);
+    } else {
+      clearDropIndicators();
     }
   }
 }

@@ -596,14 +596,25 @@ body {
   transform: rotate(2deg);
 }
 
-.card.drag-target-before {
-  border-top: 3px solid #0079bf;
-  margin-top: -3px;
+.card-drop-placeholder {
+  border: 2px dashed #0079bf;
+  border-radius: 8px;
+  background: rgba(0, 121, 191, 0.08);
+  margin-bottom: 8px;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0079bf;
+  font-size: 18px;
+  opacity: 0;
+  animation: placeholder-in 0.12s ease forwards;
+  pointer-events: none;
 }
 
-.card.drag-target-after {
-  border-bottom: 3px solid #0079bf;
-  margin-bottom: -3px;
+@keyframes placeholder-in {
+  from { opacity: 0; transform: scaleY(0.6); }
+  to   { opacity: 1; transform: scaleY(1); }
 }
 
 .card-header {
