@@ -16,8 +16,10 @@ function cardHTML(expense) {
         </div>
       </div>
       <div class="card-footer">
-        <span class="priority-badge ${pri}">${PRIORITY_LABELS[pri]}</span>
-        ${catChip}
+        <div class="card-footer-left">
+          <span class="priority-badge ${pri}">${PRIORITY_LABELS[pri]}</span>
+          ${catChip}
+        </div>
         <span class="card-amount">${formatCLP(expense.monto)}</span>
       </div>
     </div>

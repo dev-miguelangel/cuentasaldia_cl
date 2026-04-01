@@ -628,8 +628,6 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  vertical-align: middle;
-  margin-left: 5px;
 }
 
 /* ===== CUSTOM CATEGORY DROPDOWN ===== */
@@ -866,6 +864,12 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 6px;
+}
+
+.card-footer-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .card-amount {
