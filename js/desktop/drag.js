@@ -1,12 +1,21 @@
 // ===== DESKTOP DRAG & DROP =====
 
 var draggedId = null;
+var dragOverCardId = null;
+var dragOverPosition = null; // 'before' | 'after'
+
 var _touchDragId = null;
 var _touchClone = null;
 var _touchOffsetX = 0, _touchOffsetY = 0;
 var _touchStartX = 0, _touchStartY = 0;
 var _touchIsDragging = false;
 var _touchTargetColId = null;
+var _touchOverCardId = null;
+var _touchOverPosition = null;
+
+function clearDropIndicators() {
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('drag-target-before', 'drag-target-after'));
+}
 
 function onDragStart(e) {
   draggedId = this.dataset.id;
@@ -17,7 +26,33 @@ function onDragStart(e) {
 function onDragEnd() {
   this.classList.remove('dragging');
   document.querySelectorAll('.column').forEach(c => c.classList.remove('drag-over'));
+  clearDropIndicators();
   draggedId = null;
+  dragOverCardId = null;
+  dragOverPosition = null;
+}
+
+function onCardDragOver(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  e.dataTransfer.dropEffect = 'move';
+
+  if (!draggedId || this.dataset.id === draggedId) return;
+
+  const rect = this.getBoundingClientRect();
+  const position = e.clientY < rect.top + rect.height / 2 ? 'before' : 'after';
+
+  clearDropIndicators();
+  dragOverCardId = this.dataset.id;
+  dragOverPosition = position;
+  this.classList.add('drag-target-' + position);
+  this.closest('.column').classList.add('drag-over');
+}
+
+function onCardDragLeave(e) {
+  if (!this.contains(e.relatedTarget)) {
+    this.classList.remove('drag-target-before', 'drag-target-after');
+  }
 }
 
 function onDragOver(e) {
@@ -29,22 +64,45 @@ function onDragOver(e) {
 function onDragLeave(e) {
   if (!this.contains(e.relatedTarget)) {
     this.closest('.column').classList.remove('drag-over');
+    clearDropIndicators();
+    dragOverCardId = null;
+    dragOverPosition = null;
   }
+}
+
+function reorderExpense(expId, targetCardId, position, newColId) {
+  const exp = expenses.find(ex => ex.id === expId);
+  if (!exp) return;
+
+  if (targetCardId && targetCardId !== expId) {
+    const draggedIndex = expenses.findIndex(ex => ex.id === expId);
+    expenses.splice(draggedIndex, 1);
+    const newTargetIndex = expenses.findIndex(ex => ex.id === targetCardId);
+    const insertAt = position === 'before' ? newTargetIndex : newTargetIndex + 1;
+    exp.estado = newColId;
+    expenses.splice(insertAt, 0, exp);
+  } else if (exp.estado !== newColId) {
+    exp.estado = newColId;
+  } else {
+    return; // no change
+  }
+
+  saveExpenses();
+  renderBoard();
 }
 
 function onDrop(e) {
   e.preventDefault();
   const colId = this.dataset.colId;
   this.closest('.column').classList.remove('drag-over');
+  clearDropIndicators();
 
   if (draggedId) {
-    const exp = expenses.find(ex => ex.id === draggedId);
-    if (exp && exp.estado !== colId) {
-      exp.estado = colId;
-      saveExpenses();
-      renderBoard();
-    }
+    reorderExpense(draggedId, dragOverCardId, dragOverPosition, colId);
   }
+
+  dragOverCardId = null;
+  dragOverPosition = null;
 }
 
 function onTouchStart(e) {
@@ -60,6 +118,8 @@ function onTouchStart(e) {
   _touchOffsetY = touch.clientY - rect.top;
   _touchIsDragging = false;
   _touchTargetColId = null;
+  _touchOverCardId = null;
+  _touchOverPosition = null;
 }
 
 function onTouchMove(e) {
@@ -97,10 +157,24 @@ function onTouchMove(e) {
   _touchClone.style.visibility = '';
 
   document.querySelectorAll('.column').forEach(c => c.classList.remove('drag-over'));
+  clearDropIndicators();
   _touchTargetColId = null;
+  _touchOverCardId = null;
+  _touchOverPosition = null;
+
   if (el) {
     const col = el.closest('.column');
-    if (col) { col.classList.add('drag-over'); _touchTargetColId = col.dataset.colId; }
+    if (col) {
+      col.classList.add('drag-over');
+      _touchTargetColId = col.dataset.colId;
+    }
+    const card = el.closest('.card');
+    if (card && card.dataset.id !== _touchDragId) {
+      const rect = card.getBoundingClientRect();
+      _touchOverPosition = touch.clientY < rect.top + rect.height / 2 ? 'before' : 'after';
+      _touchOverCardId = card.dataset.id;
+      card.classList.add('drag-target-' + _touchOverPosition);
+    }
   }
 }
 
@@ -112,17 +186,14 @@ function onTouchEnd() {
     const card = document.querySelector(`.card[data-id="${_touchDragId}"]`);
     if (card) card.classList.remove('dragging');
     document.querySelectorAll('.column').forEach(c => c.classList.remove('drag-over'));
+    clearDropIndicators();
     if (_touchTargetColId) {
-      const exp = expenses.find(ex => ex.id === _touchDragId);
-      if (exp && exp.estado !== _touchTargetColId) {
-        exp.estado = _touchTargetColId;
-        saveExpenses();
-        renderBoard();
-      }
+      reorderExpense(_touchDragId, _touchOverCardId, _touchOverPosition, _touchTargetColId);
     }
   }
 
   _touchDragId = null; _touchIsDragging = false; _touchTargetColId = null;
+  _touchOverCardId = null; _touchOverPosition = null;
 }
 
 function attachEvents() {
@@ -150,6 +221,8 @@ function attachEvents() {
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('dragstart', onDragStart);
     card.addEventListener('dragend', onDragEnd);
+    card.addEventListener('dragover', onCardDragOver);
+    card.addEventListener('dragleave', onCardDragLeave);
     card.addEventListener('touchstart', onTouchStart, { passive: true });
     card.addEventListener('touchmove', onTouchMove, { passive: false });
     card.addEventListener('touchend', onTouchEnd);

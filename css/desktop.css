@@ -596,6 +596,16 @@ body {
   transform: rotate(2deg);
 }
 
+.card.drag-target-before {
+  border-top: 3px solid #0079bf;
+  margin-top: -3px;
+}
+
+.card.drag-target-after {
+  border-bottom: 3px solid #0079bf;
+  margin-bottom: -3px;
+}
+
 .card-header {
   display: flex;
   align-items: flex-start;
